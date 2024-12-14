@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin Panel - TripInventor</title>
+  <link rel="shortcut icon" type="image/x-icon" href="./assets/favicon.ico" />
+
+  <!-- Favicon -->
+  <link rel="shortcut icon" type="image/x-icon" href="images/favicon.ico" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <!--Flaticons CSS-->
+  <link href="fonts/flaticon.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+
+<body>
+  <div class="tab-container">
+    <!-- Tab Navigation -->
+    <button id="hamburger-menu" class="hamburger-menu">&#9776;</button>
+
+    <!-- Tab Navigation -->
+    <div class="tab-buttons-wrapper">
+      <div class="tab-buttons">
+        <img src="./assets/logo.png" alt="Logo" />
+        <!-- <button class="tab-button active" data-tab="tab1">Dashboard</button> -->
+        <button class="tab-button active" data-tab="tab2">Manage Customers</button>
+        <button class="tab-button" data-tab="tab3">
+          Manage Destinations
+        </button>
+        <button class="tab-button" data-tab="tab4">Manage Bookings</button>
+        <button class="tab-button" data-tab="tab5">Manage Reviews</button>
+        <button class="tab-button" data-tab="tab6">Manage Blogs</button>
+        <button class="tab-button" data-tab="tab7">Manage Newsletters</button>
+        <button class="tab-button" data-tab="tab8">Manage Contacts</button>
+        <button class="tab-button" data-tab="tab9">Manage Queries</button>
+      </div>
+    </div>
+
+    <!-- Tab Content -->
+    <div class="tab-content">
+      <!-- <div id="tab1" class="tab-panel active">
+          <h2>Dashboard</h2>
+          <p>This is the content of Tab 1.</p>
+        </div> -->
+      <div id="tab2" class="tab-panel active">
+        <h2>Manage Customers</h2>
+        <table class="table table-bordered" id="users-table">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Username</th>
+              <th>Email</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- Users data will be dynamically loaded -->
+            <div id="loading" style="display: none">
+              Loading users data...
+            </div>
+          </tbody>
+        </table>
+      </div>
+      <div id="tab3" class="tab-panel">
+        <h2>Manage Destinations</h2>
+        <button id="add-destination" class="btn mb-2">Add Destination</button>
+
+        <div id="add-destination-modal" class="p-3" style="display: none">
+          <h3
+            class="text-center text-decoration-underline text-uppercase mt-7 mb-5"
+          >
+            Add Destination
+          </h3>
+
+          <form id="add-destination-form">
+            <!-- Hidden input to store the destination ID for editing -->
+            <input type="hidden" id="destination-id" />
+
+            <!-- Basic Details -->
+            <div class="row">
+              <input
+                type="text"
+                id="destination-title"
+                placeholder="Title"
+                required
+                class="col-lg-2"
+              />
+              <input
+                type="text"
+                id="destination-location"
+                placeholder="Location"
+                class="col-lg-2"
+                required
+              />
+              <input
+                type="text"
+                id="destination-discount"
+                placeholder="Discount in percentage(e.g. 10)"
+                class="col-lg-1"
+              />
+              <input
+                type="text"
+                id="destination-duration"
+                placeholder="Duration(e.g. 06 Nights / 07 Days)"
+                class="col-lg-1"
+                required
+              />
+              <input
+                type="text"
+                id="destination-price"
+                placeholder="Price(e.g 35000)"
+                required
+                class="col-lg-1"
+              />
+            </div>
+            <div class="row">
+              <!-- <h5>Images</h5> -->
+              <input
+                type="text"
+                id="destination-pickupLocation"
+                placeholder="Pickup Location(e.g. Airport)"
+                class="col-lg-4"
+              />
+
+              <textarea
+                id="destination-images"
+                placeholder="Images (Enter image links in comma-separated values)"
+                class="col-lg-6"
+              ></textarea>
+              <textarea
+                id="details-languages"
+                placeholder="Languages (Enter languages in comma-separated values)"
+                class="col-lg-5"
+              ></textarea>
+            </div>
+            <div class="row">
+              <textarea
+                id="destination-descriptions"
+                placeholder="Descriptions (Comma-separated values will create new paragraph)"
+                class="col-lg-10"
+              ></textarea>
+            </div>
+            <div class="row">
+              <h5>Additional Info</h5>
+              <textarea
+                id="additional-includes"
+                placeholder="Includions (comma-separated values)"
+                class="col-lg-5 mt-2"
+              ></textarea>
+              <textarea
+                id="additional-excludes"
+                placeholder="Exclusions (comma-separated values)"
+                class="col-lg-6 mt-2"
+              ></textarea>
+            </div>
+            <div class="row">
+              <h5>Itinerary</h5>
+              <textarea
+                id="destination-itinerary"
+                placeholder="Enter Itinerary JSON (e.g. [{'day': 'Day 1', 'title': 'Itinerary title','content': ['Itinerary content 1', 'Itinerary content 2']},])"
+              ></textarea>
+            </div>
+            <button type="submit" class="submit">Add Destination</button>
+            <button type="reset" class="reset">Reset</button>
+            <button
+              type="button"
+              class="cancel"
+              onclick="closeAddDestinationModal()"
+            >
+              Cancel
+            </button>
+          </form>
+        </div>
+
+        <table class="table table-bordered mt-10" id="destinations-table">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Destination</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- Destinations data will be dynamically loaded -->
+            <div id="loading" style="display: none">
+              Loading destinations...
+            </div>
+          </tbody>
+        </table>
+      </div>
+<!-- has context menu -->
+      <div id="tab4" class="tab-panel">
+        <h2>Manage Bookings</h2>
+        <div id="loading" style="display: none">Loading...</div>
+        <table id="bookings-table" class="table table-striped">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Name</th>
+              <th>Email</th>
+              <th>Phone</th>
+              <th>Date</th>
+              <th>No. of People</th>
+              <th>Destination</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- Booking rows will be dynamically added here -->
+          </tbody>
+        </table>
+      </div>
+      <div id="tab5" class="tab-panel">
+        <h2>Manage Reviews</h2>
+        <table class="table table-bordered" id="review-table">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>User</th>
+              <th>Rating</th>
+              <th>Feedback</th>
+              <th>Destination</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- Reviews data will be dynamically loaded -->
+          </tbody>
+        </table>
+      </div>
+      <div id="tab6" class="tab-panel">
+        <h2>Manage Blogs</h2>
+        <button id="add-blog" class="btn mb-2">Add Blog</button>
+
+        <table class="table table-bordered" id="blogs-table">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Blog</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- Destinations data will be dynamically loaded -->
+            <div id="loading" style="display: none">Loading blogs...</div>
+          </tbody>
+        </table>
+
+        <div id="add-blog-modal" style="display: none">
+          <h3 class="text-center text-decoration-underline text-uppercase mt-7">
+            Add Blog
+          </h3>
+          <form id="add-blog-form">
+            <div class="row">
+              <div class="mb-3 col-lg-4">
+                <label for="blog-category" class="form-label">Category</label>
+                <input type="text" id="blog-category" class="form-control" placeholder="Enter blog category" />
+              </div>
+
+              <div class="mb-3 col-lg-4">
+                <label for="blog-date" class="form-label">Date </label>
+                <input type="date" id="blog-date" class="form-control" required />
+              </div>
+              <div class="mb-3 col-lg-4">
+                <label for="blog-title" class="form-label">Title</label>
+                <input type="text" id="blog-title" class="form-control" placeholder="Enter blog title" required />
+              </div>
+            </div>
+            <div class="row">
+              <div class="mb-3 col-lg-6">
+                <label for="blog-image" class="form-label">Image URL</label>
+                <input type="text" id="blog-image" class="form-control" placeholder="Enter image URL" required />
+              </div>
+              <div class="mb-3 col-lg-6">
+                <label for="blog-author" class="form-label">Author</label>
+                <input type="text" id="blog-author" class="form-control" placeholder="Enter blog author" />
+              </div>
+            </div>
+
+            <!-- <div class="mb-3">
+                            <label for="blog-link" class="form-label">Link</label>
+                            <input type="url" id="blog-link" class="form-control" placeholder="Enter blog link">
+                        </div> -->
+
+            <div class="mb-3">
+              <label for="blog-description" class="form-label">Description</label>
+              <textarea id="blog-description" class="form-control" rows="3"
+                placeholder="Enter blog description"></textarea>
+            </div>
+            <div class="mb-3">
+              <label for="blog-content" class="form-label">Content</label>
+              <textarea id="blog-content" class="form-control" rows="5"
+                placeholder="Enter full blog content"></textarea>
+            </div>
+            <button type="submit" class="submit">Add Blog</button>
+            <button type="reset" class="reset">Reset</button>
+            <button type="button" class="cancel" onclick="closeBlogModal()">
+              Cancel
+            </button>
+          </form>
+        </div>
+      </div>
+      <div id="tab7" class="tab-panel">
+        <h2>Manage Newsletters</h2>
+        <div id="loading" style="display: none">Loading...</div>
+        <table id="subscribers-table" class="table table-striped">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Email</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- Subscribers rows will be dynamically added here -->
+          </tbody>
+        </table>
+
+        <h2>Send Newsletter</h2>
+        <form id="newsletterForm">
+          <input type="text" id="subject" placeholder="Subject" required />
+          <input type="file" id="pdfFile" accept="application/pdf" required />
+          <button type="submit" class="submit">Send</button>
+        </form>
+        <div id="newsletterMessage"></div>
+      </div>
+      <div id="tab8" class="tab-panel">
+        <h2>Manage Contacts</h2>
+        <div id="loading" style="display: none">Loading...</div>
+        <table id="contact-table" class="table table-striped">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Name</th>
+              <th>Email</th>
+              <th>Phone</th>
+              <th>Message</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- Contact rows will be dynamically added here -->
+          </tbody>
+        </table>
+      </div>
+      <div id="tab9" class="tab-panel">
+        <h2>Manage Queries</h2>
+        <div id="loading" style="display: none">Loading...</div>
+        <table id="query-table" class="table table-striped">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Name</th>
+              <th>Phone</th>
+              <th>Check In</th>
+              <th>Guests</th>
+              <th>Message</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- Contact rows will be dynamically added here -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <script>
+    // Select elements
+    const hamburgerMenu = document.getElementById("hamburger-menu");
+    const tabButtonsWrapper = document.querySelector(".tab-buttons-wrapper");
+    const tabButtons = document.querySelectorAll(".tab-button");
+
+    // Toggle sidebar on hamburger click
+    hamburgerMenu.addEventListener("click", () => {
+      tabButtonsWrapper.classList.add("show"); // Show sidebar
+      tabButtonsWrapper.classList.remove("hidden"); // Ensure it's not hidden
+      hamburgerMenu.style.display = "none"; // Hide hamburger
+
+    });
+
+    // Close sidebar on tab button click
+    tabButtons.forEach((button) => {
+      button.addEventListener("click", () => {
+        if (window.innerWidth <= 768) {
+          // Only close on small screens
+          tabButtonsWrapper.classList.remove("show"); // Hide sidebar
+          tabButtonsWrapper.classList.add("hidden"); // Mark as hidden
+          hamburgerMenu.style.display = "block"; // Show hamburger
+        }
+      });
+    });
+
+    // Reset sidebar visibility on resize
+    window.addEventListener("resize", () => {
+      if (window.innerWidth > 768) {
+        tabButtonsWrapper.classList.remove("hidden", "show"); // Default sidebar visible
+        hamburgerMenu.style.display = "none"; // Hide hamburger
+      } else {
+        tabButtonsWrapper.classList.add("hidden"); // Hide sidebar
+        tabButtonsWrapper.classList.remove("show"); // Ensure it's not shown
+        hamburgerMenu.style.display = "block"; // Show hamburger
+      }
+    });
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script src="./dashboard.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const tabButtons = document.querySelectorAll(".tab-button");
+      const tabPanels = document.querySelectorAll(".tab-panel");
+      const hamburgerMenu = document.getElementById("hamburger-menu");
+      const tabButtonsWrapper = document.querySelector(
+        ".tab-buttons-wrapper"
+      );
+
+      // Tab switching functionality
+      tabButtons.forEach((button) => {
+        button.addEventListener("click", () => {
+          // Remove active class from all buttons and panels
+          tabButtons.forEach((btn) => btn.classList.remove("active"));
+          tabPanels.forEach((panel) => panel.classList.remove("active"));
+
+          // Add active class to the clicked button and corresponding panel
+          button.classList.add("active");
+          const targetPanel = document.getElementById(button.dataset.tab);
+          targetPanel.classList.add("active");
+
+          // Close sidebar in responsive mode
+          if (window.innerWidth < 768) {
+            tabButtonsWrapper.classList.remove("show");
+          }
+        });
+      });
+
+      // Toggle sidebar visibility on hamburger button click
+      hamburgerMenu.addEventListener("click", () => {
+        tabButtonsWrapper.classList.toggle("show");
+      });
+    });
+    function closeBlogModal() {
+      document.getElementById("add-blog-modal").style.display = "none";
+    }
+
+    // Toggle sidebar visibility
+    hamburgerMenu.addEventListener("click", () => {
+      tabButtonsWrapper.classList.toggle("hidden"); // Hide sidebar
+      tabButtonsWrapper.classList.toggle("show"); // Show sidebar
+    });
+
+    // Close sidebar when a tab is clicked (optional)
+    document.querySelectorAll(".tab-button").forEach((button) => {
+      button.addEventListener("click", () => {
+        if (window.innerWidth <= 768) {
+          // Only on small screens
+          tabButtonsWrapper.classList.add("hidden");
+          tabButtonsWrapper.classList.remove("show");
+        }
+      });
+    });
+  </script>
+</body>
+
+</html>
