@@ -265,99 +265,99 @@
     }
 
     // Function to initialize the search functionality
-    function initializeSearch() {
-      const searchTrigger = document.getElementById("searchTrigger");
-      const searchPanel = document.getElementById("searchPanel");
-      const overlay = document.getElementById("overlay");
+    // function initializeSearch() {
+    //   const searchTrigger = document.getElementById("searchTrigger");
+    //   const searchPanel = document.getElementById("searchPanel");
+    //   const overlay = document.getElementById("overlay");
 
-      // Show the search panel and overlay
-      searchTrigger.addEventListener("click", () => {
-        searchPanel.style.display = "block";
-        overlay.style.display = "block";
-        document.body.style.overflow = "hidden";
-      });
+    //   // Show the search panel and overlay
+    //   searchTrigger.addEventListener("click", () => {
+    //     searchPanel.style.display = "block";
+    //     overlay.style.display = "block";
+    //     document.body.style.overflow = "hidden";
+    //   });
 
-      // Hide the search panel and overlay when clicking outside
-      overlay.addEventListener("click", () => {
-        searchPanel.style.display = "none";
-        overlay.style.display = "none";
-        document.body.style.overflow = "auto";
-      });
+    //   // Hide the search panel and overlay when clicking outside
+    //   overlay.addEventListener("click", () => {
+    //     searchPanel.style.display = "none";
+    //     overlay.style.display = "none";
+    //     document.body.style.overflow = "auto";
+    //   });
 
-      const searchTitle = document.getElementById("searchTitle");
-      const searchResults = document.getElementById("searchResults");
+    //   const searchTitle = document.getElementById("searchTitle");
+    //   const searchResults = document.getElementById("searchResults");
 
-      // Backend URL
-      const BACKEND_URL =
-        window.location.hostname === "127.0.0.1"
-          ? "http://localhost:5000"
-          : "https://your-production-backend.com";
+    //   // Backend URL
+    //   const BACKEND_URL =
+    //     window.location.hostname === "127.0.0.1"
+    //       ? "http://localhost:5000"
+    //       : "https://your-production-backend.com";
 
-      // Function to fetch search results dynamically
-      const fetchSearchResults = async () => {
-        const query = searchTitle.value.trim(); // Get search input
-        console.log(query);
+    //   // Function to fetch search results dynamically
+    //   const fetchSearchResults = async () => {
+    //     const query = searchTitle.value.trim(); // Get search input
+    //     console.log(query);
 
-        if (!query) {
-          searchResults.innerHTML = "<p>Please enter a search term.</p>"; // Clear results for empty input
-          return;
-        }
+    //     if (!query) {
+    //       searchResults.innerHTML = "<p>Please enter a search term.</p>"; // Clear results for empty input
+    //       return;
+    //     }
 
-        // Build the query parameters
-        const queryParams = new URLSearchParams({
-          title: query, // Assuming the input can match title, location, or price
-        });
+    //     // Build the query parameters
+    //     const queryParams = new URLSearchParams({
+    //       title: query, // Assuming the input can match title, location, or price
+    //     });
 
-        try {
-          // Fetch filtered destinations from the backend
-          const response = await fetch(
-            `${BACKEND_URL}/api/destinations?${queryParams}`
-          );
-          if (!response.ok) {
-            throw new Error(`HTTP error! Status: ${response.status}`);
-          }
+    //     try {
+    //       // Fetch filtered destinations from the backend
+    //       const response = await fetch(
+    //         `${BACKEND_URL}/api/destinations?${queryParams}`
+    //       );
+    //       if (!response.ok) {
+    //         throw new Error(`HTTP error! Status: ${response.status}`);
+    //       }
 
-          const destinations = await response.json();
-          displayResults(destinations);
-        } catch (error) {
-          console.error("Error fetching search results:", error);
-          searchResults.innerHTML =
-            "<p>Failed to fetch search results. Please try again later.</p>";
-        }
-      };
+    //       const destinations = await response.json();
+    //       displayResults(destinations);
+    //     } catch (error) {
+    //       console.error("Error fetching search results:", error);
+    //       searchResults.innerHTML =
+    //         "<p>Failed to fetch search results. Please try again later.</p>";
+    //     }
+    //   };
 
-      // Function to dynamically display search results
-      const displayResults = (destinations) => {
-        searchResults.innerHTML = ""; // Clear previous results
+    //   // Function to dynamically display search results
+    //   const displayResults = (destinations) => {
+    //     searchResults.innerHTML = ""; // Clear previous results
 
-        if (destinations.length === 0) {
-          searchResults.innerHTML = "<p>No results found.</p>";
-          return;
-        }
+    //     if (destinations.length === 0) {
+    //       searchResults.innerHTML = "<p>No results found.</p>";
+    //       return;
+    //     }
 
-        // Loop through the destinations and create cards
-        destinations.forEach((destination) => {
-          const cardHTML = `
-      <div class="col-lg-3 col-md-4 col-sm-12 mb-4">
-          <a href="destinations.html?title=${encodeURIComponent(destination.title)}" class="searchCard">
-              <img src="${destination.images[0]}" class="card-img-top" alt="${destination.title}">
-              <div class="card-body">
-                  <h5 class="card-title">${destination.title}</h5>
-                  <p class="card-text">
-                      <strong>Location:</strong> ${destination.additionalInfo.location}<br>
-                      <strong>Price:</strong> $${destination.price}<br>
-                      <strong>Rating:</strong> ${destination.rating} ★
-                  </p>
-              </div>
-          </a>
-      </div>`;
-          searchResults.innerHTML += cardHTML; // Append each card to the results
-        });
-      };
+    //     // Loop through the destinations and create cards
+    //     destinations.forEach((destination) => {
+    //       const cardHTML = `
+    //   <div class="col-lg-3 col-md-4 col-sm-12 mb-4">
+    //       <a href="destinations.html?title=${encodeURIComponent(destination.title)}" class="searchCard">
+    //           <img src="${destination.images[0]}" class="card-img-top" alt="${destination.title}">
+    //           <div class="card-body">
+    //               <h5 class="card-title">${destination.title}</h5>
+    //               <p class="card-text">
+    //                   <strong>Location:</strong> ${destination.additionalInfo.location}<br>
+    //                   <strong>Price:</strong> $${destination.price}<br>
+    //                   <strong>Rating:</strong> ${destination.rating} ★
+    //               </p>
+    //           </div>
+    //       </a>
+    //   </div>`;
+    //       searchResults.innerHTML += cardHTML; // Append each card to the results
+    //     });
+    //   };
 
-      // Add event listener to the search input for real-time results
-      searchTitle.addEventListener("input", fetchSearchResults);
-    }
+    //   // Add event listener to the search input for real-time results
+    //   searchTitle.addEventListener("input", fetchSearchResults);
+    // }
 
 
     // Load the header using AJAX
@@ -397,30 +397,6 @@
       setInterval(createBubble, 900); // Add a new bubble every 900ms
     }
 
-    // Function to reinitialize the newsletter script after loading the footer
-    function loadNewsletterScript() {
-      document.getElementById('subscribeForm').addEventListener('submit', async (e) => {
-        e.preventDefault();
-        const email = document.querySelector('#subscribeForm input[type="email"]').value;
-
-        try {
-          const response = await fetch('http://localhost:5000/api/subscribers', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ email }),
-          });
-          const data = await response.json();
-          document.getElementById('subsMessage').innerText = data.message;
-
-          // Clear the email input field
-          document.querySelector('#subscribeForm input[type="email"]').value = '';
-          window.alert('Subscription successful!');
-        } catch (error) {
-          console.error('Error subscribing:', error);
-        }
-      });
-    }
-
     // Load the footer, initialize bubble animation, and reinitialize the newsletter functionality
     loadContent("footer.html", "footer", () => {
       initializeBubbleAnimation();
@@ -431,7 +407,10 @@
 
 
   <script src="./search.js"></script>
-  <!-- <script src="./newsletter.js"></script> -->
+  <script src="./newsletter.js"></script>
+  <script src="./login.js"></script>
+  <script src="./signup.js"></script>
+  <script src="./queryForm.js"></script>
 
   <!-- *Scripts* -->
   <script src="js/jquery-3.5.1.min.js"></script>

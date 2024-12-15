@@ -1459,73 +1459,75 @@ input#submit:hover {
 /* ========================================= */
 /*          Accrodion CSS        */
 /* ======================================== */
-.accrodion-grp .accrodion + .accrodion {
-  margin-top: 10px;
-}
 
-.accrodion-grp .accrodion .accrodion-title {
-  border: 1px solid #f1f1f1;
-  background: #fff;
-  padding: 14.5px 25px;
+.accordion {
+  width: 100%;
+  max-width: 600px;
+  margin: 20px auto;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  overflow: hidden;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+ 
+/* Individual Accordion Item */
+.accordion-item {
+  border-bottom: 1px solid #c6c8cc;
+}
+ 
+/* Accordion Header */
+.accordion-header {
+  padding: 15px;
+  /* background: #f9f9f9; */
+ 
+  color: white;
   cursor: pointer;
-  transition: all ease-in-out 0.5s;
+  font-size: 16px;
+  font-weight: bold;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: background 0.3s;
+  background: white;
+  color:var(--new-primary);
 }
-
-.accrodion-grp .accrodion .accrodion-title h5 {
-  margin: 0;
-  position: relative;
-  text-transform: capitalize;
+ 
+.accordion-header:hover {
+  background-color: var(--new-primary);
+  color: white;
 }
-
-.accrodion-grp .accrodion .accrodion-title h5:before {
-  content: "\f107";
-  font-family: "FontAwesome";
-  color: #222222;
-  font-size: 20px;
-  position: absolute;
-  top: 50%;
-  right: 0px;
-  -webkit-transform: translateY(-50%);
-  transform: translateY(-50%);
+ 
+/* Rotate Icon */
+.accordion-header i {
+  font-size: 14px;
+  transition: transform 0.3s ease;
 }
-
-.accrodion-grp .accrodion .accrodion-content {
-  padding-top: 10px;
+ 
+/* Accordion Content */
+.accordion-content {
+  padding: 15px;
+  background: #fff;
+  display: none;
+  font-size: 14px;
+  line-height: 1.5;
 }
-
-.accrodion-grp .accrodion .accrodion-content .inner {
-  padding: 20px;
-  background: #fbfbfb;
-  border: 1px solid #f1f1f1;
+ 
+/* Open State Styles */
+.accordion-item.open .accordion-header i {
+  transform: rotate(180deg);
+  /* background-color: var(--new-primary); */
 }
-
-.accrodion-grp .accrodion .accrodion-content .inner p {
-  margin: 0;
-  font-size: 15px;
-  line-height: 25px;
-  letter-spacing: 0.01em;
-  color: #74787d;
+.accordion-item.open .accordion-header  {
+  /* transform: rotate(180deg); */
+  background-color: var(--new-primary);
+  color: white;
 }
-
-.accrodion-grp .accrodion.active .accrodion-title {
-  background: var(--new-primary);
-  border-color: var(--new-primary);
+.accordion-item.open .accordion-content {
+  display: block;
+ 
 }
-
-.accrodion-grp .accrodion.active .accrodion-title h5 {
-  color: #fff;
-}
-
-.accrodion-grp .accrodion.active .accrodion-title h5:before {
-  content: "\f106";
-  color: #fff;
-}
-
-@media (max-width: 567px) {
-  .accrodion-grp .accrodion .accrodion-title h5 {
-    font-size: 14px;
-  }
-}
+ 
+/* ------------------- whatsapp ----------------- */
 #whatsapp-support {
   position: fixed;
   bottom: 40px;

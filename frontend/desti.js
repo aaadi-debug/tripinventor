@@ -183,7 +183,7 @@ document.addEventListener("DOMContentLoaded", () => {
                                                       item.day
                                                     }</span> - ${item.title}
                                                 </div>
-                                                <div class="accordion-content">
+                                                <div class="accordion-contentt">
                                                     <div class="accordion-inner">
                                                         <div class="accordion-inner__inner">
                                                             <p>${item?.content?.join(
