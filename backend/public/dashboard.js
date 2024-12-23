@@ -18,9 +18,8 @@ async function fetchUsers() {
                     <td>${user.username}</td>
                     <td>${user.email}</td>
                     <td>
-                        <button class="btn btn-danger" onclick="deleteUser('${
-                          user._id
-                        }')">Delete</button>
+                        <button class="btn btn-danger" onclick="deleteUser('${user._id
+          }')">Delete</button>
                     </td>
                 </tr>
             `;
@@ -71,12 +70,10 @@ async function fetchDestinations() {
                     <td>${index + 1}</td>
                     <td>${destination.title}</td>
                     <td>
-                        <button class="btn btn-primary" onclick="openEditModal('${
-                          destination._id
-                        }')">Edit</button>
-                        <button class="btn btn-danger" onclick="deleteDestination('${
-                          destination._id
-                        }')">Delete</button>
+                        <button class="btn btn-primary" onclick="openEditModal('${destination._id
+          }')">Edit</button>
+                        <button class="btn btn-danger" onclick="deleteDestination('${destination._id
+          }')">Delete</button>
                     </td>
                 </tr>
             `;
@@ -211,13 +208,13 @@ document
           .value.split(",")
           .map((exc) => exc.trim()),
       },
+      themeTours: document.querySelector('input[name="theme-tours"]:checked').value,
+      domesticTours: document.querySelector('input[name="domestic-tours"]:checked')
+        .value,
+      internationalTours: document.querySelector(
+        'input[name="international-tours"]:checked'
+      ).value,
 
-      // itinerary: JSON.parse(
-      //    document.getElementById("destination-itinerary").value || "[]"
-      //  ),
-      // reviews: JSON.parse(
-      //   document.getElementById("destination-reviews").value || "[]"
-      // ),
     };
 
     // Itinerary validation logic
@@ -337,9 +334,8 @@ async function fetchBlogs() {
                     <td>${index + 1}</td>
                     <td>${blog.title}</td>
                     <td>
-                        <button class="btn btn-danger" onclick="deleteBlog('${
-                          blog._id
-                        }')">Delete</button>
+                        <button class="btn btn-danger" onclick="deleteBlog('${blog._id
+          }')">Delete</button>
                     </td>
                 </tr>
             `;
@@ -450,9 +446,8 @@ async function fetchBookings() {
               <td>${booking.noOfPeople}</td>
               <td>${booking.destinationTitle}</td>
               <td>
-                <button class="btn btn-danger" onclick="deleteBooking('${
-                  booking._id
-                }')">Delete</button>
+                <button class="btn btn-danger" onclick="deleteBooking('${booking._id
+          }')">Delete</button>
               </td>
             </tr>
           `;
@@ -508,9 +503,8 @@ async function fetchSubscribers() {
                 <td>${index + 1}</td>
                 <td>${subscriber.email}</td>
                 <td>
-                <button class="btn btn-danger" onclick="deleteSubscriber('${
-                  subscriber._id
-                }')">Delete</button>
+                <button class="btn btn-danger" onclick="deleteSubscriber('${subscriber._id
+          }')">Delete</button>
               </td>
               </tr>
             `;
@@ -610,9 +604,8 @@ async function fetchContacts() {
               <td>${contact.phone}</td>
               <td>${contact.message}</td>
               <td>
-                <button class="btn btn-danger" onclick="deleteContact('${
-                  contact._id
-                }')">Delete</button>
+                <button class="btn btn-danger" onclick="deleteContact('${contact._id
+          }')">Delete</button>
               </td>
             </tr>
           `;
@@ -681,9 +674,8 @@ async function fetchQueries() {
               <td>${query.guests}</td>
               <td>${query.message}</td>
               <td>
-                <button class="btn btn-danger" onclick="deleteQuery('${
-                  query._id
-                }')">Delete</button>
+                <button class="btn btn-danger" onclick="deleteQuery('${query._id
+          }')">Delete</button>
               </td>
             </tr>
           `;
@@ -740,9 +732,8 @@ async function fetchReviews() {
               <td>${review.comment}</td>
               <td>${review.destinationTitle}</td>
               <td>
-                <button class="btn btn-danger" onclick="deleteReview('${
-                  review._id
-                }')">Delete</button>
+                <button class="btn btn-danger" onclick="deleteReview('${review._id
+          }')">Delete</button>
               </td>
             </tr>
           `;

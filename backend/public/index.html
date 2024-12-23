@@ -162,6 +162,37 @@
                 placeholder="Enter Itinerary JSON (e.g. [{'day': 'Day 1', 'title': 'Itinerary title','content': ['Itinerary content 1', 'Itinerary content 2']},])"
               ></textarea>
             </div>
+            <div class="row mt-3">
+              <h5>Category</h5>
+              <div class="col-lg-4">
+                <label>Theme Tours:</label>
+                <label>
+                  <input type="radio" name="theme-tours" value="yes" required /> Yes
+                </label>
+                <label>
+                  <input type="radio" name="theme-tours" value="no" required /> No
+                </label>
+              </div>
+              <div class="col-lg-4">
+                <label>Domestic Tours:</label>
+                <label>
+                  <input type="radio" name="domestic-tours" value="yes" required /> Yes
+                </label>
+                <label>
+                  <input type="radio" name="domestic-tours" value="no" required /> No
+                </label>
+              </div>
+              <div class="col-lg-4">
+                <label>International Tours:</label>
+                <label>
+                  <input type="radio" name="international-tours" value="yes" required /> Yes
+                </label>
+                <label>
+                  <input type="radio" name="international-tours" value="no" required /> No
+                </label>
+              </div>
+            </div>
+            
             <button type="submit" class="submit">Add Destination</button>
             <button type="reset" class="reset">Reset</button>
             <button

@@ -2,6 +2,9 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const cors = require("cors");
 const connectDB = require("./config/db");
+const path = require("path");
+const session = require("express-session");
+
 const userRoutes = require("./routes/userRoutes");
 const destinationRoutes = require("./routes/destinationRoutes");
 const blogRoutes = require("./routes/blogRoutes");
@@ -28,6 +31,8 @@ const corsOptions = {
 app.use(cors(corsOptions));
 app.use(bodyParser.json());
 app.use(express.json());
+
+
 
 // API Routes
 app.use("/api/users", userRoutes);
