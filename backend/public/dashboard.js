@@ -311,6 +311,21 @@ function generateItinerary() {
     container.appendChild(dayBlock);
   });
 }
+
+// fetching destinations by categories
+async function fetchDestinationsByCategory(category) {
+  try {
+    const response = await axios.get(
+      `http://localhost:5000/api/destinations?${category}=yes`
+    );
+    const destinations = response.data;
+
+    populateDestinationsList(destinations); // Function to display destinations
+  } catch (error) {
+    console.error("Error fetching destinations:", error.message);
+  }
+}
+
 // ----------------------------------------------------------------------
 // -------------------------- Blogs  ---- -------------------------------
 // ----------------------------------------------------------------------
@@ -765,6 +780,7 @@ async function deleteReview(reviewId) {
 document.addEventListener("DOMContentLoaded", () => {
   fetchUsers();
   fetchDestinations();
+  fetchDestinationsByCategory();
   fetchBlogs();
   fetchBookings();
   fetchSubscribers();

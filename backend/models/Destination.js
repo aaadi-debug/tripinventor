@@ -32,6 +32,9 @@ const DestinationSchema = new mongoose.Schema({
       content: { type: String },
     },
   ],
+  themeTours: { type: String, enum: ["yes", "no"], default: "no" },
+  domesticTours: { type: String, enum: ["yes", "no"], default: "no" },
+  internationalTours: { type: String, enum: ["yes", "no"], default: "no" },
 });
 
 module.exports = mongoose.model("Destination", DestinationSchema);

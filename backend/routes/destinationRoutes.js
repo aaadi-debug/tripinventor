@@ -2,6 +2,29 @@ const express = require("express");
 const router = express.Router();
 const Destination = require("../models/Destination");
 
+// Dynamic filtering for themeTours, domesticTours, and internationalTours
+// router.get("/", async (req, res) => {
+//   try {
+//     const query = {};
+
+//     if (req.query.themeTours === "yes") query.themeTours = "yes";
+//     if (req.query.domesticTours === "yes") query.domesticTours = "yes";
+//     if (req.query.internationalTours === "yes") query.internationalTours = "yes";
+
+//     const destinations = await Destination.find(query);
+
+//     if (destinations.length === 0) {
+//       return res.status(404).json({ message: "No destinations found" });
+//     }
+
+//     res.status(200).json(destinations);
+//   } catch (err) {
+//     console.error("Error fetching destinations:", err);
+//     res.status(500).json({ error: "Failed to fetch destinations" });
+//   }
+// });
+
+
 // // Fetch all destinations
 // router.get('/', async (req, res) => {
 //     // try {
@@ -34,34 +57,71 @@ router.get("/:id", async (req, res) => {
 
 // Fetch all destinations or a specific destination by title
 // Fetch all destinations or a specific destination by title
+// router.get("/", async (req, res) => {
+//   try {
+//     const { title, location, price } = req.query;
+
+//     // If title is provided, search for a single destination by title
+//     if (title) {
+//       const destination = await Destination.findOne({ title: { $regex: title, $options: 'i' } });
+//       if (!destination) {
+//         return res.status(404).json({ message: "Destination not found" });
+//       }
+//       return res.status(200).json(destination); // Return the specific destination
+//     }
+
+//     // Build a dynamic query if title is not provided
+//     const query = {};
+//     if (location) query.location = { $regex: location, $options: 'i' }; // Case-insensitive location search
+//     if (price) query.price = { $lte: parseInt(price) }; // Price less than or equal to specified value
+
+//     // Fetch destinations based on the query
+//     const destinations = await Destination.find(query);
+
+//     if (destinations.length === 0) {
+//       return res.status(404).json({ message: 'No destinations found' });
+//     }
+
+//     res.status(200).json(destinations); // Return the filtered destinations
+//   } catch (error) {
+//     res.status(500).json({ message: error.message });
+//   }
+// });
+
+
+// Fetch destinations with dynamic filtering or by title
 router.get("/", async (req, res) => {
   try {
-    const { title, location, price } = req.query;
+    const { title, themeTours, domesticTours, internationalTours, location, price } = req.query;
 
-    // If title is provided, search for a single destination by title
+    // If `title` is provided, fetch a single destination by title
     if (title) {
-      const destination = await Destination.findOne({ title: { $regex: title, $options: 'i' } });
+      const destination = await Destination.findOne({ title: { $regex: title, $options: "i" } });
       if (!destination) {
         return res.status(404).json({ message: "Destination not found" });
       }
       return res.status(200).json(destination); // Return the specific destination
     }
 
-    // Build a dynamic query if title is not provided
+    // Build a dynamic query for filtering
     const query = {};
-    if (location) query.location = { $regex: location, $options: 'i' }; // Case-insensitive location search
-    if (price) query.price = { $lte: parseInt(price) }; // Price less than or equal to specified value
+    if (themeTours === "yes") query.themeTours = "yes";
+    if (domesticTours === "yes") query.domesticTours = "yes";
+    if (internationalTours === "yes") query.internationalTours = "yes";
+    if (location) query.location = { $regex: location, $options: "i" }; // Case-insensitive location search
+    if (price) query.price = { $lte: parseInt(price) }; // Price less than or equal to the specified value
 
-    // Fetch destinations based on the query
+    // Fetch filtered destinations
     const destinations = await Destination.find(query);
 
     if (destinations.length === 0) {
-      return res.status(404).json({ message: 'No destinations found' });
+      return res.status(404).json({ message: "No destinations found" });
     }
 
     res.status(200).json(destinations); // Return the filtered destinations
   } catch (error) {
-    res.status(500).json({ message: error.message });
+    console.error("Error fetching destinations:", error);
+    res.status(500).json({ message: "Failed to fetch destinations" });
   }
 });
 
