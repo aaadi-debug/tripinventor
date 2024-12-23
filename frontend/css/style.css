@@ -4693,7 +4693,13 @@ footer.bubbles {
 .destination-b .deal-price span {
   font-size: 18px;
   font-weight: 500;
-  color: var(--new-secondary);
+  color: var(--new-secondary) !important;
+}
+
+.deal-price span {
+  font-size: 18px;
+  font-weight: 500;
+  color: var(--new-secondary) !important;
 }
 
 .destination-b .trend-tags {
