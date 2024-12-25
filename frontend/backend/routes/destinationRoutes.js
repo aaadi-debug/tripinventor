@@ -2,6 +2,23 @@ const express = require("express");
 const router = express.Router();
 const Destination = require("../models/Destination");
 
+// // Fetch all destinations
+// router.get('/', async (req, res) => {
+//     // try {
+//     //     const destinations = await Destination.find();
+//     //     res.status(200).json(destinations);
+//     // } catch (error) {
+//     //     res.status(500).json({ message: error.message });
+//     // }
+
+//     const { title } = req.query;
+//     const destination = await Destination.findOne({ title });
+//     if (!destination) {
+//         return res.status(404).json({ message: 'Destination not found' });
+//     }
+//     res.status(200).json(destination);
+// });
+
 // Fetch a specific destination by ID
 router.get("/:id", async (req, res) => {
   try {
@@ -15,10 +32,12 @@ router.get("/:id", async (req, res) => {
   }
 });
 
-// Fetch destinations with dynamic filtering or by title
+// Fetch all destinations or a specific destination by title
+// Fetch all destinations or a specific destination by title
+
 router.get("/", async (req, res) => {
   try {
-    const { title, themeTours, wellnessSpa, beachTheme, wildlifeTheme, cultureTheme, trainsTheme, trekkingTheme,spiritualTheme,festivalTheme, wonderTheme, unescoTheme, domesticTours, internationalTours, location, price } = req.query;
+    const { title, themeTours, domesticTours, internationalTours, location, price } = req.query;
 
     // If `title` is provided, fetch a single destination by title
     if (title) {
@@ -32,17 +51,6 @@ router.get("/", async (req, res) => {
     // Build a dynamic query for filtering
     const query = {};
     if (themeTours === "yes") query.themeTours = "yes";
-    if (wellnessSpa === "yes") query.wellnessSpa = "yes";
-    if (beachTheme === "yes") query.beachTheme = "yes";
-    if (wildlifeTheme === "yes") query.wildlifeTheme = "yes";
-    if (cultureTheme === "yes") query.cultureTheme = "yes";
-    if (trainsTheme === "yes") query.trainsTheme = "yes";
-    if (trekkingTheme === "yes") query.trekkingTheme = "yes";
-    if (spiritualTheme === "yes") query.spiritualTheme = "yes";
-    if (festivalTheme === "yes") query.festivalTheme = "yes";
-    if (wonderTheme === "yes") query.wonderTheme = "yes";
-    if (unescoTheme === "yes") query.unescoTheme = "yes";
-
     if (domesticTours === "yes") query.domesticTours = "yes";
     if (internationalTours === "yes") query.internationalTours = "yes";
     if (location) query.location = { $regex: location, $options: "i" }; // Case-insensitive location search
@@ -61,7 +69,6 @@ router.get("/", async (req, res) => {
     res.status(500).json({ message: "Failed to fetch destinations" });
   }
 });
-
 
 // Add a new destination
 router.post("/", async (req, res) => {
@@ -105,7 +112,6 @@ router.delete("/:id", async (req, res) => {
     res.status(500).json({ message: error.message });
   }
 });
-
 router.post("/itinerary", (req, res) => {
   try {
     const { itinerary } = req.body;

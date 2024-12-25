@@ -3,7 +3,7 @@ async function fetchUsers() {
   loader.style.display = "block"; // Show loader
 
   try {
-    const response = await axios.get("http://localhost:5000/api/users");
+    const response = await axios.get("http://api.tripinventor.in/api/users");
     const users = response.data;
     populateUsersTable(users);
 
@@ -18,8 +18,9 @@ async function fetchUsers() {
                     <td>${user.username}</td>
                     <td>${user.email}</td>
                     <td>
-                        <button class="btn btn-danger" onclick="deleteUser('${user._id
-          }')">Delete</button>
+                        <button class="btn btn-danger" onclick="deleteUser('${
+                          user._id
+                        }')">Delete</button>
                     </td>
                 </tr>
             `;
@@ -37,7 +38,7 @@ async function deleteUser(userId) {
   if (!confirmDelete) return;
 
   try {
-    await axios.delete(`http://localhost:5000/api/users/${userId}`);
+    await axios.delete(`http://api.tripinventor.in/api/users/${userId}`);
     alert("User deleted successfully");
     fetchUsers(); // Refresh table
   } catch (error) {
@@ -56,7 +57,7 @@ async function fetchDestinations() {
   loader.style.display = "block"; // Show loader
 
   try {
-    const response = await axios.get("http://localhost:5000/api/destinations");
+    const response = await axios.get("http://api.tripinventor.in/api/destinations");
     const destinations = response.data;
     populateDestinationsTable(destinations);
 
@@ -70,10 +71,12 @@ async function fetchDestinations() {
                     <td>${index + 1}</td>
                     <td>${destination.title}</td>
                     <td>
-                        <button class="btn btn-primary" onclick="openEditModal('${destination._id
-          }')">Edit</button>
-                        <button class="btn btn-danger" onclick="deleteDestination('${destination._id
-          }')">Delete</button>
+                        <button class="btn btn-primary" onclick="openEditModal('${
+                          destination._id
+                        }')">Edit</button>
+                        <button class="btn btn-danger" onclick="deleteDestination('${
+                          destination._id
+                        }')">Delete</button>
                     </td>
                 </tr>
             `;
@@ -96,7 +99,7 @@ async function deleteDestination(destinationId) {
 
   try {
     await axios.delete(
-      `http://localhost:5000/api/destinations/${destinationId}`
+      `http://api.tripinventor.in/api/destinations/${destinationId}`
     );
     alert("Destination deleted successfully");
     fetchDestinations(); // Refresh table
@@ -113,7 +116,7 @@ async function openEditModal(destinationId) {
     console.log("Fetching destination with ID:", destinationId);
 
     const response = await axios.get(
-      `http://localhost:5000/api/destinations/${destinationId}`
+      `http://api.tripinventor.in/api/destinations/${destinationId}`
     );
     const destination = response.data;
     console.log("Hi2");
@@ -150,23 +153,6 @@ async function openEditModal(destinationId) {
       null,
       2 // Formatting for better readability
     );
-
-
-    // Pre-fill radio buttons
-    // document.querySelector(`input[name="theme-tours"][value="${destination.themeTours}"]`).checked = true;
-    document.querySelector(`input[name="wellness-and-spa-tours"][value="${destination.wellnessSpa}"]`).checked = true;
-    document.querySelector(`input[name="beach-tours"][value="${destination.wellnessSpa}"]`).checked = true;
-    document.querySelector(`input[name="wildlife-tours"][value="${destination.wellnessSpa}"]`).checked = true;
-    document.querySelector(`input[name="culture-tours"][value="${destination.wellnessSpa}"]`).checked = true;
-    document.querySelector(`input[name="trains-tours"][value="${destination.wellnessSpa}"]`).checked = true;
-    document.querySelector(`input[name="terkking-tours"][value="${destination.wellnessSpa}"]`).checked = true;
-    document.querySelector(`input[name="spiritual-tours"][value="${destination.wellnessSpa}"]`).checked = true;
-    document.querySelector(`input[name="festival-tours"][value="${destination.wellnessSpa}"]`).checked = true;
-    document.querySelector(`input[name="wonders-tours"][value="${destination.wellnessSpa}"]`).checked = true;
-    document.querySelector(`input[name="unesco-tours"][value="${destination.wellnessSpa}"]`).checked = true;
-    
-    document.querySelector(`input[name="domestic-tours"][value="${destination.domesticTours}"]`).checked = true;
-    document.querySelector(`input[name="international-tours"][value="${destination.internationalTours}"]`).checked = true;
 
     // Show the modal
     document.getElementById("add-destination-modal").style.display = "block";
@@ -225,24 +211,13 @@ document
           .value.split(",")
           .map((exc) => exc.trim()),
       },
-      // themeTours: document.querySelector('input[name="theme-tours"]:checked').value,
-      wellnessSpa: document.querySelector('input[name="wellness-and-spa-tours"]:checked').value,
-      beachTheme: document.querySelector('input[name="beach-tours"]:checked').value,
-      wildlifeTheme: document.querySelector('input[name="wildlife-tours"]:checked').value,
-      cultureTheme: document.querySelector('input[name="culture-tours"]:checked').value,
-      trainsTheme: document.querySelector('input[name="trains-tours"]:checked').value,
-      trekkingTheme: document.querySelector('input[name="terkking-tours"]:checked').value,
-      spiritualTheme: document.querySelector('input[name="spiritual-tours"]:checked').value,
-      festivalTheme: document.querySelector('input[name="festival-tours"]:checked').value,
-      wonderTheme: document.querySelector('input[name="wonders-tours"]:checked').value,
-      unescoTheme: document.querySelector('input[name="unesco-tours"]:checked').value,
-      
-      domesticTours: document.querySelector('input[name="domestic-tours"]:checked')
-        .value,
-      internationalTours: document.querySelector(
-        'input[name="international-tours"]:checked'
-      ).value,
 
+      // itinerary: JSON.parse(
+      //    document.getElementById("destination-itinerary").value || "[]"
+      //  ),
+      // reviews: JSON.parse(
+      //   document.getElementById("destination-reviews").value || "[]"
+      // ),
     };
 
     // Itinerary validation logic
@@ -266,7 +241,7 @@ document
       if (destinationId) {
         // Update existing destination
         response = await fetch(
-          `http://localhost:5000/api/destinations/${destinationId}`,
+          `http://api.tripinventor.in/api/destinations/${destinationId}`,
           {
             method: "PUT",
             headers: { "Content-Type": "application/json" },
@@ -275,7 +250,7 @@ document
         );
       } else {
         // Add new destination
-        response = await fetch("http://localhost:5000/api/destinations", {
+        response = await fetch("http://api.tripinventor.in/api/destinations", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(formData),
@@ -300,7 +275,6 @@ document
       alert("An unexpected error occurred.");
     }
   });
-  
 function generateItinerary() {
   const input = document.getElementById("destination-itinerary").value;
   let itinerary;
@@ -345,7 +319,7 @@ function generateItinerary() {
 async function fetchDestinationsByCategory(category) {
   try {
     const response = await axios.get(
-      `http://localhost:5000/api/destinations?${category}=yes`
+      `http://api.tripinventor.in/api/destinations?${category}=yes`
     );
     const destinations = response.data;
 
@@ -364,7 +338,7 @@ async function fetchBlogs() {
   loader.style.display = "block"; // Show loader
 
   try {
-    const response = await axios.get("http://localhost:5000/api/blogs");
+    const response = await axios.get("http://api.tripinventor.in/api/blogs");
     const blogs = response.data;
     populateBlogsTable(blogs);
 
@@ -378,8 +352,9 @@ async function fetchBlogs() {
                     <td>${index + 1}</td>
                     <td>${blog.title}</td>
                     <td>
-                        <button class="btn btn-danger" onclick="deleteBlog('${blog._id
-          }')">Delete</button>
+                        <button class="btn btn-danger" onclick="deleteBlog('${
+                          blog._id
+                        }')">Delete</button>
                     </td>
                 </tr>
             `;
@@ -398,7 +373,7 @@ async function deleteBlog(blogId) {
   if (!confirmDelete) return;
 
   try {
-    await axios.delete(`http://localhost:5000/api/blogs/${blogId}`);
+    await axios.delete(`http://api.tripinventor.in/api/blogs/${blogId}`);
     alert("Blog deleted successfully");
     fetchBlogs(); // Refresh table
   } catch (error) {
@@ -437,7 +412,7 @@ document
 
     // Send data to the backend
     try {
-      const response = await fetch("http://localhost:5000/api/blogs", {
+      const response = await fetch("http://api.tripinventor.in/api/blogs", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -469,7 +444,7 @@ async function fetchBookings() {
   loader.style.display = "block"; // Show loader
 
   try {
-    const response = await axios.get("http://localhost:5000/api/bookings");
+    const response = await axios.get("http://api.tripinventor.in/api/bookings");
     const bookings = response.data;
 
     populateBookingsTable(bookings);
@@ -490,8 +465,9 @@ async function fetchBookings() {
               <td>${booking.noOfPeople}</td>
               <td>${booking.destinationTitle}</td>
               <td>
-                <button class="btn btn-danger" onclick="deleteBooking('${booking._id
-          }')">Delete</button>
+                <button class="btn btn-danger" onclick="deleteBooking('${
+                  booking._id
+                }')">Delete</button>
               </td>
             </tr>
           `;
@@ -513,7 +489,7 @@ async function deleteBooking(bookingId) {
   if (!confirmDelete) return;
 
   try {
-    await axios.delete(`http://localhost:5000/api/bookings/${bookingId}`);
+    await axios.delete(`http://api.tripinventor.in/api/bookings/${bookingId}`);
     alert("Booking deleted successfully");
     fetchBookings(); // Refresh table
   } catch (error) {
@@ -531,7 +507,7 @@ async function fetchSubscribers() {
   loader.style.display = "block"; // Show loader
 
   try {
-    const response = await axios.get("http://localhost:5000/api/subscribers");
+    const response = await axios.get("http://api.tripinventor.in/api/subscribers");
     const subscribers = response.data;
 
     populateSubscribersTable(subscribers);
@@ -547,8 +523,9 @@ async function fetchSubscribers() {
                 <td>${index + 1}</td>
                 <td>${subscriber.email}</td>
                 <td>
-                <button class="btn btn-danger" onclick="deleteSubscriber('${subscriber._id
-          }')">Delete</button>
+                <button class="btn btn-danger" onclick="deleteSubscriber('${
+                  subscriber._id
+                }')">Delete</button>
               </td>
               </tr>
             `;
@@ -569,7 +546,7 @@ async function deleteSubscriber(subscriberId) {
   if (!confirmDelete) return;
 
   try {
-    await axios.delete(`http://localhost:5000/api/subscribers/${subscriberId}`);
+    await axios.delete(`http://api.tripinventor.in/api/subscribers/${subscriberId}`);
     alert("Subscriber deleted successfully");
     fetchSubscribers(); // Refresh table
   } catch (error) {
@@ -600,7 +577,7 @@ document
 
     try {
       const response = await axios.post(
-        "http://localhost:5000/api/send-newsletter",
+        "http://api.tripinventor.in/api/send-newsletter",
         formData,
         {
           headers: {
@@ -629,7 +606,7 @@ async function fetchContacts() {
   loader.style.display = "block"; // Show loader
 
   try {
-    const response = await axios.get("http://localhost:5000/api/contacts");
+    const response = await axios.get("http://api.tripinventor.in/api/contacts");
     const contacts = response.data;
 
     populateContactsTable(contacts);
@@ -648,8 +625,9 @@ async function fetchContacts() {
               <td>${contact.phone}</td>
               <td>${contact.message}</td>
               <td>
-                <button class="btn btn-danger" onclick="deleteContact('${contact._id
-          }')">Delete</button>
+                <button class="btn btn-danger" onclick="deleteContact('${
+                  contact._id
+                }')">Delete</button>
               </td>
             </tr>
           `;
@@ -671,7 +649,7 @@ async function deleteContact(contactId) {
   if (!confirmDelete) return;
 
   try {
-    await axios.delete(`http://localhost:5000/api/contacts/${contactId}`);
+    await axios.delete(`http://api.tripinventor.in/api/contacts/${contactId}`);
     alert("Contact deleted successfully");
     fetchContacts(); // Refresh table
   } catch (error) {
@@ -698,7 +676,7 @@ async function fetchQueries() {
   loader.style.display = "block"; // Show loader
 
   try {
-    const response = await axios.get("http://localhost:5000/api/queries");
+    const response = await axios.get("http://api.tripinventor.in/api/queries");
     const queries = response.data;
 
     populateQueriesTable(queries);
@@ -718,8 +696,9 @@ async function fetchQueries() {
               <td>${query.guests}</td>
               <td>${query.message}</td>
               <td>
-                <button class="btn btn-danger" onclick="deleteQuery('${query._id
-          }')">Delete</button>
+                <button class="btn btn-danger" onclick="deleteQuery('${
+                  query._id
+                }')">Delete</button>
               </td>
             </tr>
           `;
@@ -739,7 +718,7 @@ async function deleteQuery(queryId) {
   if (!confirmDelete) return;
 
   try {
-    await axios.delete(`http://localhost:5000/api/queries/${queryId}`);
+    await axios.delete(`http://api.tripinventor.in/api/queries/${queryId}`);
     alert("Query deleted successfully");
     fetchQueries(); // Refresh table
   } catch (error) {
@@ -757,7 +736,7 @@ async function fetchReviews() {
   loader.style.display = "block"; // Show loader
 
   try {
-    const response = await axios.get("http://localhost:5000/api/reviews");
+    const response = await axios.get("http://api.tripinventor.in/api/reviews");
     const reviews = response.data;
 
     populateReviewsTable(reviews);
@@ -776,8 +755,9 @@ async function fetchReviews() {
               <td>${review.comment}</td>
               <td>${review.destinationTitle}</td>
               <td>
-                <button class="btn btn-danger" onclick="deleteReview('${review._id
-          }')">Delete</button>
+                <button class="btn btn-danger" onclick="deleteReview('${
+                  review._id
+                }')">Delete</button>
               </td>
             </tr>
           `;
@@ -797,7 +777,7 @@ async function deleteReview(reviewId) {
   if (!confirmDelete) return;
 
   try {
-    await axios.delete(`http://localhost:5000/api/reviews/${reviewId}`);
+    await axios.delete(`http://api.tripinventor.in/api/reviews/${reviewId}`);
     alert("Review deleted successfully");
     fetchReviews(); // Refresh table
   } catch (error) {

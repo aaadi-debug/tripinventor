@@ -33,17 +33,6 @@ const DestinationSchema = new mongoose.Schema({
     },
   ],
   themeTours: { type: String, enum: ["yes", "no"], default: "no" },
-  wellnessSpa: { type: String, enum: ["yes", "no"], default: "no" },
-  beachTheme: { type: String, enum: ["yes", "no"], default: "no" },
-  wildlifeTheme: { type: String, enum: ["yes", "no"], default: "no" },
-  cultureTheme: { type: String, enum: ["yes", "no"], default: "no" },
-  trainsTheme: { type: String, enum: ["yes", "no"], default: "no" },
-  trekkingTheme: { type: String, enum: ["yes", "no"], default: "no" },
-  spiritualTheme: { type: String, enum: ["yes", "no"], default: "no" },
-  festivalTheme: { type: String, enum: ["yes", "no"], default: "no" },
-  wonderTheme: { type: String, enum: ["yes", "no"], default: "no" },
-  unescoTheme: { type: String, enum: ["yes", "no"], default: "no" },
-  
   domesticTours: { type: String, enum: ["yes", "no"], default: "no" },
   internationalTours: { type: String, enum: ["yes", "no"], default: "no" },
 });

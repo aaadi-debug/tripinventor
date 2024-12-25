@@ -63,7 +63,6 @@
           </tbody>
         </table>
       </div>
-      
       <div id="tab3" class="tab-panel">
         <h2>Manage Destinations</h2>
         <button id="add-destination" class="btn mb-2">Add Destination</button>
@@ -80,50 +79,54 @@
             <input type="hidden" id="destination-id" />
 
             <!-- Basic Details -->
-            <div class="row">
+		<div class="row">
               <input
                 type="text"
                 id="destination-title"
                 placeholder="Title"
                 required
-                class="col-lg-2"
+                class="col-lg-3"
               />
               <input
                 type="text"
                 id="destination-location"
                 placeholder="Location"
-                class="col-lg-2"
+                class="col-lg-3"
                 required
               />
               <input
                 type="text"
                 id="destination-discount"
                 placeholder="Discount in percentage(e.g. 10)"
-                class="col-lg-1"
-              />
-              <input
-                type="text"
-                id="destination-duration"
-                placeholder="Duration(e.g. 06 Nights / 07 Days)"
-                class="col-lg-1"
-                required
+                class="col-lg-3"
               />
               <input
                 type="text"
                 id="destination-price"
                 placeholder="Price(e.g 35000)"
                 required
-                class="col-lg-1"
+                class="col-lg-2"
               />
-            </div>
-            <div class="row">
-              <!-- <h5>Images</h5> -->
               <input
                 type="text"
-                id="destination-pickupLocation"
-                placeholder="Pickup Location(e.g. Airport)"
+                id="destination-duration"
+                placeholder="Duration(e.g. 06 Nights / 07 Days)"
                 class="col-lg-4"
+                required
               />
+             
+              <input
+              type="text"
+              id="destination-pickupLocation"
+              placeholder="Pickup Location(e.g. Airport)"
+              class="col-lg-4"
+            />
+            </div>
+             
+
+
+            <div class="row">
+              <!-- <h5>Images</h5> -->
 
               <textarea
                 id="destination-images"
@@ -140,7 +143,7 @@
               <textarea
                 id="destination-descriptions"
                 placeholder="Descriptions (Comma-separated values will create new paragraph)"
-                class="col-lg-10"
+                class="col-lg-12"
               ></textarea>
             </div>
             <div class="row">
@@ -163,9 +166,9 @@
                 placeholder="Enter Itinerary JSON (e.g. [{'day': 'Day 1', 'title': 'Itinerary title','content': ['Itinerary content 1', 'Itinerary content 2']},])"
               ></textarea>
             </div>
-            <div class="row mt-3">
-              <h5>Select Category (if you want to add this destination in any category):</h5>
-              <!-- <div class="col-lg-4">
+		            <div class="row mt-3">
+              <h5>Category</h5>
+              <div class="col-lg-4">
                 <label>Theme Tours:</label>
                 <label>
                   <input type="radio" name="theme-tours" value="yes" required /> Yes
@@ -173,7 +176,7 @@
                 <label>
                   <input type="radio" name="theme-tours" value="no" required /> No
                 </label>
-              </div> -->
+              </div>
               <div class="col-lg-4">
                 <label>Domestic Tours:</label>
                 <label>
@@ -194,111 +197,6 @@
               </div>
             </div>
 
-            <div class="row">
-              <h5>Select Theme (if you want to add this destination in any theme):</h5>
-              <div class="col-lg-4">
-                <label>Welllness Ayurveda & Spa Tours:</label>
-                <label>
-                  <input type="radio" name="wellness-and-spa-tours" value="yes" required /> Yes
-                </label>
-                <label>
-                  <input type="radio" name="wellness-and-spa-tours" value="no" required /> No
-                </label>
-              </div>
-              <div class="col-lg-4">
-                <label>Beach Tours:</label>
-                <label>
-                  <input type="radio" name="beach-tours" value="yes" required /> Yes
-                </label>
-                <label>
-                  <input type="radio" name="beach-tours" value="no" required /> No
-                </label>
-              </div>
-              <div class="col-lg-4">
-                <label>Adventure & widlife Tours:</label>
-                <label>
-                  <input type="radio" name="wildlife-tours" value="yes" required /> Yes
-                </label>
-                <label>
-                  <input type="radio" name="wildlife-tours" value="no" required /> No
-                </label>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-lg-4">
-                <label>Culture and Heritage Tours:</label>
-                <label>
-                  <input type="radio" name="culture-tours" value="yes" required /> Yes
-                </label>
-                <label>
-                  <input type="radio" name="culture-tours" value="no" required /> No
-                </label>
-              </div>
-              <div class="col-lg-4">
-                <label>Luxury Trains Tours:</label>
-                <label>
-                  <input type="radio" name="trains-tours" value="yes" required /> Yes
-                </label>
-                <label>
-                  <input type="radio" name="trains-tours" value="no" required /> No
-                </label>
-              </div>
-              <div class="col-lg-4">
-                <label>Trekking Tours:</label>
-                <label>
-                  <input type="radio" name="terkking-tours" value="yes" required /> Yes
-                </label>
-                <label>
-                  <input type="radio" name="terkking-tours" value="no" required /> No
-                </label>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-lg-4">
-                <label>Spiritual & Pilgrimage Tours:</label>
-                <label>
-                  <input type="radio" name="spiritual-tours" value="yes" required /> Yes
-                </label>
-                <label>
-                  <input type="radio" name="spiritual-tours" value="no" required /> No
-                </label>
-              </div>
-              <div class="col-lg-4">
-                <label>Festival Tours:</label>
-                <label>
-                  <input type="radio" name="festival-tours" value="yes" required /> Yes
-                </label>
-                <label>
-                  <input type="radio" name="festival-tours" value="no" required /> No
-                </label>
-              </div>
-              <div class="col-lg-4">
-                <label>Natural Wonders Tours:</label>
-                <label>
-                  <input type="radio" name="wonders-tours" value="yes" required /> Yes
-                </label>
-                <label>
-                  <input type="radio" name="wonders-tours" value="no" required /> No
-                </label>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-lg-4">
-                <label>UNESCO Tours:</label>
-                <label>
-                  <input type="radio" name="unesco-tours" value="yes" required /> Yes
-                </label>
-                <label>
-                  <input type="radio" name="unesco-tours" value="no" required /> No
-                </label>
-              </div>
-            </div>
-
-            <div class="row mt-3">
-              <label for="destination-pdf">Destination PDF (Optional):</label>
-              <input type="file" id="destination-pdf" accept=".pdf" />
-            </div>
-            
             <button type="submit" class="submit">Add Destination</button>
             <button type="reset" class="reset">Reset</button>
             <button
