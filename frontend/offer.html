@@ -44,12 +44,17 @@
     </div>
     <div class="dot-overlay"></div>
   </section>
+
   <section>
     <div class="container">
       <div class="row">
         <div class="col-lg-8 col-xs-12 mb-4">
           <div class="discount-container container">
             <div class="row" id="discounted-packages-container"></div>
+          </div>
+          <div id="preloaderCircle"
+            style="display: flex; justify-content: center; align-items: center; width: 100%; background: #fff; z-index: 9999; margin-bottom: 50px;">
+            <div class="spinner"></div>
           </div>
         </div>
         <div class="col-lg-4 col-xs-12 mb-4">
@@ -125,11 +130,16 @@
       const discountedPackagesContainer = document.getElementById(
         "discounted-packages-container"
       );
+      const preloader = document.getElementById("preloaderCircle"); // Preloader element
+
 
       const BACKEND_URL =
         window.location.hostname === "127.0.0.1"
           ? "http://localhost:5000"
           : "http://api.tripinventor.in";
+
+      // Show preloader while fetching data
+      preloader.style.display = "flex";
 
       // Fetch all destinations
       fetch(`${BACKEND_URL}/api/destinations`)
@@ -190,11 +200,15 @@
             discountedPackagesContainer.innerHTML =
               "<p>No destinations with discounts available.</p>";
           }
+
+          // Hide preloader after rendering the data
+          preloader.style.display = "none";
         })
         .catch((error) => {
           console.error("Error fetching destinations:", error);
           discountedPackagesContainer.innerHTML =
             "<p>Error loading destinations.</p>";
+          preloader.style.display = "none"; // Hide preloader even if there's an error
         });
     });
   </script>

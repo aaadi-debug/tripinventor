@@ -65,6 +65,10 @@
           <div class="trend-box">
             <!-- Dynamic content will load here -->
           </div>
+          <div id="preloaderCircle"
+            style="display: flex; justify-content: center; align-items: center; width: 100%; background: #fff; z-index: 9999; margin-bottom: 50px;">
+            <div class="spinner"></div>
+          </div>
           <div class="text-center">
             <a href="#" class="nir-btn">Load More <i class="fa fa-long-arrow-alt-right"></i></a>
           </div>
@@ -308,17 +312,22 @@
     // Load the footer and initialize animation
     loadContent("footer.html", "footer", initializeBubbleAnimation);
   </script>
+
   <script>
     document.addEventListener("DOMContentLoaded", function () {
       const container = document.querySelector(".trend-box");
-
       const searchInput = document.getElementById("search-destination");
       const sortOptions = document.getElementById("sort-options");
+      const preloader = document.getElementById("preloaderCircle"); // Preloader element
+
       let allData = []; // To store the fetched data
 
       const BACKEND_URL = window.location.hostname === "127.0.0.1"
         ? "http://localhost:5000"
         : "http://api.tripinventor.in";
+
+      // Show preloader while fetching data
+      preloader.style.display = "flex";
 
       // Fetch data from the JSON file  
       fetch(`${BACKEND_URL}/api/destinations/`)
@@ -326,9 +335,13 @@
         .then((data) => {
           allData = data; // Store fetched data
           renderCards(); // Render the initial set of items
+          preloader.style.display = "none"; // Hide preloader after rendering
+
         })
         .catch((error) => {
           console.error("Error fetching data:", error);
+          preloader.style.display = "none"; // Hide preloader even if there's an error
+
         });
 
       // Function to render the cards
