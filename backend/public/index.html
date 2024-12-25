@@ -46,7 +46,7 @@
         </div> -->
       <div id="tab2" class="tab-panel active">
         <h2>Manage Customers</h2>
-        <table class="table table-bordered" id="users-table">
+        <table class="table table-striped table-bordered" id="users-table">
           <thead>
             <tr>
               <th>ID</th>
@@ -63,105 +63,81 @@
           </tbody>
         </table>
       </div>
-      
+
       <div id="tab3" class="tab-panel">
         <h2>Manage Destinations</h2>
         <button id="add-destination" class="btn mb-2">Add Destination</button>
 
         <div id="add-destination-modal" class="p-3" style="display: none">
-          <h3
-            class="text-center text-decoration-underline text-uppercase mt-7 mb-5"
-          >
-            Add Destination
+          <h3 class="text-decoration-underline text-uppercase mb-5">
+            Add Destination Form
           </h3>
-
           <form id="add-destination-form">
             <!-- Hidden input to store the destination ID for editing -->
             <input type="hidden" id="destination-id" />
 
             <!-- Basic Details -->
+            <h5>Basic Details</h5>
             <div class="row">
-              <input
-                type="text"
-                id="destination-title"
-                placeholder="Title"
-                required
-                class="col-lg-2"
-              />
-              <input
-                type="text"
-                id="destination-location"
-                placeholder="Location"
-                class="col-lg-2"
-                required
-              />
-              <input
-                type="text"
-                id="destination-discount"
-                placeholder="Discount in percentage(e.g. 10)"
-                class="col-lg-1"
-              />
-              <input
-                type="text"
-                id="destination-duration"
-                placeholder="Duration(e.g. 06 Nights / 07 Days)"
-                class="col-lg-1"
-                required
-              />
-              <input
-                type="text"
-                id="destination-price"
-                placeholder="Price(e.g 35000)"
-                required
-                class="col-lg-1"
-              />
+              <div class="col-lg-4 col-md-4 col-sm-12">
+                <input type="text" id="destination-title" placeholder="Title" required />
+              </div>
+              <div class="col-lg-4 col-md-4 col-sm-12">
+                <input type="text" id="destination-location" placeholder="Location" required />
+              </div>
+              <div class="col-lg-4 col-md-4 col-sm-12">
+                <input type="text" id="destination-discount" placeholder="Discount in percentage(e.g. 10)" />
+              </div>
             </div>
             <div class="row">
-              <!-- <h5>Images</h5> -->
-              <input
-                type="text"
-                id="destination-pickupLocation"
-                placeholder="Pickup Location(e.g. Airport)"
-                class="col-lg-4"
-              />
+              <div class="col-lg-4 col-md-4 col-sm-12">
+                <input type="text" id="destination-duration" placeholder="Duration(e.g. 06 Nights / 07 Days)"
+                  required />
+              </div>
+              <div class="col-lg-4 col-md-4 col-sm-12">
+                <input type="text" id="destination-price" placeholder="Price(e.g 35000)" required />
+              </div>
+              <div class="col-lg-4 col-md-4 col-sm-12">
+                <input type="text" id="destination-pickupLocation" placeholder="Pickup Location(e.g. Airport)"
+                  class="col-lg-4" />
+              </div>
+            </div>
 
-              <textarea
-                id="destination-images"
-                placeholder="Images (Enter image links in comma-separated values)"
-                class="col-lg-6"
-              ></textarea>
-              <textarea
-                id="details-languages"
-                placeholder="Languages (Enter languages in comma-separated values)"
-                class="col-lg-5"
-              ></textarea>
+            <div class="row">
+              <div class="col-12">
+                <textarea id="destination-images"
+                  placeholder="Images (Enter image links in comma-separated values)"></textarea>
+              </div>
             </div>
             <div class="row">
-              <textarea
-                id="destination-descriptions"
-                placeholder="Descriptions (Comma-separated values will create new paragraph)"
-                class="col-lg-10"
-              ></textarea>
+              <div class="col-lg-3 col-md-3 col-sm-12">
+                <textarea id="details-languages"
+                  placeholder="Languages (Enter languages in comma-separated values)"></textarea>
+              </div>
+              <div class="col-lg-9 col-md-9 col-sm-12">
+                <textarea id="destination-descriptions"
+                  placeholder="Descriptions (Comma-separated values will create new paragraph)"></textarea>
+              </div>
             </div>
+
+            <h5>Additional Info</h5>
             <div class="row">
-              <h5>Additional Info</h5>
-              <textarea
-                id="additional-includes"
-                placeholder="Includions (comma-separated values)"
-                class="col-lg-5 mt-2"
-              ></textarea>
-              <textarea
-                id="additional-excludes"
-                placeholder="Exclusions (comma-separated values)"
-                class="col-lg-6 mt-2"
-              ></textarea>
+              <div class="col-lg-6 col-md-6 col-sm-12">
+                <textarea id="additional-includes" placeholder="Includions (comma-separated values)"></textarea>
+              </div>
+              <div class="col-lg-6 col-md-6 col-sm-12">
+                <textarea id="additional-excludes" placeholder="Exclusions (comma-separated values)"></textarea>
+              </div>
             </div>
+
+
+            <h5>Itinerary</h5>
             <div class="row">
-              <h5>Itinerary</h5>
-              <textarea
-                id="destination-itinerary"
-                placeholder="Enter Itinerary JSON (e.g. [{'day': 'Day 1', 'title': 'Itinerary title','content': ['Itinerary content 1', 'Itinerary content 2']},])"
-              ></textarea>
+              <div class="col-12">
+                <textarea id="destination-itinerary"
+                  placeholder="Enter Itinerary JSON (e.g. [{'day': 'Day 1', 'title': 'Itinerary title','content': ['Itinerary content 1', 'Itinerary content 2']},])"></textarea>
+              </div>
+
             </div>
             <div class="row mt-3">
               <h5>Select Category (if you want to add this destination in any category):</h5>
@@ -294,24 +270,24 @@
               </div>
             </div>
 
-            <div class="row mt-3">
+            <!-- <div class="row mt-3">
               <label for="destination-pdf">Destination PDF (Optional):</label>
               <input type="file" id="destination-pdf" accept=".pdf" />
-            </div>
-            
+            </div> -->
+
             <button type="submit" class="submit">Add Destination</button>
             <button type="reset" class="reset">Reset</button>
-            <button
-              type="button"
-              class="cancel"
-              onclick="closeAddDestinationModal()"
-            >
+            <button type="button" class="cancel" onclick="closeAddDestinationModal()">
               Cancel
             </button>
           </form>
         </div>
 
-        <table class="table table-bordered mt-10" id="destinations-table">
+
+        <h3 class=" text-decoration-underline text-uppercase mt-7">
+          All Destinations
+        </h3>
+        <table class="table table-striped table-bordered" id="destinations-table">
           <thead>
             <tr>
               <th>ID</th>
@@ -327,11 +303,12 @@
           </tbody>
         </table>
       </div>
-<!-- has context menu -->
+      <!-- has context menu -->
       <div id="tab4" class="tab-panel">
         <h2>Manage Bookings</h2>
         <div id="loading" style="display: none">Loading...</div>
-        <table id="bookings-table" class="table table-striped">
+
+        <table id="bookings-table" class="table table-striped table-bordered">
           <thead>
             <tr>
               <th>#</th>
@@ -351,7 +328,7 @@
       </div>
       <div id="tab5" class="tab-panel">
         <h2>Manage Reviews</h2>
-        <table class="table table-bordered" id="review-table">
+        <table class="table table-striped table-bordered" id="review-table">
           <thead>
             <tr>
               <th>ID</th>
@@ -371,22 +348,8 @@
         <h2>Manage Blogs</h2>
         <button id="add-blog" class="btn mb-2">Add Blog</button>
 
-        <table class="table table-bordered" id="blogs-table">
-          <thead>
-            <tr>
-              <th>ID</th>
-              <th>Blog</th>
-              <th>Actions</th>
-            </tr>
-          </thead>
-          <tbody>
-            <!-- Destinations data will be dynamically loaded -->
-            <div id="loading" style="display: none">Loading blogs...</div>
-          </tbody>
-        </table>
-
-        <div id="add-blog-modal" style="display: none">
-          <h3 class="text-center text-decoration-underline text-uppercase mt-7">
+        <div id="add-blog-modal"  class="p-3" style="display: none">
+          <h3 class="text-decoration-underline text-uppercase">
             Add Blog
           </h3>
           <form id="add-blog-form">
@@ -438,11 +401,31 @@
             </button>
           </form>
         </div>
+
+        <h3 class=" text-decoration-underline text-uppercase mt-7">
+          All Blogs
+        </h3>
+        <table class="table table-striped table-bordered" id="blogs-table">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Blog</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- Destinations data will be dynamically loaded -->
+            <div id="loading" style="display: none">Loading blogs...</div>
+          </tbody>
+        </table>
+
+
       </div>
       <div id="tab7" class="tab-panel">
         <h2>Manage Newsletters</h2>
         <div id="loading" style="display: none">Loading...</div>
-        <table id="subscribers-table" class="table table-striped">
+
+        <table id="subscribers-table" class="table table-striped table-bordered">
           <thead>
             <tr>
               <th>#</th>
@@ -463,10 +446,12 @@
         </form>
         <div id="newsletterMessage"></div>
       </div>
+
+
       <div id="tab8" class="tab-panel">
         <h2>Manage Contacts</h2>
         <div id="loading" style="display: none">Loading...</div>
-        <table id="contact-table" class="table table-striped">
+        <table id="contact-table" class="table table-striped table-bordered">
           <thead>
             <tr>
               <th>#</th>
@@ -482,10 +467,11 @@
           </tbody>
         </table>
       </div>
+
       <div id="tab9" class="tab-panel">
         <h2>Manage Queries</h2>
         <div id="loading" style="display: none">Loading...</div>
-        <table id="query-table" class="table table-striped">
+        <table id="query-table" class="table table-striped table-bordered">
           <thead>
             <tr>
               <th>#</th>

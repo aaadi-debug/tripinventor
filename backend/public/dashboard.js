@@ -164,7 +164,7 @@ async function openEditModal(destinationId) {
     document.querySelector(`input[name="festival-tours"][value="${destination.wellnessSpa}"]`).checked = true;
     document.querySelector(`input[name="wonders-tours"][value="${destination.wellnessSpa}"]`).checked = true;
     document.querySelector(`input[name="unesco-tours"][value="${destination.wellnessSpa}"]`).checked = true;
-    
+
     document.querySelector(`input[name="domestic-tours"][value="${destination.domesticTours}"]`).checked = true;
     document.querySelector(`input[name="international-tours"][value="${destination.internationalTours}"]`).checked = true;
 
@@ -236,7 +236,7 @@ document
       festivalTheme: document.querySelector('input[name="festival-tours"]:checked').value,
       wonderTheme: document.querySelector('input[name="wonders-tours"]:checked').value,
       unescoTheme: document.querySelector('input[name="unesco-tours"]:checked').value,
-      
+
       domesticTours: document.querySelector('input[name="domestic-tours"]:checked')
         .value,
       internationalTours: document.querySelector(
@@ -260,6 +260,12 @@ document
     }
 
     formData.itinerary = itineraryData; // Add validated itinerary to formData
+
+    // Add the PDF file if uploaded
+    const pdfFile = document.getElementById("destination-pdf").files[0];
+    if (pdfFile) {
+      formData.append("pdf", pdfFile);
+    }
 
     try {
       let response;
@@ -300,7 +306,7 @@ document
       alert("An unexpected error occurred.");
     }
   });
-  
+
 function generateItinerary() {
   const input = document.getElementById("destination-itinerary").value;
   let itinerary;
