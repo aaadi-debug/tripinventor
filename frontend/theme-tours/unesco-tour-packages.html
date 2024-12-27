@@ -30,266 +30,227 @@
 </head>
 
 <body>
-    <header class="main_header_area headerstye-1">
-        <div class="header_menu" id="header_menu">
-            <div class="navbar_top">
-                <div class="navbar_top_wrapper">
-                    <div class="navbar_top_logo">
-                        <a class="navbar-brand" href="../index.html">
-                            <img src="../images/logo.png" alt="image">
-                        </a>
-                    </div>
-                    <div class="navbar_top_contact">
-                        <div class="navbar_top_contact_wrapper">
-                            <a href="tel:+919718171912" class="navbar_top_contact_wrapper_phone">
-                                <i class="fa-solid fa-phone"></i>
-                                +91 9718171912
-                            </a>
+    <div class="mainNavbar">
+        <div class="navbar_top_wrapper">
+            <div class="navbar_top_logo">
+                <a class="navbar-brand" href="../index.html">
+                    <img src="../images/logo.png" alt="image">
+                </a>
+            </div>
+            <div class="navbar_top_contact">
+                <div class="navbar_top_contact_wrapper">
+                    <a href="tel:+919718171912" class="navbar_top_contact_wrapper_phone">
+                        <i class="fa-solid fa-phone"></i>
+                        +91 9718171912
+                    </a>
 
-                            <a href="mailto:info@tripinventor.in">
-                                <i class="fa-solid fa-envelope"></i>
-                                info@tripinventor.in
-                            </a>
-                        </div>
-                    </div>
-                    <div class="navbar_top_login">
-                        <ul>
-                            <li>
-                                <i class="fa-solid fa-newspaper"></i>
-                                <a href="#footerNewsletter">Newsletter</a>
-                            </li>
-                            <li>
-                                <button id="searchTrigger">
-                                    <i class="fa-solid fa-magnifying-glass" id="searchIcon"></i>
-                                    <a>Search</a>
-                                </button>
-                            </li>
-                            <li>
-                                <i class="fa-regular fa-envelope"></i>
-                                <a href="../contact.html">Contact</a>
-                            </li>
-                            <li id="user-info" class="user-info">
-                                <i class="fa-regular fa-user"></i>
-                                <a href="../login.html" id="login-link">Login/Signup</a>
-                            </li>
-                        </ul>
-                    </div>
+                    <a href="mailto:info@tripinventor.in">
+                        <i class="fa-solid fa-envelope"></i>
+                        info@tripinventor.in
+                    </a>
                 </div>
             </div>
-            <nav class="navbar navbar-default">
-                <div class="container">
-                    <div class="navbar-flex d-flex align-items-center justify-content-center w-100 pb-2 pt-2 ">
+            <div class="navbar_top_login">
+                <ul>
+                    <li>
+                        <i class="fa-solid fa-newspaper"></i>
+                        <a href="#footerNewsletter">Newsletter</a>
+                    </li>
+                    <li>
+                        <button id="searchTrigger">
+                            <i class="fa-solid fa-magnifying-glass" id="searchIcon"></i>
+                            <a>Search</a>
+                        </button>
+                    </li>
+                    <li>
+                        <i class="fa-regular fa-envelope"></i>
+                        <a href="../contact.html">Contact</a>
+                    </li>
+                    <li id="user-info" class="user-info">
+                        <i class="fa-regular fa-user"></i>
+                        <a href="../login.html" id="login-link">Login/Signup</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
 
-                        <!-- Collect the nav links, forms, and other content for toggling -->
-                        <div class="navbar-collapse1 d-flex align-items-center" id="bs-example-navbar-collapse-1">
-                            <ul class="nav navbar-nav" id="responsive-menu">
-                                <li class="dropdown submenu active">
-                                    <a href="../index.html">
-                                        Home
-                                    </a>
-                                </li>
+        <div class="navbar_below_wrapper">
+            <ul>
+                <li>
+                    <a href="../index.html">
+                        Home
+                    </a>
+                </li>
+                <li class="navbar_below_wrapperLi">
+                    <a href="../destination.html">
+                        All Destinations
+                        <i class="icon-arrow-down" aria-hidden="true"></i>
+                    </a>
+                    <div class="navbar_below_wrapperLi_submenu">
+                        <div class="navbar_below_wrapperLi_submenu_wrapper">
+                            <div>
+                                <h4>Europe</h4>
+                                <ol>
+                                    <li><a href="#">Austria</a></li>
+                                    <li><a href="#">Belgium</a></li>
+                                    <li><a href="#">Czech Republic</a></li>
+                                    <li><a href="#">Denmark</a></li>
+                                    <li><a href="#">Finland</a></li>
+                                    <li><a href="#">France</a></li>
+                                    <li><a href="#">Germany</a></li>
+                                    <li><a href="#">Greece</a></li>
+                                    <li><a href="#">Hungary</a></li>
+                                    <li><a href="#">Ireland</a></li>
+                                    <li><a href="#">Italy</a></li>
+                                </ol>
+                            </div>
+                            <div>
+                                <ol>
+                                    <li><a href="#">Netherlands</a></li>
+                                    <li><a href="#">Portugal</a></li>
+                                    <li><a href="#">Romania</a></li>
+                                    <li><a href="#">Spain</a></li>
+                                    <li><a href="#">Sweden</a></li>
+                                    <li><a href="#">Switzerland</a></li>
+                                </ol>
+                                <h4 class="mt-2">Middle East</h4>
+                                <ol>
+                                    <li><a href="#">Egypt</a></li>
+                                    <li><a href="#">Saudi Arabia</a></li>
+                                    <li><a href="#">Turkey</a></li>
+                                    <li><a href="#">United Arab Emirates</a></li>
+                                </ol>
 
-                                <li class="submenu dropdown">
-                                    <a href="../destination.html" class="dropdown-toggle" role="button"
-                                        aria-haspopup="true" aria-expanded="false">
-                                        All Destinations
-                                        <i class="icon-arrow-down" aria-hidden="true"></i>
-                                    </a>
-                                    
-                                    <ul class="dropdown-menu">
-                                        <li class="submenu dropdown">
-                                            <a href="">
-                                                Europe 1
-                                                <i class="fa fa-angle-right" aria-hidden="true"></i>
-                                            </a>
-                                            <ul class="dropdown-menu">
-                                                <li><a href="#">Austria</a></li>
-                                                <li><a href="#">Belgium</a></li>
-                                                <li><a href="#">Czech Republic</a></li>
-                                                <li><a href="#">Denmark</a></li>
-                                                <li><a href="#">Finland</a></li>
-                                                <li><a href="#">France</a></li>
-                                                <li><a href="#">Germany</a></li>
-                                                <li><a href="#">Greece</a></li>
-                                            </ul>
-                                        </li>
-                                        <li class="submenu dropdown">
-                                            <a href="">
-                                                Europe 2
-                                                <i class="fa fa-angle-right" aria-hidden="true"></i>
-                                            </a>
-                                            <ul class="dropdown-menu">
-                                                <li><a href="#">Hungary</a></li>
-                                                <li><a href="#">Ireland</a></li>
-                                                <li><a href="#">Italy</a></li>
-                                                <li><a href="#">Netherlands</a></li>
-                                                <li><a href="#">Portugal</a></li>
-                                                <li><a href="#">Romania</a></li>
-                                                <li><a href="#">Spain</a></li>
-                                                <li><a href="#">Sweden</a></li>
-                                                <li><a href="#">Switzerland</a></li>
-                                            </ul>
-                                        </li>
-                                       
-                                        <li class="submenu dropdown">
-                                            <a href="">
-                                                Africa
-                                                <i class="fa fa-angle-right" aria-hidden="true"></i>
-                                            </a>
-                                            <ul class="dropdown-menu">
-                                                <li><a href="#">Kenya & Tanzania</a></li>
-                                                <li><a href="#">Mauritius</a></li>
-                                                <li><a href="#">Morocco</a>
-                                                <li><a href="#">Seychelles</a>
-                                                <li><a href="#">South Africa</a>
-                                                </li>
-                                            </ul>
-                                        </li>
-                                        <li class="submenu dropdown">
-                                            <a href="">
-                                                Asia(East)
-                                                <i class="fa fa-angle-right" aria-hidden="true"></i>
-                                            </a>
-                                            <ul class="dropdown-menu">
-                                                <li><a href="#">Hong Kong & Macau</a></li>
-                                                <li><a href="#">Japan</a></li>
-                                                <li><a href="#">South Korea</a></li>
-                                            </ul>
-                                        </li>
+                            </div>
+                            <div>
+                                <h4>Africa</h4>
+                                <ol>
+                                    <li><a href="#">Kenya & Tanzania</a></li>
+                                    <li><a href="#">Mauritius</a></li>
+                                    <li><a href="#">Morocco</a>
+                                    <li><a href="#">Seychelles</a>
+                                    <li><a href="#">South Africa</a>
+                                    </li>
+                                </ol>
+                                <h4 class="mt-2">Asia(East)</h4>
+                                <ol>
+                                    <li><a href="#">Hong Kong & Macau</a></li>
+                                    <li><a href="#">Japan</a></li>
+                                    <li><a href="#">South Korea</a></li>
+                                </ol>
+                            </div>
+                            <div>
+                                <h4>Asia(South-East)</h4>
+                                <ol>
+                                    <li><a href="#">Cambodia</a></li>
+                                    <li><a href="#">Indonesia</a></li>
+                                    <li><a href="#">Laos</a></li>
+                                    <li><a href="#">Malaysia</a></li>
+                                    <li><a href="#">Philippines</a></li>
+                                    <li><a href="#">Singapore</a></li>
+                                    <li><a href="#">Thailand</a></li>
+                                    <li><a href="#">Vietnam</a></li>
+                                </ol>
 
-                                        <li class="submenu dropdown">
-                                            <a href="">
-                                                Asia(South-East)
-                                                <i class="fa fa-angle-right" aria-hidden="true"></i>
-                                            </a>
-                                            <ul class="dropdown-menu">
-                                                <li><a href="#">Cambodia</a></li>
-                                                <li><a href="#">Indonesia</a></li>
-                                                <li><a href="#">Laos</a></li>
-                                                <li><a href="#">Malaysia</a></li>
-                                                <li><a href="#">Philippines</a></li>
-                                                <li><a href="#">Singapore</a></li>
-                                                <li><a href="#">Thailand</a></li>
-                                                <li><a href="#">Vietnam</a></li>
-                                            </ul>
-                                        </li>
-                                        <li class="submenu dropdown">
-                                            <a href="">
-                                                Asia(South)
-                                                <i class="fa fa-angle-right" aria-hidden="true"></i>
-                                            </a>
-                                            <ul class="dropdown-menu">
-                                                <li><a href="#">Bhutan</a></li>
-                                                <li><a href="#">Maldives</a></li>
-                                                <li><a href="#">Nepal</a></li>
-                                                <li><a href="#">Sri Lanka</a></li>
-                                            </ul>
-                                        </li>
-                                        <li class="submenu dropdown">
-                                            <a href="">
-                                                CIS Countries
-                                                <i class="fa fa-angle-right" aria-hidden="true"></i>
-                                            </a>
-                                            <ul class="dropdown-menu">
-                                                <li><a href="#">Armenia</a></li>
-                                                <li><a href="#">Azerbaijan</a></li>
-                                                <li><a href="#">Georgia</a></li>
-                                                <li><a href="#">Kazakhstan</a></li>
-                                                <li><a href="#">Uzbekistan</a></li>
-                                            </ul>
-                                        </li>
-
-                                        <li class="submenu dropdown">
-                                            <a href="">
-                                                Middle East
-                                                <i class="fa fa-angle-right" aria-hidden="true"></i>
-                                            </a>
-                                            <ul class="dropdown-menu">
-                                                <li><a href="#">Egypt</a></li>
-                                                <li><a href="#">Saudi Arabia</a></li>
-                                                <li><a href="#">Turkey</a></li>
-                                                <li><a href="#">United Arab Emirates</a></li>
-                                            </ul>
-                                        </li>
-                                        <li class="submenu dropdown">
-                                            <a href="">
-                                                Oceania
-                                                <i class="fa fa-angle-right" aria-hidden="true"></i>
-                                            </a>
-                                            <ul class="dropdown-menu">
-                                                <li><a href="#">Australia</a></li>
-                                                <li><a href="#">Fiji</a></li>
-                                                <li><a href="#">New Zealand</a></li>
-                                            </ul>
-                                        </li>
-                                        <li class="submenu dropdown">
-                                            <a href="">
-                                                North America
-                                                <i class="fa fa-angle-right" aria-hidden="true"></i>
-                                            </a>
-                                            <ul class="dropdown-menu">
-                                                <li><a href="#">Canada</a></li>
-                                                <li><a href="#">United States of America</a></li>
-                                            </ul>
-                                        </li>
-
-                                        <li class="submenu dropdown">
-                                            <a href="">
-                                                United Kingdom & Ireland
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li class="submenu dropdown">
-                                    <a href="#">
-                                        Theme Tours
-                                        <i class="icon-arrow-down" aria-hidden="true"></i>
-                                    </a>
-                                    <ul class="dropdown-menu">
-                                        <li><a href="../theme-tours/ayurveda-spa-tour-packages-in-india.html">Wellness Ayurveda & Spa</a></li>
-                                        <li><a href="../theme-tours/beach-holidays-tour-packages.html">Beach Tours </a></li>
-                                        <li><a href="../theme-tours/wildlife-tour-packages.html">Adventure & Wildlife</a></li>
-                                        <li><a href="../theme-tours/cultural-heritage-tour-packages.html">Culture and Heritage</a></li>
-                                        <li><a href="../theme-tours/luxury-trains-tour-packages.html">Luxury Trains Tours</a></li>
-                                        <li><a href="../theme-tours/trekking-tour-packages.html">Trekking Tours</a></li>
-                                        <li><a href="../theme-tours/spiritual-pilgrimage-tour-packages.html">Spiritual & Pilgrimage Tours</a></li>
-                                        <li><a href="../theme-tours/festival-tour-packages.html">Festival Tours</a></li>
-                                        <li><a href="../theme-tours/natural-wonders-tour-packages.html">Natural Wonder Tours</a></li>
-                                        <li><a href="#">UNESCO Tour</a></li>
-                                    </ul>
-                                </li>
-                                <li class="submenu dropdown">
-                                    <a href="../domestic-tours.html" >
-                                        India Top Tours
-                                        <i class="icon-arrow-down" aria-hidden="true"></i>
-                                    </a>
-                                    <ul class="dropdown-menu">
-                                        <li><a href="#">Ladakh</a></li>
-                                        <li><a href="#">Jammu & Kashmir</a></li>
-                                        <li><a href="#">Himachal Pradesh</a></li>
-                                        <li><a href="#">Uttarakhand</a></li>
-                                        <li><a href="#">Rajasthan</a></li>
-                                        <li><a href="#">Gujarat</a></li>
-                                        <li><a href="#">North East </a></li>
-                                        <li><a href="#">Maharashtra</a></li>
-                                        <li><a href="#">Karnataka</a></li>
-                                        <li><a href="#">Tamil Nadu</a></li>
-                                        <li><a href="#">Madhya Pradesh</a></li>
-                                        <li><a href="#">Kerala</a></li>
-                                        <li><a href="#">Lakshadweep Islands</a></li>
-                                    </ul>
-                                </li>
-                                <li><a href="../offer.html">Offers</a></li>
-                                <li><a href="../about.html">About Us</a></li>
-                                <li><a href="../blog.html">Blogs</a></li>
-                            </ul>
-
-
-                            <div id="slicknav-mobile"></div>
+                            </div>
+                            <div>
+                                <h4>Asia(South)</h4>
+                                <ol>
+                                    <li><a href="#">Bhutan</a></li>
+                                    <li><a href="#">Maldives</a></li>
+                                    <li><a href="#">Nepal</a></li>
+                                    <li><a href="#">Sri Lanka</a></li>
+                                </ol>
+                                <h4 class="mt-2">CIS Countries</h4>
+                                <ol>
+                                    <li><a href="#">Armenia</a></li>
+                                    <li><a href="#">Azerbaijan</a></li>
+                                    <li><a href="#">Georgia</a></li>
+                                    <li><a href="#">Kazakhstan</a></li>
+                                    <li><a href="#">Uzbekistan</a></li>
+                                </ol>
+                            </div>
+                            <div>
+                                <h4>Oceania</h4>
+                                <ol>
+                                    <li><a href="#">Australia</a></li>
+                                    <li><a href="#">Fiji</a></li>
+                                    <li><a href="#">New Zealand</a></li>
+                                </ol>
+                                <h4 class="mt-2">North America</h4>
+                                <ol>
+                                    <li><a href="#">Canada</a></li>
+                                    <li><a href="#">United States of America</a></li>
+                                </ol>
+                                <h4 class="mt-2">United Kingdom & Ireland</h4>
+                            </div>
                         </div>
                     </div>
-            </nav>
+                </li>
+                <li class="navbar_below_wrapperLi2">
+                    <a href="#">
+                        Theme Tours
+                        <i class="icon-arrow-down" aria-hidden="true"></i>
+                    </a>
+                    <div class="navbar_below_wrapperLi_submenu2">
+                        <ol>
+                            <li><a href="./ayurveda-spa-tour-packages-in-india.html">Wellness Ayurveda &
+                                    Spa</a></li>
+                            <li><a href="./beach-holidays-tour-packages.html">Beach Tours </a></li>
+                            <li><a href="./wildlife-tour-packages.html">Adventure & Wildlife</a></li>
+                            <li><a href="./cultural-heritage-tour-packages.html">Culture and Heritage</a>
+                            </li>
+                            <li><a href="./luxury-trains-tour-packages.html">Luxury Trains Tours</a></li>
+                            <li><a href="./trekking-tour-packages.html">Trekking Tours</a></li>
+                            <li><a href="./spiritual-pilgrimage-tour-packages.html">Spiritual & Pilgrimage
+                                    Tours</a></li>
+                            <li><a href="./festival-tour-packages.html">Festival Tours</a></li>
+                            <li><a href="./natural-wonders-tour-packages.html">Natural Wonder Tours</a></li>
+                            <li><a href="./unesco-tour-packages.html">UNESCO Tour</a></li>
+                        </ol>
+                    </div>
+                </li>
+                <li class="navbar_below_wrapperLi2">
+                    <a href="../domestic-tours.html">
+                        India Top Tours
+                        <i class="icon-arrow-down" aria-hidden="true"></i>
+                    </a>
+                    <div class="navbar_below_wrapperLi_submenu2">
+                        <ol>
+                            <li><a href="#">Ladakh</a></li>
+                            <li><a href="#">Jammu & Kashmir</a></li>
+                            <li><a href="#">Himachal Pradesh</a></li>
+                            <li><a href="#">Uttarakhand</a></li>
+                            <li><a href="#">Rajasthan</a></li>
+                            <li><a href="#">Gujarat</a></li>
+                            <li><a href="#">North East </a></li>
+                            <li><a href="#">Maharashtra</a></li>
+                            <li><a href="#">Karnataka</a></li>
+                            <li><a href="#">Tamil Nad u</a></li>
+                            <li><a href="#">Madhya Pradesh</a></li>
+                            <li><a href="#">Kerala</a></li>
+                            <li><a href="#">Lakshadweep Islands</a></li>
+                        </ol>
+                    </div>
+                </li>
+                <li>
+                    <a href="../offer.html">
+                        Offers
+                    </a>
+                </li>
+                <li>
+                    <a href="../about.html">
+                        About Us
+                    </a>
+                </li>
+                <li>
+                    <a href="../blog.html">
+                        Blogs
+                    </a>
+                </li>
+            </ul>
         </div>
+
         <!-- Black Overlay -->
         <div id="overlay" style="display: none;"></div>
         <!-- Hidden search panel -->
@@ -303,8 +264,7 @@
                 </div>
             </div>
         </div>
-        <!-- Navigation Bar Ends --> 
-    </header>
+    </div>
     <div id="whatsapp-support">
         <a href="https://wa.me/+919718171912" target="_blank" rel="noopener noreferrer"
             title="Chat with us on WhatsApp">
@@ -646,6 +606,7 @@
     <script src="../desti.js"></script>
     <script src="../review.js"></script>
     <script src="../relatedTours.js"></script>
+    <script src="../js/global.js"></script>
 
     <script src="../search.js"></script>
     <script src="../newsletter.js"></script>

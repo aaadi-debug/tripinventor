@@ -104,13 +104,13 @@ router.post("/send-newsletter", upload.single("pdf"), async (req, res) => {
     const transporter = nodemailer.createTransport({
       service: "gmail",
       auth: {
-        user: "adparker51202@gmail.com",
-        pass: "jmugbaleiezdzlyr", // Use an app password for security
+        user: "info@tripinventor.in",
+        pass: "mxzyzyltksixoalz", // Use an app password for security
       },
     });
 
     const mailOptions = {
-      from: "adparker51202@gmail.com",
+      from: '"Trip Inventor Team" <info@tripinventor.in>',
       to: emails,
       subject,
       text: "Please find the attached newsletter.", // Fallback text content

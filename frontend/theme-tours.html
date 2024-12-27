@@ -206,21 +206,6 @@
     </div>
     <!-- Back to top ends -->
 
-    <script>
-        // Function to load HTML content with AJAX
-        function loadContent(url, elementId) {
-            fetch(url)
-                .then((response) => response.text())
-                .then((data) => {
-                    document.getElementById(elementId).innerHTML = data;
-                })
-                .catch((error) => console.error("Error loading content:", error));
-        }
-
-        // Load the header and footer using AJAX
-        loadContent("header.html", "header");
-        // loadContent("footer.html", "footer");
-    </script>
 
     <!-- <script src="./search.js"></script> -->
 
@@ -287,6 +272,7 @@
         loadContent("footer.html", "footer", initializeBubbleAnimation);
     </script>
 
+    <script src="./js/global.js"></script>
     <script src="./desti.js"></script>
     <script src="./review.js"></script>
     <script src="./relatedTours.js"></script>

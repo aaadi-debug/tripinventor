@@ -2627,7 +2627,7 @@ header #navbar {
 }
 
 .main_header_area .header_menu.fixed-top {
-  box-shadow: 0 0 15px #cccccc37;
+  box-shadow: 0 0 15px #cccccc37; 
   background: #fff;
   border-bottom: 1px solid #bebebe;
 }

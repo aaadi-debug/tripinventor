@@ -2301,6 +2301,10 @@ input#submit:hover {
 
 .mainNavbar {
   /* border: 1px solid red; */
+  position: fixed;
+  z-index: 9999;
+  width: 100%;
+  /* background-color: white; */
 }
 
 .mainNavbar a {
@@ -2319,6 +2323,7 @@ input#submit:hover {
 
 .navbar_top_wrapper {
   /* border: 1px solid red; */
+  background-color: #fff;
   width: 100%;
   border-bottom: 1px solid #bebebe;
   display: flex;
@@ -2456,11 +2461,15 @@ input#submit:hover {
 
 .navbar_below_wrapper {
   /* border: 1px solid red; */
-  -webkit-box-shadow: 0px 8px 20px -11px rgba(128, 128, 128, 1);
-  -moz-box-shadow: 0px 8px 20px -11px rgba(128, 128, 128, 1);
-  box-shadow: 0px 8px 20px -11px rgba(128, 128, 128, 1);
+  background-color: rgba(255, 255, 255, 0.151);
+  box-shadow: 0 0 15px #cccccc37;
 
   position: relative;
+}
+
+.navbar_below_wrapper.scrolled {
+  background-color: white !important; /* Background when scrolled */
+  border-bottom: 1px solid #aaa;
 }
 
 .navbar_below_wrapper ul {
@@ -2478,6 +2487,7 @@ input#submit:hover {
 .navbar_below_wrapper ul li a {
   /* font-size: 18px; */
   text-transform: uppercase;
+  color: white
 }
 
 .navbar_below_wrapper .navbar_below_wrapperLi {
@@ -2506,7 +2516,9 @@ input#submit:hover {
   grid-template-columns: repeat(6, 1fr); /* Creates 5 equal columns */
   gap: 10px; /* Adjust the spacing between columns */
   padding: 20px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.377);
+  -webkit-box-shadow: -1px 10px 15px -6px rgba(110,110,110,1);
+  -moz-box-shadow: -1px 10px 15px -6px rgba(110,110,110,1);
+  box-shadow: -1px 10px 15px -6px rgba(110,110,110,1);
 
 }
 
@@ -2532,12 +2544,15 @@ input#submit:hover {
   text-transform: capitalize;
   width: 100%;
   padding: 6px 18px;
+  color: rgb(63, 63, 63);
 }
 .navbar_below_wrapper .navbar_below_wrapperLi_submenu_wrapper div ol li:hover a {
   color: white;
 }
 
-
+.navbar_below_wrapper.scrolled ul li a {
+  color: black;
+}
 
 
 
@@ -2559,16 +2574,19 @@ input#submit:hover {
   z-index: 1050;
   position: absolute;
   left: -50px;
-  top: 40px;
+  top: 20px;
 }
 
 
 .navbar_below_wrapper .navbar_below_wrapperLi_submenu2 {
-  background-color: white;
-  width: 280px;
+  /* background-color: white; */
+  width: 250px;
+  background-color: #fff;
 
-  padding: 20px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.377);
+  padding: 20px 10px 10px 10px;
+  -webkit-box-shadow: -1px 10px 15px -6px rgba(110,110,110,1);
+  -moz-box-shadow: -1px 10px 15px -6px rgba(110,110,110,1);
+  box-shadow: -1px 10px 15px -6px rgba(110,110,110,1);
 
 }
 
@@ -2594,6 +2612,7 @@ input#submit:hover {
   text-transform: capitalize;
   width: 100%;
   padding: 6px 18px;
+  color: rgb(63, 63, 63);
 }
 .navbar_below_wrapper .navbar_below_wrapperLi_submenu2 ol li:hover a {
   color: white;

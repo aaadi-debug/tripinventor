@@ -22,7 +22,7 @@
     <div class="mainNavbar">
         <div class="navbar_top_wrapper">
             <div class="navbar_top_logo">
-                <a class="navbar-brand" href="index.html">
+                <a class="navbar-brand" href="./index.html">
                     <img src="images/logo.png" alt="image">
                 </a>
             </div>
@@ -71,7 +71,7 @@
                     </a>
                 </li>
                 <li class="navbar_below_wrapperLi">
-                    <a href="./index.html">
+                    <a href="./destination.html">
                         All Destinations
                         <i class="icon-arrow-down" aria-hidden="true"></i>
                     </a>
@@ -177,7 +177,7 @@
                     </div>
                 </li>
                 <li class="navbar_below_wrapperLi2">
-                    <a href="./index.html">
+                    <a href="#">
                         Theme Tours
                         <i class="icon-arrow-down" aria-hidden="true"></i>
                     </a>
@@ -199,30 +199,63 @@
                         </ol>
                     </div>
                 </li>
-                <li>
-                    <a href="./index.html">
-                        Domestic Tours
+                <li class="navbar_below_wrapperLi2">
+                    <a href="./domestic-tours.html">
+                        India Top Tours
                         <i class="icon-arrow-down" aria-hidden="true"></i>
                     </a>
+                    <div class="navbar_below_wrapperLi_submenu2">
+                        <ol>
+                            <li><a href="#">Ladakh</a></li>
+                            <li><a href="#">Jammu & Kashmir</a></li>
+                            <li><a href="#">Himachal Pradesh</a></li>
+                            <li><a href="#">Uttarakhand</a></li>
+                            <li><a href="#">Rajasthan</a></li>
+                            <li><a href="#">Gujarat</a></li>
+                            <li><a href="#">North East </a></li>
+                            <li><a href="#">Maharashtra</a></li>
+                            <li><a href="#">Karnataka</a></li>
+                            <li><a href="#">Tamil Nad u</a></li>
+                            <li><a href="#">Madhya Pradesh</a></li>
+                            <li><a href="#">Kerala</a></li>
+                            <li><a href="#">Lakshadweep Islands</a></li>
+                        </ol>
+                    </div>
                 </li>
                 <li>
-                    <a href="./index.html">
+                    <a href="./offer.html">
                         Offers
                     </a>
                 </li>
                 <li>
-                    <a href="./index.html">
+                    <a href="./about.html">
                         About Us
                     </a>
                 </li>
                 <li>
-                    <a href="./index.html">
+                    <a href="./blog.html">
                         Blogs
                     </a>
                 </li>
             </ul>
         </div>
+
+        <!-- Black Overlay -->
+        <div id="overlay" style="display: none;"></div>
+        <!-- Hidden search panel -->
+        <div id="searchPanel">
+            <div class="container">
+                <input id="searchTitle" type="text" placeholder="Search a destination by name, location or price"
+                    class="form-control">
+                <!-- <p class="mt-5">Search results</p> -->
+                <!-- <hr> -->
+                <div id="searchResults" class="mt-1 pl-3 row gap-2">
+                </div>
+            </div>
+        </div>
     </div>
+
+    
     <!-- header ends -->
     <div id="whatsapp-support">
         <a href="https://wa.me/+919718171912" target="_blank" rel="noopener noreferrer"
@@ -231,46 +264,6 @@
                 id="whatsapp-icon" />
         </a>
     </div>
-    <script>
-        document.addEventListener("DOMContentLoaded", () => {
-            const links = document.querySelectorAll(".navbar-nav a");
-            const currentPage = window.location.pathname; // Get the path of the current page
-
-            links.forEach((link) => {
-                const linkPath = new URL(link.href).pathname; // Get the path of the link
-                if (linkPath === currentPage) {
-                    link.classList.add("active"); // Add the active class
-                }
-            });
-        });
-
-
-    </script>
-    <style>
-        /* Base styling for navbar links */
-        .navbar-nav a {
-            color: white;
-            /* Default color for all links */
-            text-decoration: none;
-            padding: 10px 15px;
-            display: inline-block;
-            transition: color 0.3s ease;
-            /* Smooth color transition */
-        }
-
-        /* Highlight the active link */
-        .navbar-nav a.active {
-            color: orange;
-            font-weight: bold;
-            /* Optional for emphasis */
-        }
-
-        /* Add hover effect for links */
-        .navbar-nav a:hover {
-            color: orange;
-            /* Change to orange on hover */
-        }
-    </style>
 </body>
 
 </html>

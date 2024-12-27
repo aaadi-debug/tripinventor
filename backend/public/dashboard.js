@@ -262,10 +262,10 @@ document
     formData.itinerary = itineraryData; // Add validated itinerary to formData
 
     // Add the PDF file if uploaded
-    const pdfFile = document.getElementById("destination-pdf").files[0];
-    if (pdfFile) {
-      formData.append("pdf", pdfFile);
-    }
+    // const pdfFile = document.getElementById("destination-pdf").files[0];
+    // if (pdfFile) {
+    //   formData.append("pdf", pdfFile);
+    // }
 
     try {
       let response;
