@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const BACKEND_URL =
     window.location.hostname === "127.0.0.1"
       ? "http://localhost:5000"
-      : "http://api.tripinventor.in";
+      : "https://api.tripinventor.in";
 
   console.log(destinationTitle);
 

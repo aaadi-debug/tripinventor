@@ -22,6 +22,12 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" />
 
   <link rel="stylesheet" href="fonts/line-icons.css" type="text/css" />
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+    integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
 </head>
 
 <body>
@@ -136,7 +142,7 @@
       const BACKEND_URL =
         window.location.hostname === "127.0.0.1"
           ? "http://localhost:5000"
-          : "http://api.tripinventor.in";
+          : "https://api.tripinventor.in";
 
       // Show preloader while fetching data
       preloader.style.display = "flex";
@@ -223,21 +229,6 @@
   </div>
   <!-- Back to top ends -->
 
-  <script>
-    // Function to load HTML content with AJAX
-    function loadContent(url, elementId) {
-      fetch(url)
-        .then((response) => response.text())
-        .then((data) => {
-          document.getElementById(elementId).innerHTML = data;
-        })
-        .catch((error) => console.error("Error loading content:", error));
-    }
-
-    // Load the header and footer using AJAX
-    loadContent("header.html", "header");
-    // loadContent("footer.html", "footer");
-  </script>
 
   <!-- <script src="./search.js"></script> -->
 
@@ -304,15 +295,19 @@
     loadContent("footer.html", "footer", initializeBubbleAnimation);
   </script>
 
-  <script src="./desti.js"></script>
-  <script src="./review.js"></script>
-  <script src="./relatedTours.js"></script>
-
   <script src="./search.js"></script>
   <script src="./newsletter.js"></script>
   <script src="./login.js"></script>
   <script src="./signup.js"></script>
   <script src="./queryForm.js"></script>
+  <script src="./js/global.js"></script>
+
+  <!-- *Scripts* -->
+  <script src="js/jquery-3.5.1.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/plugin.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/custom-nav.js"></script>
 </body>
 
 </html>

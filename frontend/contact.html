@@ -18,8 +18,10 @@
     <link href="fonts/flaticon.css" rel="stylesheet" type="text/css">
     <!--Font Awesome-->
 
-
     <link rel="stylesheet" href="fonts/line-icons.css" type="text/css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+        integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 
 <body>
@@ -53,7 +55,11 @@
                     <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                         <div class="contact-info">
                             <h3 class="">INFORMATION ABOUT US</h3>
-                            <p class="mb-4">At Trip Inventor, we turn your travel dreams into reality by curating unforgettable journeys to destinations worldwide. Our mission is to inspire exploration and create personalized travel experiences that leave lasting memories. With a team of passionate travel enthusiasts, we’re dedicated to making every trip seamless and extraordinary. Let us guide you to your next adventure!</p>
+                            <p class="mb-4">At Trip Inventor, we turn your travel dreams into reality by curating
+                                unforgettable journeys to destinations worldwide. Our mission is to inspire exploration
+                                and create personalized travel experiences that leave lasting memories. With a team of
+                                passionate travel enthusiasts, we’re dedicated to making every trip seamless and
+                                extraordinary. Let us guide you to your next adventure!</p>
                             <div class="info-item d-flex align-items-center bg-white mb-3">
                                 <div class="info-icon">
                                     <i class="fa fa-map-marker"></i>
@@ -85,7 +91,10 @@
                     <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                         <div id="contact-form1" class="contact-form">
                             <h3 class="">Keep in Touch</h3>
-                            <p class="mb-4">Stay connected with Trip Inventor for the latest travel tips, exclusive deals, and destination highlights. Reach out to us anytime with your queries or feedback – we’re here to help! Follow us on social media for inspiration and updates. Let’s make your travel plans extraordinary together!</p>
+                            <p class="mb-4">Stay connected with Trip Inventor for the latest travel tips, exclusive
+                                deals, and destination highlights. Reach out to us anytime with your queries or feedback
+                                – we’re here to help! Follow us on social media for inspiration and updates. Let’s make
+                                your travel plans extraordinary together!</p>
 
                             <div id="contactform-error-msg"></div>
 
@@ -133,7 +142,7 @@
     </div>
     <!-- Back to top ends -->
     <script src="./search.js"></script>
-     
+
 
     <!-- header side menu -->
     <!-- <div class="header_sidemenu">
@@ -217,92 +226,78 @@
         </div>
     </div> -->
 
+
     <script>
         // Function to load HTML content with AJAX
         function loadContent(url, elementId) {
             fetch(url)
-                .then(response => response.text())
-                .then(data => {
+                .then((response) => response.text())
+                .then((data) => {
                     document.getElementById(elementId).innerHTML = data;
                 })
-                .catch(error => console.error('Error loading content:', error));
+                .catch((error) => console.error("Error loading content:", error));
         }
 
         // Load the header and footer using AJAX
         loadContent("header.html", "header");
-        // loadContent("footer.html", "footer");
 
-    </script>
- <script>
-      // Function to load HTML content with AJAX
-      function loadContent(url, elementId) {
-        fetch(url)
-          .then((response) => response.text())
-          .then((data) => {
-            document.getElementById(elementId).innerHTML = data;
-          })
-          .catch((error) => console.error("Error loading content:", error));
-      }
-
-      // Load the header and footer using AJAX
-      loadContent("header.html", "header");
-      
-      // Function to load HTML content with AJAX
-      function loadContent(url, elementId, callback) {
-        fetch(url)
-          .then((response) => response.text())
-          .then((data) => {
-            document.getElementById(elementId).innerHTML = data;
-            if (callback) callback(); // Trigger the callback after loading
-          })
-          .catch((error) => console.error("Error loading content:", error));
-      }
-
-      // Reinitialize bubble animation logic
-      function initializeBubbleAnimation() {
-        const footer = document.querySelector(".bubbles");
-
-        function createBubble() {
-          const bubble = document.createElement("div");
-          bubble.classList.add("individual-bubble");
-
-          // Randomize size
-          const size = Math.random() * 10 + 5; // Bubble size between 10px and 50px
-          bubble.style.width = `${size}px`;
-          bubble.style.height = `${size}px`;
-
-          // Randomize horizontal position
-          bubble.style.left = `${Math.random() * 100}%`;
-
-          // Randomize animation duration
-          bubble.style.animationDuration = `${Math.random() * 5 + 5}s`; // Between 5s and 10s
-
-          // Randomize animation delay
-          bubble.style.animationDelay = `${Math.random() }s`;
-
-          footer.appendChild(bubble);
-
-          // Remove bubble after animation ends
-          bubble.addEventListener("animationend", () => {
-            bubble.remove();
-          });
+        // Function to load HTML content with AJAX
+        function loadContent(url, elementId, callback) {
+            fetch(url)
+                .then((response) => response.text())
+                .then((data) => {
+                    document.getElementById(elementId).innerHTML = data;
+                    if (callback) callback(); // Trigger the callback after loading
+                })
+                .catch((error) => console.error("Error loading content:", error));
         }
 
-        // Create bubbles at intervals
-        setInterval(createBubble, 900); // Add a new bubble every 300ms
-      }
+        // Reinitialize bubble animation logic
+        function initializeBubbleAnimation() {
+            const footer = document.querySelector(".bubbles");
 
-      // Load the footer and initialize animation
-      loadContent("footer.html", "footer", initializeBubbleAnimation);
+            function createBubble() {
+                const bubble = document.createElement("div");
+                bubble.classList.add("individual-bubble");
+
+                // Randomize size
+                const size = Math.random() * 10 + 5; // Bubble size between 10px and 50px
+                bubble.style.width = `${size}px`;
+                bubble.style.height = `${size}px`;
+
+                // Randomize horizontal position
+                bubble.style.left = `${Math.random() * 100}%`;
+
+                // Randomize animation duration
+                bubble.style.animationDuration = `${Math.random() * 5 + 5}s`; // Between 5s and 10s
+
+                // Randomize animation delay
+                bubble.style.animationDelay = `${Math.random()}s`;
+
+                footer.appendChild(bubble);
+
+                // Remove bubble after animation ends
+                bubble.addEventListener("animationend", () => {
+                    bubble.remove();
+                });
+            }
+
+            // Create bubbles at intervals
+            setInterval(createBubble, 900); // Add a new bubble every 300ms
+        }
+
+        // Load the footer and initialize animation
+        loadContent("footer.html", "footer", initializeBubbleAnimation);
     </script>
     <!-- <script src="./search.js"></script> -->
-    <script src="./contact.js"></script>
 
+    <script src="./contact.js"></script>
     <script src="./search.js"></script>
     <script src="./newsletter.js"></script>
     <script src="./login.js"></script>
     <script src="./signup.js"></script>
     <script src="./queryForm.js"></script>
+    <script src="./js/global.js"></script>
 
     <!-- *Scripts* -->
     <script src="js/jquery-3.5.1.min.js"></script>

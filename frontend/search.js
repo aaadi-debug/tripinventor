@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const BACKEND_URL =
     window.location.hostname === "127.0.0.1"
       ? "http://localhost:5000"
-      : "http://api.tripinventor.in";
+      : "https://api.tripinventor.in";
 
   let allData = []; // Store all data for filtering
 
@@ -50,21 +50,18 @@ document.addEventListener("DOMContentLoaded", () => {
     }
     data.forEach((item) => {
       const card = `
-        <div class="blog-full d-flex justify-content-around mb-4">
-          <div class="row w-100">
+        <div class="searchCard">
             ${
               item.discount
                 ? `<div class="ribbon ribbon-top-left"><span>${item.discount}% OFF</span></div>`
                 : ""
             }
-            <div class="col-lg-5 col-md-4 col-xs-12 blog-height">
-              <div class="blog-image">
-                <a href="destinations.html?title=${encodeURIComponent(item.title)}"
-                   style="background-image: url(${item.images[0]});">
-                </a>
-              </div>
+            <div class="searchCardImg">
+              <a href="destinations.html?title=${encodeURIComponent(item.title)}">
+                <img src=${item.images[0]} alt="Searc-card-imag" />
+              </a>
             </div>
-            <div class="col-lg-7 col-md-8 col-xs-12">
+            <div class="searchCardBody mt-2">
               <div class="blog-content p-0">
                 <h4 class="mb-1">
                   <a href="destinations.html?title=${encodeURIComponent(item.title)}">${item.title}</a>
@@ -72,13 +69,12 @@ document.addEventListener("DOMContentLoaded", () => {
                 <p class="mb-2 pink">
                   <i class="fa fa-map-marker mr-1"></i> ${item.location}.
                 </p>
-                <p class="mb-2 border-t pt-2 desti_card_desc">${item.descriptions[0]}</p>
+                <p class="mb-2 border-t pt-2 desti_card_desc">${item.descriptions[0] || "No description available."}</p>
                 <div class="deal-price">
                   <p class="price mb-0">From <span>₹ ${item.price}</span>/- (${item.duration})</p>
                 </div>
               </div>
             </div>
-          </div>
         </div>`;
       searchResults.insertAdjacentHTML("beforeend", card);
     });

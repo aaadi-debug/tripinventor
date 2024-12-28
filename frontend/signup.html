@@ -22,6 +22,10 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
 
     <link rel="stylesheet" href="fonts/line-icons.css" type="text/css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+        integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 
 <body>
@@ -77,7 +81,8 @@
 
                     <div class="form-btn text-center">
                         <button type="button" id="signup-btn" class="nir-btn mb-2">SIGN UP</button>
-                        <p>Already have an Account? <a href="./login.html" class="text-decoration-underline">Login here</a></p>
+                        <p>Already have an Account? <a href="./login.html" class="text-decoration-underline">Login
+                                here</a></p>
                     </div>
                 </div>
             </div>
@@ -105,83 +110,70 @@
     </div>
 
 
+
     <script>
         // Function to load HTML content with AJAX
         function loadContent(url, elementId) {
             fetch(url)
-                .then(response => response.text())
-                .then(data => {
+                .then((response) => response.text())
+                .then((data) => {
                     document.getElementById(elementId).innerHTML = data;
                 })
-                .catch(error => console.error('Error loading content:', error));
+                .catch((error) => console.error("Error loading content:", error));
         }
 
         // Load the header and footer using AJAX
         loadContent("header.html", "header");
-        // loadContent("footer.html", "footer");
+
+        // Function to load HTML content with AJAX
+        function loadContent(url, elementId, callback) {
+            fetch(url)
+                .then((response) => response.text())
+                .then((data) => {
+                    document.getElementById(elementId).innerHTML = data;
+                    if (callback) callback(); // Trigger the callback after loading
+                })
+                .catch((error) => console.error("Error loading content:", error));
+        }
+
+        // Reinitialize bubble animation logic
+        function initializeBubbleAnimation() {
+            const footer = document.querySelector(".bubbles");
+
+            function createBubble() {
+                const bubble = document.createElement("div");
+                bubble.classList.add("individual-bubble");
+
+                // Randomize size
+                const size = Math.random() * 10 + 5; // Bubble size between 10px and 50px
+                bubble.style.width = `${size}px`;
+                bubble.style.height = `${size}px`;
+
+                // Randomize horizontal position
+                bubble.style.left = `${Math.random() * 100}%`;
+
+                // Randomize animation duration
+                bubble.style.animationDuration = `${Math.random() * 5 + 5}s`; // Between 5s and 10s
+
+                // Randomize animation delay
+                bubble.style.animationDelay = `${Math.random()}s`;
+
+                footer.appendChild(bubble);
+
+                // Remove bubble after animation ends
+                bubble.addEventListener("animationend", () => {
+                    bubble.remove();
+                });
+            }
+
+            // Create bubbles at intervals
+            setInterval(createBubble, 900); // Add a new bubble every 300ms
+        }
+
+        // Load the footer and initialize animation
+        loadContent("footer.html", "footer", initializeBubbleAnimation);
     </script>
- <script>
-    // Function to load HTML content with AJAX
-    function loadContent(url, elementId) {
-      fetch(url)
-        .then((response) => response.text())
-        .then((data) => {
-          document.getElementById(elementId).innerHTML = data;
-        })
-        .catch((error) => console.error("Error loading content:", error));
-    }
-
-    // Load the header and footer using AJAX
-    loadContent("header.html", "header");
     
-    // Function to load HTML content with AJAX
-    function loadContent(url, elementId, callback) {
-      fetch(url)
-        .then((response) => response.text())
-        .then((data) => {
-          document.getElementById(elementId).innerHTML = data;
-          if (callback) callback(); // Trigger the callback after loading
-        })
-        .catch((error) => console.error("Error loading content:", error));
-    }
-
-    // Reinitialize bubble animation logic
-    function initializeBubbleAnimation() {
-      const footer = document.querySelector(".bubbles");
-
-      function createBubble() {
-        const bubble = document.createElement("div");
-        bubble.classList.add("individual-bubble");
-
-        // Randomize size
-        const size = Math.random() * 10 + 5; // Bubble size between 10px and 50px
-        bubble.style.width = `${size}px`;
-        bubble.style.height = `${size}px`;
-
-        // Randomize horizontal position
-        bubble.style.left = `${Math.random() * 100}%`;
-
-        // Randomize animation duration
-        bubble.style.animationDuration = `${Math.random() * 5 + 5}s`; // Between 5s and 10s
-
-        // Randomize animation delay
-        bubble.style.animationDelay = `${Math.random() }s`;
-
-        footer.appendChild(bubble);
-
-        // Remove bubble after animation ends
-        bubble.addEventListener("animationend", () => {
-          bubble.remove();
-        });
-      }
-
-      // Create bubbles at intervals
-      setInterval(createBubble, 900); // Add a new bubble every 300ms
-    }
-
-    // Load the footer and initialize animation
-    loadContent("footer.html", "footer", initializeBubbleAnimation);
-  </script>
     <script src="./search.js"></script>
     <script src="./signup.js"></script>
     <script src="./js/global.js"></script>
