@@ -2747,7 +2747,144 @@ input#submit:hover {
 }
 
 
+/* -------------------- sidebar -------------------------/ */
 
+.navPhoneView #open-sidebar {
+  margin: 20px;
+  display: none;
+  position: fixed;
+  top: -6px;
+  background: none;
+  outline: none;
+}
+
+@media(max-width: 1024px) {
+  .navbar_below_wrapper {
+    display: none;
+  }
+  .navPhoneView #open-sidebar {
+    margin: 20px;
+    display: block;
+  }
+}
+
+
+
+.navPhoneView .sidebar {
+  position: fixed;
+  top: 0;
+  left: -300px;
+  width: 300px;
+  height: 100%;
+  background: #fff;
+  color: white;
+  transition: left 0.3s ease-in-out;
+  overflow-y: auto;
+  z-index: 1001;
+}
+
+.navPhoneView .sidebar.open {
+  left: 0;
+}
+
+.navPhoneView .sidebar-logo img {
+  width: 200px;
+  margin: 10px;
+}
+
+.navPhoneView .close-sidebar-btn {
+  background: none;
+  border: none;
+  outline: none;
+  color: #333;
+  font-size: 20px;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+.navPhoneView .overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease-in-out;
+  z-index: 1000;
+}
+
+.navPhoneView .overlay.visible {
+  opacity: 1;
+  visibility: visible;
+}
+
+.navPhoneView .accordion {
+  padding: 10px;
+  box-shadow: none;
+  border: none;
+  margin: 0;
+}
+
+.navPhoneView .accordion-item {
+  margin-bottom: 10px;
+  border-bottom: 1px solid #444;
+}
+
+.navPhoneView .accordion-header {
+  /* background: var(--new-secondary); */
+  color: #333;
+  border: none;
+  outline: none;
+  padding: 15px;
+  width: 100%;
+  text-align: left;
+  font-size: 16px;
+  transition: background 0.3s;
+}
+
+.navPhoneView .accordion-header:hover {
+  background: var(--new-secondary);
+  color: white;
+}
+
+.navPhoneView .accordion-content {
+  max-height: auto !important;
+  /* overflow: hidden; */
+  /* background: #555; */
+  color: #333;
+  padding: 5px;
+  transition: max-height 0.3s ease, padding 0.3s ease;
+}
+.navPhoneView .accordion-content h4 {
+  /* border: 1px solid red; */
+  margin-bottom: 0 !important;
+  color: var(--new-secondary);
+}
+.navPhoneView .accordion-content ol li {
+  /* border: 1px solid red; */
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.navPhoneView .accordion-content ol li a {
+  /* border: 1px solid red; */
+  width: 100% !important;
+  display: inline-block;
+  padding: 6px 10px;
+  /* margin: 2px 0; */
+}
+.navPhoneView .accordion-content ol li a:hover {
+  background-color: var(--new-secondary);
+  color: white;
+}
+
+.navPhoneView .accordion-content.open {
+  max-height: 100px;
+  /* padding: 10px 15px; */
+}
 
 
 /* ========================================= */
