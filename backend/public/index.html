@@ -132,13 +132,34 @@
 
 
             <h5>Itinerary</h5>
+            <div class="row" id="itinerary-container">
+              <!-- First itinerary block -->
+              <div class="itinerary-block">
+                <div class="col-12 itinerary-day-label">Day 1</div>
+                <div class="col-12">
+                  <input type="text" class="form-control itinerary-title"
+                    placeholder="Enter Title (e.g., Itinerary Title)" />
+                </div>
+                <div class="col-12">
+                  <textarea class="form-control itinerary-content"
+                    placeholder="Enter activities separated by commas (e.g., Activity 1, Activity 2)"></textarea>
+                </div>
+              </div>
+            </div>
+            <div class="col-12 mt-3">
+              <button type="button" id="add-itinerary" class="btn btn-primary">Add More</button>
+            </div>
+
+
+
+            <!-- <h5>Itinerary</h5>
             <div class="row">
               <div class="col-12">
                 <textarea id="destination-itinerary"
                   placeholder="Enter Itinerary JSON (e.g. [{'day': 'Day 1', 'title': 'Itinerary title','content': ['Itinerary content 1', 'Itinerary content 2']},])"></textarea>
               </div>
 
-            </div>
+            </div> -->
             <div class="row mt-3">
               <h5>Select Category (if you want to add this destination in any category):</h5>
               <!-- <div class="col-lg-4">
@@ -348,7 +369,7 @@
         <h2>Manage Blogs</h2>
         <button id="add-blog" class="btn mb-2">Add Blog</button>
 
-        <div id="add-blog-modal"  class="p-3" style="display: none">
+        <div id="add-blog-modal" class="p-3" style="display: none">
           <h3 class="text-decoration-underline text-uppercase">
             Add Blog
           </h3>

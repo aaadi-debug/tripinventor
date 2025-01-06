@@ -106,80 +106,183 @@ async function deleteDestination(destinationId) {
   }
 }
 
+// async function openEditModal(destinationId) {
+//   try {
+//     console.log("Hi");
+//     // Fetch destination details
+//     console.log("Fetching destination with ID:", destinationId);
+
+//     const response = await axios.get(
+//       `http://localhost:5000/api/destinations/${destinationId}`
+//     );
+//     const destination = response.data;
+//     console.log("Hi2");
+
+//     // Populate form fields
+//     document.getElementById("destination-id").value = destinationId;
+//     document.getElementById("destination-title").value = destination.title;
+//     document.getElementById("destination-location").value =
+//       destination.location;
+//     document.getElementById("destination-discount").value =
+//       destination.discount || "";
+//     document.getElementById("destination-duration").value =
+//       destination.duration;
+//     document.getElementById("destination-price").value = destination.price;
+//     document.getElementById("destination-pickupLocation").value =
+//       destination.pickupLocation;
+//     document.getElementById("destination-images").value =
+//       destination.images.join(", ");
+//     document.getElementById("details-languages").value =
+//       destination.languages.join(", ");
+//     document.getElementById("destination-descriptions").value =
+//       destination.descriptions.join(", ");
+//     document.getElementById("additional-includes").value =
+//       destination.additionalInfo.includes.join(", ");
+//     document.getElementById("additional-excludes").value =
+//       destination.additionalInfo.excludes.join(", ");
+//     // document.getElementById("destination-reviews").value = JSON.stringify(
+//     //   destination.reviews
+//     // );
+
+//     // **Populate Itinerary**
+//     // document.getElementById("destination-itinerary").value = JSON.stringify(
+//     //   destination.itinerary,
+//     //   null,
+//     //   2 // Formatting for better readability
+//     // );
+//     // Populate Itinerary (if applicable)
+//     document.getElementById("itinerary-container").innerHTML = "";
+//     const itineraryField = document.getElementById("destination-itinerary");
+//     if (Array.isArray(destination.itinerary)) {
+//       itineraryField.value = JSON.stringify(destination.itinerary, null, 2); // Pretty-print JSON
+//     } else {
+//       itineraryField.value = "[]"; // Fallback for no itinerary
+//     }
+
+
+//     // Pre-fill radio buttons
+//     // document.querySelector(`input[name="theme-tours"][value="${destination.themeTours}"]`).checked = true;
+//     document.querySelector(`input[name="wellness-and-spa-tours"][value="${destination.wellnessSpa}"]`).checked = true;
+//     document.querySelector(`input[name="beach-tours"][value="${destination.wellnessSpa}"]`).checked = true;
+//     document.querySelector(`input[name="wildlife-tours"][value="${destination.wellnessSpa}"]`).checked = true;
+//     document.querySelector(`input[name="culture-tours"][value="${destination.wellnessSpa}"]`).checked = true;
+//     document.querySelector(`input[name="trains-tours"][value="${destination.wellnessSpa}"]`).checked = true;
+//     document.querySelector(`input[name="terkking-tours"][value="${destination.wellnessSpa}"]`).checked = true;
+//     document.querySelector(`input[name="spiritual-tours"][value="${destination.wellnessSpa}"]`).checked = true;
+//     document.querySelector(`input[name="festival-tours"][value="${destination.wellnessSpa}"]`).checked = true;
+//     document.querySelector(`input[name="wonders-tours"][value="${destination.wellnessSpa}"]`).checked = true;
+//     document.querySelector(`input[name="unesco-tours"][value="${destination.wellnessSpa}"]`).checked = true;
+
+//     document.querySelector(`input[name="domestic-tours"][value="${destination.domesticTours}"]`).checked = true;
+//     document.querySelector(`input[name="international-tours"][value="${destination.internationalTours}"]`).checked = true;
+
+//     // Show the modal
+//     document.getElementById("add-destination-modal").style.display = "block";
+//   } catch (error) {
+//     // console.error("Error fetching destination:", error.message);
+//     // alert("Failed to fetch destination data.");
+
+//     console.error("Error fetching destination:", error);
+//     console.error("Response data:", error.response?.data);
+//   }
+// }
+
+// Show the Add Destination Modal
+
 async function openEditModal(destinationId) {
   try {
-    console.log("Hi");
-    // Fetch destination details
-    console.log("Fetching destination with ID:", destinationId);
+    console.log("Opening edit modal for destination ID:", destinationId);
 
+    // Fetch destination details
     const response = await axios.get(
       `http://localhost:5000/api/destinations/${destinationId}`
     );
     const destination = response.data;
-    console.log("Hi2");
+
+    console.log("Destination details fetched successfully:", destination);
 
     // Populate form fields
     document.getElementById("destination-id").value = destinationId;
     document.getElementById("destination-title").value = destination.title;
-    document.getElementById("destination-location").value =
-      destination.location;
-    document.getElementById("destination-discount").value =
-      destination.discount || "";
-    document.getElementById("destination-duration").value =
-      destination.duration;
+    document.getElementById("destination-location").value = destination.location;
+    document.getElementById("destination-discount").value = destination.discount || "";
+    document.getElementById("destination-duration").value = destination.duration;
     document.getElementById("destination-price").value = destination.price;
-    document.getElementById("destination-pickupLocation").value =
-      destination.pickupLocation;
-    document.getElementById("destination-images").value =
-      destination.images.join(", ");
-    document.getElementById("details-languages").value =
-      destination.languages.join(", ");
-    document.getElementById("destination-descriptions").value =
-      destination.descriptions.join(", ");
-    document.getElementById("additional-includes").value =
-      destination.additionalInfo.includes.join(", ");
-    document.getElementById("additional-excludes").value =
-      destination.additionalInfo.excludes.join(", ");
-    // document.getElementById("destination-reviews").value = JSON.stringify(
-    //   destination.reviews
-    // );
+    document.getElementById("destination-pickupLocation").value = destination.pickupLocation;
+    document.getElementById("destination-images").value = destination.images.join(", ");
+    document.getElementById("details-languages").value = destination.languages.join(", ");
+    document.getElementById("destination-descriptions").value = destination.descriptions.join(", ");
+    document.getElementById("additional-includes").value = destination.additionalInfo.includes.join(", ");
+    document.getElementById("additional-excludes").value = destination.additionalInfo.excludes.join(", ");
 
-    // **Populate Itinerary**
-    document.getElementById("destination-itinerary").value = JSON.stringify(
-      destination.itinerary,
-      null,
-      2 // Formatting for better readability
-    );
+    // Populate Itinerary (if applicable)
+    const itineraryContainer = document.getElementById("itinerary-container");
+    itineraryContainer.innerHTML = ""; // Clear existing itinerary blocks
+    if (Array.isArray(destination.itinerary)) {
+      destination.itinerary.forEach((day, index) => {
+        const itineraryBlock = document.createElement("div");
+        itineraryBlock.className = "itinerary-block mt-3";
 
+        itineraryBlock.innerHTML = `
+          <div class="col-12">
+            <input type="text" class="form-control itinerary-title" value="${day.title}" placeholder="Enter Title (e.g., Itinerary Title)" />
+          </div>
+          <div class="col-12">
+            <textarea class="form-control itinerary-content" placeholder="Enter activities separated by commas">${day.content.join(", ")}</textarea>
+          </div>
+          <div class="col-12 mt-2">
+            <button type="button" class="btn btn-danger remove-itinerary">Remove</button>
+          </div>
+        `;
 
-    // Pre-fill radio buttons
-    // document.querySelector(`input[name="theme-tours"][value="${destination.themeTours}"]`).checked = true;
-    document.querySelector(`input[name="wellness-and-spa-tours"][value="${destination.wellnessSpa}"]`).checked = true;
-    document.querySelector(`input[name="beach-tours"][value="${destination.wellnessSpa}"]`).checked = true;
-    document.querySelector(`input[name="wildlife-tours"][value="${destination.wellnessSpa}"]`).checked = true;
-    document.querySelector(`input[name="culture-tours"][value="${destination.wellnessSpa}"]`).checked = true;
-    document.querySelector(`input[name="trains-tours"][value="${destination.wellnessSpa}"]`).checked = true;
-    document.querySelector(`input[name="terkking-tours"][value="${destination.wellnessSpa}"]`).checked = true;
-    document.querySelector(`input[name="spiritual-tours"][value="${destination.wellnessSpa}"]`).checked = true;
-    document.querySelector(`input[name="festival-tours"][value="${destination.wellnessSpa}"]`).checked = true;
-    document.querySelector(`input[name="wonders-tours"][value="${destination.wellnessSpa}"]`).checked = true;
-    document.querySelector(`input[name="unesco-tours"][value="${destination.wellnessSpa}"]`).checked = true;
+        // Add event listener for removing the itinerary block
+        itineraryBlock.querySelector(".remove-itinerary").addEventListener("click", () => {
+          itineraryContainer.removeChild(itineraryBlock);
+          updateDayNumbers(); // Update day numbers dynamically
+        });
 
-    document.querySelector(`input[name="domestic-tours"][value="${destination.domesticTours}"]`).checked = true;
-    document.querySelector(`input[name="international-tours"][value="${destination.internationalTours}"]`).checked = true;
+        itineraryContainer.appendChild(itineraryBlock);
+      });
+    }
+
+    // Pre-fill radio buttons for themes and tours
+    const radioFields = [
+      { name: "wellness-and-spa-tours", value: destination.wellnessSpa },
+      { name: "beach-tours", value: destination.beachTheme },
+      { name: "wildlife-tours", value: destination.wildlifeTheme },
+      { name: "culture-tours", value: destination.cultureTheme },
+      { name: "trains-tours", value: destination.trainsTheme },
+      { name: "terkking-tours", value: destination.trekkingTheme },
+      { name: "spiritual-tours", value: destination.spiritualTheme },
+      { name: "festival-tours", value: destination.festivalTheme },
+      { name: "wonders-tours", value: destination.wonderTheme },
+      { name: "unesco-tours", value: destination.unescoTheme },
+      { name: "domestic-tours", value: destination.domesticTours },
+      { name: "international-tours", value: destination.internationalTours },
+    ];
+
+    radioFields.forEach(({ name, value }) => {
+      const radio = document.querySelector(`input[name="${name}"][value="${value}"]`);
+      if (radio) {
+        radio.checked = true;
+      }
+    });
 
     // Show the modal
     document.getElementById("add-destination-modal").style.display = "block";
   } catch (error) {
-    // console.error("Error fetching destination:", error.message);
-    // alert("Failed to fetch destination data.");
-
     console.error("Error fetching destination:", error);
-    console.error("Response data:", error.response?.data);
+
+    if (error.response) {
+      console.error("Response data:", error.response.data);
+      alert(`Failed to fetch destination data: ${error.response.data.message || "Unknown error"}`);
+    } else {
+      alert("An unexpected error occurred while fetching destination data.");
+    }
   }
 }
 
-// Show the Add Destination Modal
+
 document.getElementById("add-destination").addEventListener("click", () => {
   document.getElementById("add-destination-modal").style.display = "block";
 });
@@ -242,24 +345,26 @@ document
       internationalTours: document.querySelector(
         'input[name="international-tours"]:checked'
       ).value,
+      itinerary: getItineraryData(), // Collect the itinerary dynamically
 
     };
 
     // Itinerary validation logic
-    let itineraryInput = document
-      .getElementById("destination-itinerary")
-      .value.trim();
-    let itineraryData;
+    // let itineraryInput = document
+    //   .getElementById("destination-itinerary")
+    //   .value.trim();
+    // let itineraryData;
 
-    try {
-      itineraryData = itineraryInput ? JSON.parse(itineraryInput) : [];
-    } catch (err) {
-      console.error("Invalid JSON in itinerary input:", err);
-      alert("The itinerary field contains invalid JSON. Please correct it.");
-      return; // Stop form submission if the input is invalid
-    }
 
-    formData.itinerary = itineraryData; // Add validated itinerary to formData
+    // try {
+    //   itineraryData = itineraryInput ? JSON.parse(itineraryInput) : [];
+    // } catch (err) {
+    //   console.error("Invalid JSON in itinerary input:", err);
+    //   alert("The itinerary field contains invalid JSON. Please correct it.");
+    //   return; // Stop form submission if the input is invalid
+    // }
+
+    // formData.itinerary = itineraryData; // Add validated itinerary to formData
 
     // Add the PDF file if uploaded
     // const pdfFile = document.getElementById("destination-pdf").files[0];
@@ -307,45 +412,104 @@ document
     }
   });
 
-function generateItinerary() {
-  const input = document.getElementById("destination-itinerary").value;
-  let itinerary;
+function getItineraryData() {
+  const itineraryBlocks = document.querySelectorAll(".itinerary-block");
+  const itinerary = [];
 
-  try {
-    // Parse the JSON input
-    itinerary = JSON.parse(input);
+  itineraryBlocks.forEach((block, index) => {
+    const day = `Day ${index + 1}`; // Auto-assign day
+    const title = block.querySelector(".itinerary-title").value.trim();
+    const content = block
+      .querySelector(".itinerary-content")
+      .value.split(",")
+      .map((item) => item.trim())
+      .filter((item) => item); // Remove empty activities
 
-    if (!Array.isArray(itinerary)) {
-      throw new Error("Itinerary must be an array");
+    if (title && content.length) {
+      itinerary.push({ day, title, content });
     }
-  } catch (error) {
-    alert("Invalid JSON: " + error.message);
-    return;
-  }
+  });
 
-  // Clear and render itinerary
+  return itinerary;
+}
+
+
+
+// Function to add a new itinerary block
+document.getElementById("add-itinerary").addEventListener("click", () => {
   const container = document.getElementById("itinerary-container");
-  container.innerHTML = "";
 
-  itinerary.forEach((day) => {
-    const dayBlock = document.createElement("div");
-    dayBlock.className = "itinerary-day";
+  const itineraryBlock = document.createElement("div");
+  itineraryBlock.className = "itinerary-block mt-3";
 
-    const dayTitle = document.createElement("h6");
-    dayTitle.textContent = `${day.day}: ${day.title}`;
-    dayBlock.appendChild(dayTitle);
+  itineraryBlock.innerHTML = `
+  <div class="col-12 itinerary-day-label">Day X</div>
+  <div class="col-12">
+    <input type="text" class="form-control itinerary-title" placeholder="Enter Title (e.g., Itinerary Title)" />
+  </div>
+  <div class="col-12">
+    <textarea
+      class="form-control itinerary-content"
+      placeholder="Enter activities separated by commas (e.g., Activity 1, Activity 2)"
+    ></textarea>
+  </div>
+  <div class="col-12 mt-2">
+    <button type="button" class="btn btn-danger remove-itinerary">Remove</button>
+  </div>
+`;
 
-    const activityList = document.createElement("ul");
-    day.content.forEach((activity) => {
-      const listItem = document.createElement("li");
-      listItem.textContent = activity;
-      activityList.appendChild(listItem);
-    });
 
-    dayBlock.appendChild(activityList);
-    container.appendChild(dayBlock);
+  container.appendChild(itineraryBlock);
+
+  // Add event listener to remove the block
+  itineraryBlock.querySelector(".remove-itinerary").addEventListener("click", () => {
+    container.removeChild(itineraryBlock);
+    updateDayNumbers(); // Recalculate days when an itinerary is removed
+  });
+
+  updateDayNumbers(); // Recalculate days after adding a new block
+});
+
+// Function to collect itinerary data
+function getItineraryData() {
+  const itineraryBlocks = document.querySelectorAll(".itinerary-block");
+  const itinerary = [];
+
+  itineraryBlocks.forEach((block, index) => {
+    const day = `Day ${index + 1}`; // Automatically assign day number
+    const title = block.querySelector(".itinerary-title").value.trim();
+    const content = block
+      .querySelector(".itinerary-content")
+      .value.split(",")
+      .map((item) => item.trim());
+
+    if (title && content.length) {
+      itinerary.push({ day, title, content });
+    }
+  });
+
+  return itinerary;
+}
+
+// Function to update day numbers dynamically (optional if needed in UI)
+function updateDayNumbers() {
+  const itineraryBlocks = document.querySelectorAll(".itinerary-block");
+
+  itineraryBlocks.forEach((block, index) => {
+    const dayLabel = block.querySelector(".itinerary-day-label");
+
+    if (dayLabel) {
+      dayLabel.textContent = `Day ${index + 1}`;
+    }
   });
 }
+
+
+
+
+
+
+
 
 // fetching destinations by categories
 async function fetchDestinationsByCategory(category) {
