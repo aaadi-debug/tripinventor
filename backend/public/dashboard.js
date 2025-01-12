@@ -292,125 +292,125 @@ function closeAddDestinationModal() {
   document.getElementById("add-destination-modal").style.display = "none";
 }
 
-document
-  .getElementById("add-destination-form")
-  .addEventListener("submit", async (e) => {
-    e.preventDefault();
+  document
+    .getElementById("add-destination-form")
+    .addEventListener("submit", async (e) => {
+      e.preventDefault();
 
-    const destinationId = document.getElementById("destination-id").value; // Check if editing
-    const formData = {
-      title: document.getElementById("destination-title").value,
-      location: document.getElementById("destination-location").value,
-      discount: document.getElementById("destination-discount").value || null,
-      duration: document.getElementById("destination-duration").value,
-      price: document.getElementById("destination-price").value,
-      pickupLocation: document.getElementById("destination-pickupLocation")
-        .value,
-      images: document
-        .getElementById("destination-images")
-        .value.split(",")
-        .map((img) => img.trim()),
-      languages: document
-        .getElementById("details-languages")
-        .value.split(",")
-        .map((lang) => lang.trim()),
-      descriptions: document
-        .getElementById("destination-descriptions")
-        .value.split(",")
-        .map((desc) => desc.trim()),
-      additionalInfo: {
-        includes: document
-          .getElementById("additional-includes")
+      const destinationId = document.getElementById("destination-id").value; // Check if editing
+      const formData = {
+        title: document.getElementById("destination-title").value,
+        location: document.getElementById("destination-location").value,
+        discount: document.getElementById("destination-discount").value || null,
+        duration: document.getElementById("destination-duration").value,
+        price: document.getElementById("destination-price").value,
+        pickupLocation: document.getElementById("destination-pickupLocation")
+          .value,
+        images: document
+          .getElementById("destination-images")
           .value.split(",")
-          .map((inc) => inc.trim()),
-        excludes: document
-          .getElementById("additional-excludes")
+          .map((img) => img.trim()),
+        languages: document
+          .getElementById("details-languages")
           .value.split(",")
-          .map((exc) => exc.trim()),
-      },
-      // themeTours: document.querySelector('input[name="theme-tours"]:checked').value,
-      wellnessSpa: document.querySelector('input[name="wellness-and-spa-tours"]:checked').value,
-      beachTheme: document.querySelector('input[name="beach-tours"]:checked').value,
-      wildlifeTheme: document.querySelector('input[name="wildlife-tours"]:checked').value,
-      cultureTheme: document.querySelector('input[name="culture-tours"]:checked').value,
-      trainsTheme: document.querySelector('input[name="trains-tours"]:checked').value,
-      trekkingTheme: document.querySelector('input[name="terkking-tours"]:checked').value,
-      spiritualTheme: document.querySelector('input[name="spiritual-tours"]:checked').value,
-      festivalTheme: document.querySelector('input[name="festival-tours"]:checked').value,
-      wonderTheme: document.querySelector('input[name="wonders-tours"]:checked').value,
-      unescoTheme: document.querySelector('input[name="unesco-tours"]:checked').value,
+          .map((lang) => lang.trim()),
+        descriptions: document
+          .getElementById("destination-descriptions")
+          .value.split(",")
+          .map((desc) => desc.trim()),
+        additionalInfo: {
+          includes: document
+            .getElementById("additional-includes")
+            .value.split(",")
+            .map((inc) => inc.trim()),
+          excludes: document
+            .getElementById("additional-excludes")
+            .value.split(",")
+            .map((exc) => exc.trim()),
+        },
+        // themeTours: document.querySelector('input[name="theme-tours"]:checked').value,
+        wellnessSpa: document.querySelector('input[name="wellness-and-spa-tours"]:checked').value,
+        beachTheme: document.querySelector('input[name="beach-tours"]:checked').value,
+        wildlifeTheme: document.querySelector('input[name="wildlife-tours"]:checked').value,
+        cultureTheme: document.querySelector('input[name="culture-tours"]:checked').value,
+        trainsTheme: document.querySelector('input[name="trains-tours"]:checked').value,
+        trekkingTheme: document.querySelector('input[name="terkking-tours"]:checked').value,
+        spiritualTheme: document.querySelector('input[name="spiritual-tours"]:checked').value,
+        festivalTheme: document.querySelector('input[name="festival-tours"]:checked').value,
+        wonderTheme: document.querySelector('input[name="wonders-tours"]:checked').value,
+        unescoTheme: document.querySelector('input[name="unesco-tours"]:checked').value,
 
-      domesticTours: document.querySelector('input[name="domestic-tours"]:checked')
-        .value,
-      internationalTours: document.querySelector(
-        'input[name="international-tours"]:checked'
-      ).value,
-      itinerary: getItineraryData(), // Collect the itinerary dynamically
+        domesticTours: document.querySelector('input[name="domestic-tours"]:checked')
+          .value,
+        internationalTours: document.querySelector(
+          'input[name="international-tours"]:checked'
+        ).value,
+        itinerary: getItineraryData(), // Collect the itinerary dynamically
 
-    };
+      };
 
-    // Itinerary validation logic
-    // let itineraryInput = document
-    //   .getElementById("destination-itinerary")
-    //   .value.trim();
-    // let itineraryData;
+      // Itinerary validation logic
+      // let itineraryInput = document
+      //   .getElementById("destination-itinerary")
+      //   .value.trim();
+      // let itineraryData;
 
 
-    // try {
-    //   itineraryData = itineraryInput ? JSON.parse(itineraryInput) : [];
-    // } catch (err) {
-    //   console.error("Invalid JSON in itinerary input:", err);
-    //   alert("The itinerary field contains invalid JSON. Please correct it.");
-    //   return; // Stop form submission if the input is invalid
-    // }
+      // try {
+      //   itineraryData = itineraryInput ? JSON.parse(itineraryInput) : [];
+      // } catch (err) {
+      //   console.error("Invalid JSON in itinerary input:", err);
+      //   alert("The itinerary field contains invalid JSON. Please correct it.");
+      //   return; // Stop form submission if the input is invalid
+      // }
 
-    // formData.itinerary = itineraryData; // Add validated itinerary to formData
+      // formData.itinerary = itineraryData; // Add validated itinerary to formData
 
-    // Add the PDF file if uploaded
-    // const pdfFile = document.getElementById("destination-pdf").files[0];
-    // if (pdfFile) {
-    //   formData.append("pdf", pdfFile);
-    // }
+      // Add the PDF file if uploaded
+      // const pdfFile = document.getElementById("destination-pdf").files[0];
+      // if (pdfFile) {
+      //   formData.append("pdf", pdfFile);
+      // }
 
-    try {
-      let response;
-      if (destinationId) {
-        // Update existing destination
-        response = await fetch(
-          `http://localhost:5000/api/destinations/${destinationId}`,
-          {
-            method: "PUT",
+      try {
+        let response;
+        if (destinationId) {
+          // Update existing destination
+          response = await fetch(
+            `http://localhost:5000/api/destinations/${destinationId}`,
+            {
+              method: "PUT",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify(formData),
+            }
+          );
+        } else {
+          // Add new destination
+          response = await fetch("http://localhost:5000/api/destinations", {
+            method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(formData),
-          }
-        );
-      } else {
-        // Add new destination
-        response = await fetch("http://localhost:5000/api/destinations", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(formData),
-        });
-      }
+          });
+        }
 
-      if (response.ok) {
-        alert(
-          destinationId
-            ? "Destination updated successfully!"
-            : "Destination added successfully!"
-        );
-        closeAddDestinationModal();
-        fetchDestinations(); // Refresh table
-      } else {
-        const error = await response.json();
-        console.error("Error:", error.message);
-        alert("Failed to save destination.");
+        if (response.ok) {
+          alert(
+            destinationId
+              ? "Destination updated successfully!"
+              : "Destination added successfully!"
+          );
+          closeAddDestinationModal();
+          fetchDestinations(); // Refresh table
+        } else {
+          const error = await response.json();
+          console.error("Error:", error.message);
+          alert("Failed to save destination.");
+        }
+      } catch (err) {
+        console.error("Error:", err);
+        alert("An unexpected error occurred.");
       }
-    } catch (err) {
-      console.error("Error:", err);
-      alert("An unexpected error occurred.");
-    }
-  });
+    });
 
 function getItineraryData() {
   const itineraryBlocks = document.querySelectorAll(".itinerary-block");
