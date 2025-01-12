@@ -18,7 +18,7 @@ router.get("/:id", async (req, res) => {
 // Fetch destinations with dynamic filtering or by title
 router.get("/", async (req, res) => {
   try {
-    const { title, themeTours, wellnessSpa, beachTheme, wildlifeTheme, cultureTheme, trainsTheme, trekkingTheme,spiritualTheme,festivalTheme, wonderTheme, unescoTheme, domesticTours, internationalTours, location, price } = req.query;
+    const { title, themeTours, wellnessSpa, beachTheme, wildlifeTheme, cultureTheme, trainsTheme, trekkingTheme,spiritualTheme,festivalTheme, wonderTheme, unescoTheme, domesticTours, internationalTours, domesticCategory, internationalCategory, location, price } = req.query;
 
     // If `title` is provided, fetch a single destination by title
     if (title) {
@@ -47,6 +47,10 @@ router.get("/", async (req, res) => {
     if (internationalTours === "yes") query.internationalTours = "yes";
     if (location) query.location = { $regex: location, $options: "i" }; // Case-insensitive location search
     if (price) query.price = { $lte: parseInt(price) }; // Price less than or equal to the specified value
+    if (domesticCategory) query.domesticCategory = { $regex: domesticCategory, $options: "i" }; // Domestic category filter
+    if (internationalCategory) query.internationalCategory = { $regex: internationalCategory, $options: "i" }; // International category filter
+
+    // Fetch filtered destinations
 
     // Fetch filtered destinations
     const destinations = await Destination.find(query);

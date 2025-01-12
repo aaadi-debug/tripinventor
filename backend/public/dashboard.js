@@ -257,18 +257,89 @@ async function openEditModal(destinationId) {
       { name: "festival-tours", value: destination.festivalTheme },
       { name: "wonders-tours", value: destination.wonderTheme },
       { name: "unesco-tours", value: destination.unescoTheme },
-      { name: "domestic-tours", value: destination.domesticTours },
-      { name: "international-tours", value: destination.internationalTours },
+      { name: "domestic-tours", value: destination.domesticTours, dropdownId: "domestic-category", category: destination.domesticCategory },
+      { name: "international-tours", value: destination.internationalTours, dropdownId: "international-category", category: destination.internationalCategory },
     ];
 
-    radioFields.forEach(({ name, value }) => {
-      const radio = document.querySelector(`input[name="${name}"][value="${value}"]`);
-      if (radio) {
-        radio.checked = true;
-      }
-    });
+    // radioFields.forEach(({ name, value, dropdownId, category }) => {
+    //   const radioYes = document.querySelector(`input[name="${name}"][value="yes"]`);
+    //   const radioNo = document.querySelector(`input[name="${name}"][value="no"]`);
+    //   const dropdown = document.getElementById(dropdownId);
+
+    //   if (!dropdown) {
+    //     console.error(`Dropdown with ID "${dropdownId}" not found in the DOM.`);
+    //     return; // Skip this iteration if the dropdown is not found
+    //   }
+
+    //   // Set radio button selection
+    //   if (value === "yes") {
+    //     radioYes.checked = true;
+    //     dropdown.disabled = false;
+    //     dropdown.value = category || ""; // Set the selected category
+    //   } else {
+    //     radioNo.checked = true;
+    //     dropdown.disabled = true;
+    //     dropdown.value = ""; // Clear the dropdown if "No" is selected
+    //   }
+
+    //   // Add event listener to toggle the dropdown
+    //   radioYes.addEventListener("change", () => {
+    //     dropdown.disabled = false;
+    //   });
+    //   radioNo.addEventListener("change", () => {
+    //     dropdown.disabled = true;
+    //     dropdown.value = ""; // Clear the dropdown value when disabled
+    //   });
+    // });
+
 
     // Show the modal
+    
+    radioFields.forEach(({ name, value, dropdownId, category }) => {
+      const radioYes = document.querySelector(`input[name="${name}"][value="yes"]`);
+      const radioNo = document.querySelector(`input[name="${name}"][value="no"]`);
+    
+      if (radioYes && radioNo) {
+        // Set radio button selection
+        if (value === "yes") {
+          radioYes.checked = true;
+        } else if (value === "no") {
+          radioNo.checked = true;
+        }
+      }
+    
+      // Handle dropdown if it exists
+      if (dropdownId) {
+        const dropdown = document.getElementById(dropdownId);
+    
+        if (dropdown) {
+          if (value === "yes") {
+            dropdown.disabled = false;
+            dropdown.value = category || ""; // Pre-fill category if available
+          } else {
+            dropdown.disabled = true;
+            dropdown.value = ""; // Clear dropdown value
+          }
+    
+          // Add event listeners for toggling dropdown
+          if (radioYes) {
+            radioYes.addEventListener("change", () => {
+              dropdown.disabled = false;
+            });
+          }
+          if (radioNo) {
+            radioNo.addEventListener("change", () => {
+              dropdown.disabled = true;
+              dropdown.value = ""; // Clear dropdown value when disabled
+            });
+          }
+        } else {
+          console.error(`Dropdown with ID "${dropdownId}" not found in the DOM.`);
+        }
+      }
+    });
+    
+    
     document.getElementById("add-destination-modal").style.display = "block";
   } catch (error) {
     console.error("Error fetching destination:", error);
@@ -292,125 +363,127 @@ function closeAddDestinationModal() {
   document.getElementById("add-destination-modal").style.display = "none";
 }
 
-  document
-    .getElementById("add-destination-form")
-    .addEventListener("submit", async (e) => {
-      e.preventDefault();
+document
+  .getElementById("add-destination-form")
+  .addEventListener("submit", async (e) => {
+    e.preventDefault();
 
-      const destinationId = document.getElementById("destination-id").value; // Check if editing
-      const formData = {
-        title: document.getElementById("destination-title").value,
-        location: document.getElementById("destination-location").value,
-        discount: document.getElementById("destination-discount").value || null,
-        duration: document.getElementById("destination-duration").value,
-        price: document.getElementById("destination-price").value,
-        pickupLocation: document.getElementById("destination-pickupLocation")
-          .value,
-        images: document
-          .getElementById("destination-images")
+    const destinationId = document.getElementById("destination-id").value; // Check if editing
+    const formData = {
+      title: document.getElementById("destination-title").value,
+      location: document.getElementById("destination-location").value,
+      discount: document.getElementById("destination-discount").value || null,
+      duration: document.getElementById("destination-duration").value,
+      price: document.getElementById("destination-price").value,
+      pickupLocation: document.getElementById("destination-pickupLocation")
+        .value,
+      images: document
+        .getElementById("destination-images")
+        .value.split(",")
+        .map((img) => img.trim()),
+      languages: document
+        .getElementById("details-languages")
+        .value.split(",")
+        .map((lang) => lang.trim()),
+      descriptions: document
+        .getElementById("destination-descriptions")
+        .value.split(",")
+        .map((desc) => desc.trim()),
+      additionalInfo: {
+        includes: document
+          .getElementById("additional-includes")
           .value.split(",")
-          .map((img) => img.trim()),
-        languages: document
-          .getElementById("details-languages")
+          .map((inc) => inc.trim()),
+        excludes: document
+          .getElementById("additional-excludes")
           .value.split(",")
-          .map((lang) => lang.trim()),
-        descriptions: document
-          .getElementById("destination-descriptions")
-          .value.split(",")
-          .map((desc) => desc.trim()),
-        additionalInfo: {
-          includes: document
-            .getElementById("additional-includes")
-            .value.split(",")
-            .map((inc) => inc.trim()),
-          excludes: document
-            .getElementById("additional-excludes")
-            .value.split(",")
-            .map((exc) => exc.trim()),
-        },
-        // themeTours: document.querySelector('input[name="theme-tours"]:checked').value,
-        wellnessSpa: document.querySelector('input[name="wellness-and-spa-tours"]:checked').value,
-        beachTheme: document.querySelector('input[name="beach-tours"]:checked').value,
-        wildlifeTheme: document.querySelector('input[name="wildlife-tours"]:checked').value,
-        cultureTheme: document.querySelector('input[name="culture-tours"]:checked').value,
-        trainsTheme: document.querySelector('input[name="trains-tours"]:checked').value,
-        trekkingTheme: document.querySelector('input[name="terkking-tours"]:checked').value,
-        spiritualTheme: document.querySelector('input[name="spiritual-tours"]:checked').value,
-        festivalTheme: document.querySelector('input[name="festival-tours"]:checked').value,
-        wonderTheme: document.querySelector('input[name="wonders-tours"]:checked').value,
-        unescoTheme: document.querySelector('input[name="unesco-tours"]:checked').value,
+          .map((exc) => exc.trim()),
+      },
+      // themeTours: document.querySelector('input[name="theme-tours"]:checked').value,
+      wellnessSpa: document.querySelector('input[name="wellness-and-spa-tours"]:checked').value,
+      beachTheme: document.querySelector('input[name="beach-tours"]:checked').value,
+      wildlifeTheme: document.querySelector('input[name="wildlife-tours"]:checked').value,
+      cultureTheme: document.querySelector('input[name="culture-tours"]:checked').value,
+      trainsTheme: document.querySelector('input[name="trains-tours"]:checked').value,
+      trekkingTheme: document.querySelector('input[name="terkking-tours"]:checked').value,
+      spiritualTheme: document.querySelector('input[name="spiritual-tours"]:checked').value,
+      festivalTheme: document.querySelector('input[name="festival-tours"]:checked').value,
+      wonderTheme: document.querySelector('input[name="wonders-tours"]:checked').value,
+      unescoTheme: document.querySelector('input[name="unesco-tours"]:checked').value,
 
-        domesticTours: document.querySelector('input[name="domestic-tours"]:checked')
-          .value,
-        internationalTours: document.querySelector(
-          'input[name="international-tours"]:checked'
-        ).value,
-        itinerary: getItineraryData(), // Collect the itinerary dynamically
+      domesticTours: document.querySelector('input[name="domestic-tours"]:checked')
+        .value,
+      domesticCategory: document.getElementById("domestic-category").value || null, // Add domestic category
+      internationalTours: document.querySelector(
+        'input[name="international-tours"]:checked'
+      ).value,
+      internationalCategory: document.getElementById("international-category").value || null, // Add international category
+      itinerary: getItineraryData(), // Collect the itinerary dynamically
 
-      };
+    };
 
-      // Itinerary validation logic
-      // let itineraryInput = document
-      //   .getElementById("destination-itinerary")
-      //   .value.trim();
-      // let itineraryData;
+    // Itinerary validation logic
+    // let itineraryInput = document
+    //   .getElementById("destination-itinerary")
+    //   .value.trim();
+    // let itineraryData;
 
 
-      // try {
-      //   itineraryData = itineraryInput ? JSON.parse(itineraryInput) : [];
-      // } catch (err) {
-      //   console.error("Invalid JSON in itinerary input:", err);
-      //   alert("The itinerary field contains invalid JSON. Please correct it.");
-      //   return; // Stop form submission if the input is invalid
-      // }
+    // try {
+    //   itineraryData = itineraryInput ? JSON.parse(itineraryInput) : [];
+    // } catch (err) {
+    //   console.error("Invalid JSON in itinerary input:", err);
+    //   alert("The itinerary field contains invalid JSON. Please correct it.");
+    //   return; // Stop form submission if the input is invalid
+    // }
 
-      // formData.itinerary = itineraryData; // Add validated itinerary to formData
+    // formData.itinerary = itineraryData; // Add validated itinerary to formData
 
-      // Add the PDF file if uploaded
-      // const pdfFile = document.getElementById("destination-pdf").files[0];
-      // if (pdfFile) {
-      //   formData.append("pdf", pdfFile);
-      // }
+    // Add the PDF file if uploaded
+    // const pdfFile = document.getElementById("destination-pdf").files[0];
+    // if (pdfFile) {
+    //   formData.append("pdf", pdfFile);
+    // }
 
-      try {
-        let response;
-        if (destinationId) {
-          // Update existing destination
-          response = await fetch(
-            `http://localhost:5000/api/destinations/${destinationId}`,
-            {
-              method: "PUT",
-              headers: { "Content-Type": "application/json" },
-              body: JSON.stringify(formData),
-            }
-          );
-        } else {
-          // Add new destination
-          response = await fetch("http://localhost:5000/api/destinations", {
-            method: "POST",
+    try {
+      let response;
+      if (destinationId) {
+        // Update existing destination
+        response = await fetch(
+          `http://localhost:5000/api/destinations/${destinationId}`,
+          {
+            method: "PUT",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(formData),
-          });
-        }
-
-        if (response.ok) {
-          alert(
-            destinationId
-              ? "Destination updated successfully!"
-              : "Destination added successfully!"
-          );
-          closeAddDestinationModal();
-          fetchDestinations(); // Refresh table
-        } else {
-          const error = await response.json();
-          console.error("Error:", error.message);
-          alert("Failed to save destination.");
-        }
-      } catch (err) {
-        console.error("Error:", err);
-        alert("An unexpected error occurred.");
+          }
+        );
+      } else {
+        // Add new destination
+        response = await fetch("http://localhost:5000/api/destinations", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(formData),
+        });
       }
-    });
+
+      if (response.ok) {
+        alert(
+          destinationId
+            ? "Destination updated successfully!"
+            : "Destination added successfully!"
+        );
+        closeAddDestinationModal();
+        fetchDestinations(); // Refresh table
+      } else {
+        const error = await response.json();
+        console.error("Error:", error.message);
+        alert("Failed to save destination.");
+      }
+    } catch (err) {
+      console.error("Error:", err);
+      alert("An unexpected error occurred.");
+    }
+  });
 
 function getItineraryData() {
   const itineraryBlocks = document.querySelectorAll(".itinerary-block");
@@ -421,7 +494,7 @@ function getItineraryData() {
     const title = block.querySelector(".itinerary-title").value.trim();
     const content = block
       .querySelector(".itinerary-content")
-      .value.split(",")
+      .value.split("\n")
       .map((item) => item.trim())
       .filter((item) => item); // Remove empty activities
 
@@ -480,7 +553,7 @@ function getItineraryData() {
     const title = block.querySelector(".itinerary-title").value.trim();
     const content = block
       .querySelector(".itinerary-content")
-      .value.split(",")
+      .value.split("\n")
       .map((item) => item.trim());
 
     if (title && content.length) {
@@ -524,6 +597,20 @@ async function fetchDestinationsByCategory(category) {
     console.error("Error fetching destinations:", error.message);
   }
 }
+
+//enable/disable the dropdowns based on the radio button selections.
+function toggleDropdown(type) {
+  const dropdown = document.getElementById(`${type}-category`);
+  const radioYes = document.querySelector(`input[name="${type}-tours"][value="yes"]`);
+
+  if (radioYes.checked) {
+    dropdown.disabled = false; // Enable dropdown
+  } else {
+    dropdown.disabled = true; // Disable dropdown
+    dropdown.value = ""; // Reset value when disabled
+  }
+}
+
 
 // ----------------------------------------------------------------------
 // -------------------------- Blogs  ---- -------------------------------

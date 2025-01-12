@@ -138,11 +138,11 @@
                 <div class="col-12 itinerary-day-label">Day 1</div>
                 <div class="col-12">
                   <input type="text" class="form-control itinerary-title"
-                    placeholder="Enter Title (e.g., Itinerary Title)" />
+                    placeholder="Enter Title (e.g., Day Overview)" />
                 </div>
                 <div class="col-12">
                   <textarea class="form-control itinerary-content"
-                    placeholder="Enter activities separated by commas (e.g., Activity 1, Activity 2)"></textarea>
+                    placeholder="Enter activities (use new lines for each paragraph)"></textarea>
                 </div>
               </div>
             </div>
@@ -160,7 +160,7 @@
               </div>
 
             </div> -->
-            <div class="row mt-3">
+            <!-- <div class="row mt-3">
               <h5>Select Category (if you want to add this destination in any category):</h5>
               <div class="col-lg-4">
                 <label>Domestic Tours:</label>
@@ -170,14 +170,7 @@
                 <label>
                   <input type="radio" name="domestic-tours" value="no" required /> No
                 </label>
-                <select id="domestic-category" class="form-select mt-2" disabled>
-                  <option value="">-- Select Domestic Category --</option>
-                  <option value="Hill Station">Hill Station</option>
-                  <option value="Heritage">Heritage</option>
-                  <option value="Adventure">Adventure</option>
-                  <option value="Wildlife">Wildlife</option>
-                  <!-- Add more options as needed -->
-                </select>
+                
               </div>
               <div class="col-lg-4">
                 <label>International Tours:</label>
@@ -188,7 +181,76 @@
                   <input type="radio" name="international-tours" value="no" required /> No
                 </label>
               </div>
+            </div> -->
+
+            <div class="row mt-3">
+              <h5>Select Category (if you want to add this destination in any category):</h5>
+            
+              <!-- Domestic Tours -->
+              <div class="col-lg-6">
+                <label>Domestic Tours:</label>
+                <label>
+                  <input type="radio" name="domestic-tours" value="yes" required onchange="toggleDropdown('domestic')"/> Yes
+                </label>
+                <label>
+                  <input type="radio" name="domestic-tours" value="no" required onchange="toggleDropdown('domestic')"/> No
+                </label>
+                <select id="domestic-category" class="form-select mt-2" disabled>
+                  <option value="">Select Domestic Category</option>
+                  <option value="Ladakh">Ladakh</option>
+                  <option value="Jammu & Kashmir">Jammu & Kashmir</option>
+                  <option value="Himachal Pradesh">Himachal Pradesh</option>
+                  <option value="Uttarakhand">Uttarakhand</option>
+                  <option value="Rajasthan">Rajasthan</option>
+                  <option value="Gujarat">Gujarat</option>
+                  <option value="North East">North East</option>
+                  <option value="Maharashtra">Maharashtra</option>
+                  <option value="Karnataka">Karnataka</option>
+                  <option value="Tamil Nadu">Tamil Nadu</option>
+                  <option value="Madhya Pradesh">Madhya Pradesh</option>
+                  <option value="Kerala">Kerala</option>
+                  <option value="Lakshadweep Islands">Lakshadweep Islands</option>
+                  <!-- Add more options as needed -->
+                </select>
+              </div>
+            
+              <!-- International Tours -->
+              <div class="col-lg-6">
+                <label>International Tours:</label>
+                <label>
+                  <input type="radio" name="international-tours" value="yes" required onchange="toggleDropdown('international')"/> Yes
+                </label>
+                <label>
+                  <input type="radio" name="international-tours" value="no" required onchange="toggleDropdown('international')"/> No
+                </label>
+                <select id="international-category" class="form-select mt-2" disabled>
+                  <option value="">Select International Category</option>
+                  <option value="Austria">Austria</option>
+                  <option value="Belgium">Belgium</option>
+                  <option value="Czech Republic">Czech Republic</option>
+                  <option value="Denmark">Denmark</option>
+                  <option value="Finland">Finland</option>
+                  <option value="France">France</option>
+                  <option value="Germany">Germany</option>
+                  <option value="Greece">Greece</option>
+                  <option value="Hungary">Hungary</option>
+                  <option value="Ireland">Ireland</option>
+                  <option value="Italy">Italy</option>
+                  <option value="Netherlands">Netherlands</option>
+                  <option value="Portugal">Portugal</option>
+                  <option value="Romania">Romania</option>
+                  <option value="Spain">Spain</option>
+                  <option value="Sweden">Sweden</option>
+                  <option value="Switzerland">Switzerland</option>
+                  <option value="Egypt">Egypt</option>
+                  <option value="Saudi Arabia">Saudi Arabia</option>
+                  <option value="Turkey">Turkey</option>
+                  <option value="United Arab Emirates">United Arab Emirates</option>
+                  <!-- Add more options as needed -->
+                </select>
+              </div>  
             </div>
+            
 
             <div class="row">
               <h5>Select Theme (if you want to add this destination in any theme):</h5>

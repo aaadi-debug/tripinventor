@@ -45,7 +45,9 @@ const DestinationSchema = new mongoose.Schema({
   unescoTheme: { type: String, enum: ["yes", "no"], default: "no" },
   
   domesticTours: { type: String, enum: ["yes", "no"], default: "no" },
+  domesticCategory: String, // Category selected from dropdown
   internationalTours: { type: String, enum: ["yes", "no"], default: "no" },
+  internationalCategory: String, // Category selected from dropdown
 });
 
 module.exports = mongoose.model("Destination", DestinationSchema);
