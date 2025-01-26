@@ -1,49 +1,48 @@
 {
-    "columns": [
-      {
-        "heading": "Destinations",
-        "links": [
-          { "name": "Destination 1", "url": "#" },
-          { "name": "Destination 2", "url": "#" },
-          { "name": "Destination 3", "url": "#" },
-          { "name": "Destination 4", "url": "#" },
-          { "name": "Destination 5", "url": "#" }
-        ]
-      },
-      {
-        "heading": "Quick Links",
-        "links": [
-          { "name": "Home", "url": "./index.html" },
-          { "name": "About Us", "url": "./about.html" },
-          { "name": "All Destinations", "url": "./destination.html" },
-          { "name": "Blogs", "url": "./blog.html" },
-          { "name": "Contact Us", "url": "./contact.html" }
-        ]
-      },
-      {
-        "heading": "Useful Links",
-        "links": [
-          { "name": "Site map", "url": "#" }
-        ]
-      },
-      {
-        "heading": "Policies",
-        "links": [
-          { "name": "Refund Policy", "url": "./refund-policy.html" },
-          { "name": "Privacy Policy", "url": "./privacy-policy.html" },
-          { "name": "Terms & Conditions", "url": "./terms-and-conditions.html" }
-        ]
-      }
-    ],
-    "newsletter": {
-      "heading": "Newsletter",
-      "description": "Want to be notified when we launch a new template or an update? Just sign up and we'll send you a notification by email."
+  "columns": [
+    {
+      "heading": "Destinations",
+      "links": [
+        { "name": "Destination a", "url": "#" },
+        { "name": "Destination b", "url": "#" },
+        { "name": "Destination 3", "url": "#" },
+        { "name": "Destination 4", "url": "#" },
+        { "name": "Destination 5", "url": "#" }
+      ]
     },
-    "socialMedia": [
-      { "platform": "Facebook", "url": "https://m.facebook.com/tripinventor.in/", "icon": "fab fa-facebook" },
-      { "platform": "Twitter", "url": "https://x.com/trip_inventor?lang=en&mx=2", "icon": "fab fa-twitter" },
-      { "platform": "Instagram", "url": "https://www.instagram.com/tripinventorworldwide/", "icon": "fab fa-instagram" },
-      { "platform": "LinkedIn", "url": "https://in.linkedin.com/company/trip-inventor", "icon": "fab fa-linkedin" }
-    ]
-  }
-  
+    {
+      "heading": "Quick Links",
+      "links": [
+        { "name": "Home", "url": "./index.html" },
+        { "name": "About Us", "url": "./about.html" },
+        { "name": "All Destinations", "url": "./destination.html" },
+        { "name": "Blogs", "url": "./blog.html" },
+        { "name": "Contact Us", "url": "./contact.html" }
+      ]
+    },
+    {
+      "heading": "Useful Links",
+      "links": [
+        { "name": "Site map", "url": "#" }
+      ]
+    },
+    {
+      "heading": "Policies",
+      "links": [
+        { "name": "Refund Policy", "url": "./refund-policy.html" },
+        { "name": "Privacy Policy", "url": "./privacy-policy.html" },
+        { "name": "Terms & Conditions", "url": "./terms-and-conditions.html" }
+      ]
+    }
+  ],
+  "newsletter": {
+    "heading": "Newsletter",
+    "description": "Want to be notified when we launch a new template or an update? Just sign up and we'll send you a notification by email."
+  },
+  "socialMedia": [
+    { "platform": "Facebook", "url": "https://m.facebook.com/tripinventor.in/", "icon": "fab fa-facebook" },
+    { "platform": "Twitter", "url": "https://x.com/trip_inventor?lang=en&mx=2", "icon": "fab fa-twitter" },
+    { "platform": "Instagram", "url": "https://www.instagram.com/tripinventorworldwide/", "icon": "fab fa-instagram" },
+    { "platform": "LinkedIn", "url": "https://in.linkedin.com/company/trip-inventor", "icon": "fab fa-linkedin" }
+  ]
+}

@@ -1,0 +1,21 @@
+[
+    {
+      "image": "images/home/slider1.png",
+      "subtitle": "Amazing Places",
+      "title": "Explore Your Life Travel Where You Want",
+      "link": "./destination.html"
+    },
+    {
+      "image": "images/home/slider2.png",
+      "subtitle": "Feel Free To Travel",
+      "title": "Make you Free to travel with us",
+      "link": "./destination.html"
+    },
+    {
+      "image": "images/home/slider3.png",
+      "subtitle": "Trip For Your Kids",
+      "title": "Sensation Ice Trip Is Coming For Kids",
+      "link": "./destination.html"
+    }
+  ]
+  

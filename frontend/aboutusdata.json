@@ -1,0 +1,56 @@
+{
+    "about": {
+      "title": "About Trip Inventor",
+      "heading": "We're truly dedicated to making your travel experience the best",
+      "description": "At Trip Inventor, we're passionate about crafting personalized, authentic, and meaningful travel experiences. Our journey began in 2018, when our founder, Mr. Harpreet Singh, a seasoned travel industry professional, set out to revolutionize the way people experience travel.",
+      "milestones": [
+        "Formed strategic partnerships with 23 Destination Management Companies, expanding our global reach and expertise.",
+        "Recognized by the Ministry of Road Transport and Highways for our contributions to the travel industry.",
+        "Certified by IATA, demonstrating our commitment to industry standards and best practices."
+      ],
+      "bigImage": "https://www.tripinventor.in/images/about-us/About-Us%20big%20image.jpg",
+      "images": [
+        "images/destination/destination7.jpg",
+        "images/destination/destination5.jpg",
+        "images/destination/destination6.jpg",
+        "images/destination/destination3.jpg",
+        "images/destination/destination4.jpg"
+      ]
+    },
+    "missionVision": {
+      "mission": "Our mission is to inspire global understanding and appreciation by designing seamless and stress-free journeys that connect travellers with local cultures. We're committed to delivering exceptional customer experiences, innovative travel solutions, and making a positive impact on the world.",
+      "vision": "To be a leading travel brand globally, recognized for exceptional customer experiences, innovative travel solutions, and positive impact on the world.",
+      "images": {
+        "mission": "images/about-us/Mission.jpg",
+        "vision": "images/about-us/Vision.jpg"
+      }
+    },
+    "values": [
+      {
+        "title": "Authenticity",
+        "description": "We remain true to our purpose, vision, and mission, always striving to deliver genuine experiences.",
+        "icon": "./images/authenticity.png"
+      },
+      {
+        "title": "Customer-Centricity",
+        "description": "We prioritize our customers' needs, desires, and well-being, tailoring our services to exceed their expectations.",
+        "icon": "./images/target-audience.png"
+      },
+      {
+        "title": "Innovation",
+        "description": "We embrace creativity, continuously seeking novel solutions to enhance our offerings and stay ahead of the curve.",
+        "icon": "./images/innovation.png"
+      },
+      {
+        "title": "Sustainability",
+        "description": "We commit to environmentally friendly practices, responsible tourism, and supporting local communities.",
+        "icon": "./images/save-the-planet.png"
+      },
+      {
+        "title": "Respect",
+        "description": "We treat our customers, partners, and team members with dignity, empathy, and kindness.",
+        "icon": "./images/target.png"
+      }
+    ]
+  }
+  

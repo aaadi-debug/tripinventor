@@ -4,13 +4,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-
+    <link href="css/style.css" rel="stylesheet" type="text/css" />
+    <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+    integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 
 <body>
     <!-- footer starts -->
-    <footer class="pt-10 bubbles footermain developedBySonal developedByAdityaRajGupta">
+    <!-- <footer class="pt-10 bubbles footermain developedBySonal developedByAdityaRajGupta">
         <div class="footer-upper pb-5">
             <div class="container">
                 <div class="row">
@@ -34,8 +37,6 @@
                                 <li><a href="./about.html">About Us</a></li>
                                 <li><a href="./destination.html">All Destinations</a></li>
                                 <li><a href="./blog.html">Blogs</a></li>
-                                <!-- <li><a href="#">Galley</a></li> -->
-                                <!-- <li><a href="#">Travelogue</a></li> -->
 
                                 <li><a href="./contact.html">Contact Us </a></li>
                             </ul>
@@ -45,10 +46,7 @@
                         <div class="footer-links">
                             <h4 class="white">Useful Links</h4>
                             <ul>
-                                <!-- <li><a href="#">Payment</a></li> -->
-                                <!-- <li><a href="./contact.html">Feedback</a></li> -->
                                 <li><a href="#">Site map</a></li>
-                                <!-- <li><a href="#">Customer Service</a></li> -->
                             </ul>
                         </div>
                     </div>
@@ -92,17 +90,46 @@
                     </script>
                     <div class="social-links">
                         <ul>
-                            <li><a href="https://m.facebook.com/tripinventor.in/"><i class="fab fa-facebook" aria-hidden="true"></i></a></li>
-                            <li><a href="https://x.com/trip_inventor?lang=en&mx=2"><i class="fab fa-twitter" aria-hidden="true"></i></a></li>
-                            <li><a href="https://www.instagram.com/tripinventorworldwide/"><i class="fab fa-instagram" aria-hidden="true"></i></a></li>
-                            <li><a href="https://in.linkedin.com/company/trip-inventor"><i class="fab fa-linkedin" aria-hidden="true"></i></a></li>
+                            <li><a href="https://m.facebook.com/tripinventor.in/"><i class="fab fa-facebook"
+                                        aria-hidden="true"></i></a></li>
+                            <li><a href="https://x.com/trip_inventor?lang=en&mx=2"><i class="fab fa-twitter"
+                                        aria-hidden="true"></i></a></li>
+                            <li><a href="https://www.instagram.com/tripinventorworldwide/"><i class="fab fa-instagram"
+                                        aria-hidden="true"></i></a></li>
+                            <li><a href="https://in.linkedin.com/company/trip-inventor"><i class="fab fa-linkedin"
+                                        aria-hidden="true"></i></a></li>
                         </ul>
                     </div>
                 </div>
             </div>
         </div>
         <div class="overlay"></div>
+    </footer> -->
+
+
+    <footer class="pt-10 bubbles footermain">
+        <div class="footer-upper pb-5">
+            <div class="container">
+                <div class="row" id="footerColumns"></div>
+            </div>
+        </div>
+        <div class="footer-copyright pt-2 pb-2">
+            <div class="container">
+                <div class="copyright-inner d-md-flex align-items-center justify-content-between">
+                    <div class="copyright-text">
+                        <p class="m-0 white"><span id="currentYear"></span> © TripInventor. All rights reserved.</p>
+                    </div>
+                    <div class="social-links" id="socialMediaLinks"></div>
+                </div>
+            </div>
+        </div>
+        <div class="overlay"></div>
     </footer>
+
+
+
+
+    <script src="footer.js"></script>
 
     <script src="./login.js"></script>
 

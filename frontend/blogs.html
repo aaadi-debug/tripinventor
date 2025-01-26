@@ -24,8 +24,8 @@
     <link rel="stylesheet" href="fonts/line-icons.css" type="text/css">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
-    integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
-    crossorigin="anonymous" referrerpolicy="no-referrer" />
+        integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 
 <body>
@@ -173,7 +173,6 @@
 
         // Load the header and footer using AJAX
         loadContent("header.html", "header");
-        loadContent("footer.html", "footer");
     </script>
 
     <script>
@@ -249,12 +248,22 @@
         });
     </script>
 
-  <script src="./search.js"></script>
-  <script src="./newsletter.js"></script>
-  <script src="./login.js"></script>
-  <script src="./signup.js"></script>
-  <script src="./queryForm.js"></script>
-  <script src="./js/global.js"></script>
+
+    <div id="footerPlaceholder"></div>
+    <script src="./footer.js"></script>
+
+    <script>
+        // Call footer loading script
+        loadFooter();
+    </script>
+
+
+    <script src="./search.js"></script>
+    <script src="./newsletter.js"></script>
+    <script src="./login.js"></script>
+    <script src="./signup.js"></script>
+    <script src="./queryForm.js"></script>
+    <script src="./js/global.js"></script>
 
 
     <!-- *Scripts* -->
