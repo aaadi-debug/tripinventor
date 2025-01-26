@@ -580,6 +580,11 @@ small {
   border-radius: 8px;
   background-color: #f0f0f0;
 }
+#footerForm {
+  border: 1px solid #ededed;
+  border-radius: 8px;
+  background-color: #f0f0f0;
+}
 
 .form-group select {
   padding: 10px 20px 10px 35px;
@@ -987,4 +992,30 @@ transform: translateX(0);
   .tab-buttons-wrapper.show {
     transform: translateX(0);
   }
+}
+
+
+.orange-button {
+  background-color: var(--new-secondary);
+  color: white;
+  border-radius: 6px;
+  padding: 6px 12px;
+  border: none;
+  outline: none;
+}
+.orange-button:hover {
+  background-color: var(--new-orange-light);
+}
+
+
+
+/* #tab11 {
+  width: 90% !important;
+  overflow-x: auto !important;
+  border: 1px solid red;
+} */
+.enquiry-table-container {
+  width: 68% !important;
+  /* border: 1px solid red; */
+  overflow-x: auto !important;
 }

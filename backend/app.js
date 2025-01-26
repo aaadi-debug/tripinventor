@@ -13,6 +13,10 @@ const reviewRoutes = require("./routes/reviewRoutes");
 const subscriberRoutes = require("./routes/subscriberRoutes");
 const contactRoutes = require("./routes/contactRoutes");
 const queryRoutes = require("./routes/queryRoutes");
+const footerRoutes = require("./routes/footerRoutes");
+const enquiryFormRoutes = require("./routes/enquiryFormRoutes");
+const aboutRoutes = require("./routes/aboutRoutes");
+const heroSectionRoutes = require("./routes/heroSectionRoutes");
 
 const app = express();
 
@@ -43,6 +47,11 @@ app.use("/api", reviewRoutes);
 app.use("/api", subscriberRoutes);
 app.use("/api", contactRoutes);
 app.use("/api", queryRoutes);
+app.use("/api/footer", footerRoutes);
+app.use('/api/enquiry', enquiryFormRoutes);
+app.use("/api/about", aboutRoutes);
+app.use("/api/herosection", heroSectionRoutes);
+
 
 // Start the server
 const PORT = process.env.PORT || 5000;

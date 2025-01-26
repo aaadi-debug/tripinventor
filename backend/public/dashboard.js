@@ -294,11 +294,11 @@ async function openEditModal(destinationId) {
 
 
     // Show the modal
-    
+
     radioFields.forEach(({ name, value, dropdownId, category }) => {
       const radioYes = document.querySelector(`input[name="${name}"][value="yes"]`);
       const radioNo = document.querySelector(`input[name="${name}"][value="no"]`);
-    
+
       if (radioYes && radioNo) {
         // Set radio button selection
         if (value === "yes") {
@@ -307,11 +307,11 @@ async function openEditModal(destinationId) {
           radioNo.checked = true;
         }
       }
-    
+
       // Handle dropdown if it exists
       if (dropdownId) {
         const dropdown = document.getElementById(dropdownId);
-    
+
         if (dropdown) {
           if (value === "yes") {
             dropdown.disabled = false;
@@ -320,7 +320,7 @@ async function openEditModal(destinationId) {
             dropdown.disabled = true;
             dropdown.value = ""; // Clear dropdown value
           }
-    
+
           // Add event listeners for toggling dropdown
           if (radioYes) {
             radioYes.addEventListener("change", () => {
@@ -338,8 +338,8 @@ async function openEditModal(destinationId) {
         }
       }
     });
-    
-    
+
+
     document.getElementById("add-destination-modal").style.display = "block";
   } catch (error) {
     console.error("Error fetching destination:", error);
@@ -1063,6 +1063,470 @@ async function deleteReview(reviewId) {
   }
 }
 
+
+
+// ==========================================================
+// ------------------- Footer starts ------------------------
+// ==========================================================
+const form = document.getElementById("footerForm");
+const columnsContainer = document.getElementById("columnsContainer");
+const socialMediaContainer = document.getElementById("socialMediaContainer");
+
+const maxColumns = 4;
+
+// Helper to create a new column
+function createColumn(columnData = { heading: "", links: [] }) {
+  const columnDiv = document.createElement("div");
+  columnDiv.classList.add("column");
+
+  columnDiv.innerHTML = `
+        <label>Heading: <input type="text" value="${columnData.heading}" required /></label>
+        <div class="linksContainer">
+          ${columnData.links
+      .map(
+        (link) =>
+          `
+                <div class="link-item">
+                  <input type="text" placeholder="Name" value="${link.name}" required />
+                  <input type="url" placeholder="URL" value="${link.url}" required />
+                  <button type="button" class="removeLink btn btn-danger">Remove Link</button>
+                </div>
+              `
+      )
+      .join("")}
+        </div>
+        <button type="button" class="addLink btn btn-primary mb-2">Add Link</button>
+        <button type="button" class="removeColumn btn btn-danger mb-2">Remove Column</button>
+      `;
+
+  // Add link functionality
+  columnDiv.querySelector(".addLink").addEventListener("click", () => {
+    const linksContainer = columnDiv.querySelector(".linksContainer");
+    const linkItem = document.createElement("div");
+    linkItem.classList.add("link-item");
+    linkItem.innerHTML = `
+          <div class="row">
+            <div class="col-lg-4 col-md-4 col-sm-12"><input type="text" placeholder="Name" required /></div>
+            <div class="col-lg-4 col-md-4 col-sm-12"><input type="text" placeholder="URL" required /></div>
+            <div class="col-lg-4 col-md-4 col-sm-12"><button type="button" class="removeLink btn btn-danger">Remove Link</button></div>
+          </div>   
+        `;
+    linkItem.querySelector(".removeLink").addEventListener("click", () => {
+      linkItem.remove();
+    });
+    linksContainer.appendChild(linkItem);
+  });
+
+  // Remove column functionality
+  columnDiv.querySelector(".removeColumn").addEventListener("click", () => {
+    columnDiv.remove();
+  });
+
+  // Attach event listeners for existing links
+  columnDiv.querySelectorAll(".removeLink").forEach((btn) =>
+    btn.addEventListener("click", (e) => {
+      e.target.closest(".link-item").remove();
+    })
+  );
+
+  columnsContainer.appendChild(columnDiv);
+}
+
+// Helper to create a social media entry
+function createSocialMedia(socialData = { platform: "", url: "", icon: "" }) {
+  const socialDiv = document.createElement("div");
+  socialDiv.classList.add("social-media-item");
+  socialDiv.innerHTML = `
+        <input type="text" placeholder="Platform" value="${socialData.platform}" required />
+        <input type="text" placeholder="URL" value="${socialData.url}" required />
+        <input type="text" placeholder="Icon Class (e.g., fab fa-facebook)" value="${socialData.icon}" required />
+        <button type="button" class="removeSocialMedia btn btn-danger mb-2">Remove</button>
+      `;
+
+  socialDiv.querySelector(".removeSocialMedia").addEventListener("click", () => {
+    socialDiv.remove();
+  });
+
+  socialMediaContainer.appendChild(socialDiv);
+}
+
+// Load existing footer data
+fetch("http://localhost:5000/api/footer")
+  .then((response) => response.json())
+  .then((data) => {
+    // Populate columns
+    data.columns.forEach((column) => createColumn(column));
+
+    // Populate newsletter
+    document.getElementById("newsletterHeading").value = data.newsletter.heading;
+    document.getElementById("newsletterDescription").value = data.newsletter.description;
+
+    // Populate social media links
+    data.socialMedia.forEach((social) => createSocialMedia(social));
+  });
+
+// Add new column
+document.getElementById("addColumn").addEventListener("click", () => {
+  if (columnsContainer.children.length < maxColumns) {
+    createColumn();
+  } else {
+    alert("You can only add up to 4 columns.");
+  }
+});
+
+// Add new social media
+document.getElementById("addSocialMedia").addEventListener("click", () => {
+  createSocialMedia();
+});
+
+// Update footer data
+form.addEventListener("submit", (e) => {
+  e.preventDefault();
+
+  const columns = Array.from(columnsContainer.children).map((column) => ({
+    heading: column.querySelector("input[type='text']").value,
+    links: Array.from(column.querySelectorAll(".link-item")).map((linkItem) => ({
+      name: linkItem.querySelector("input[placeholder='Name']").value,
+      url: linkItem.querySelector("input[placeholder='URL']").value,
+    })),
+  }));
+
+  const newsletter = {
+    heading: document.getElementById("newsletterHeading").value,
+    description: document.getElementById("newsletterDescription").value,
+  };
+
+  const socialMedia = Array.from(socialMediaContainer.children).map((socialDiv) => ({
+    platform: socialDiv.querySelector("input[placeholder='Platform']").value,
+    url: socialDiv.querySelector("input[placeholder='URL']").value,
+    icon: socialDiv.querySelector("input[placeholder='Icon Class']").value,
+  }));
+
+  fetch("http://localhost:5000/api/footer", {
+    method: "PUT",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ columns, newsletter, socialMedia }),
+  })
+    .then((response) => response.json())
+    .then(() => alert("Footer updated successfully"))
+    .catch((error) => alert("Error updating footer"));
+});
+
+// ==========================================================
+// ------------------- Footer ends ------------------------
+// ==========================================================
+
+
+// ----------------------------------------------------------------------
+// -------------------------- Enquiries ---------------------------------
+// ----------------------------------------------------------------------
+// Fetch and render enquiries when the Manage Enquiries tab is opened
+async function fetchEnquiries() {
+  const loader = document.getElementById("enquiry-loading");
+  loader.style.display = "block"; // Show loader
+
+  try {
+    const response = await axios.get("http://localhost:5000/api/enquiry/list");
+    const enquiries = response.data;
+
+    populateEnquiriesTable(enquiries);
+
+    // Function to populate the enquiries table
+    function populateEnquiriesTable(enquiries) {
+      const tableBody = document.querySelector("#enquiry-table tbody");
+      tableBody.innerHTML = ""; // Clear previous data
+
+      enquiries.forEach((enquiry, index) => {
+        const row = `
+          <tr>
+            <td>${index + 1}</td>
+            <td>${enquiry.destinations.join(", ")}</td>
+            <td>${enquiry.checkIn}</td>
+            <td>${enquiry.checkOut}</td>
+            <td>${enquiry.adults}</td>
+            <td>${enquiry.children || "N/A"}</td>
+            <td>${enquiry.childAge || "N/A"}</td>
+            <td>${enquiry.budget}</td>
+            <td>${enquiry.mealPlan}</td>
+            <td>${enquiry.hotelCategory}</td>
+            <td>${enquiry.additionalRequirements || "N/A"}</td>
+            <td>${enquiry.name || "N/A"}</td>
+            <td>${enquiry.phone || "N/A"}</td>
+            <td>${enquiry.email || "N/A"}</td>
+            <td>
+              <button class="btn btn-danger" onclick="deleteEnquiry('${enquiry._id}')">Delete</button>
+            </td>
+          </tr>
+        `;
+        tableBody.innerHTML += row;
+      });
+    }
+  } catch (error) {
+    console.error("Error fetching enquiries:", error.message);
+  } finally {
+    loader.style.display = "none"; // Hide loader
+  }
+}
+
+// Function to delete an enquiry by ID
+async function deleteEnquiry(enquiryId) {
+  const confirmDelete = confirm(
+    "Are you sure you want to delete this enquiry?"
+  );
+  if (!confirmDelete) return;
+
+  try {
+    await axios.delete(`http://localhost:5000/api/enquiry/${enquiryId}`);
+    alert("Enquiry deleted successfully");
+    fetchEnquiries(); // Refresh table
+  } catch (error) {
+    console.error("Error deleting enquiry:", error.message);
+    alert(error.response?.data?.message || "Failed to delete enquiry.");
+  }
+}
+
+// ==========================================================
+// ------------------- Enquires ends ------------------------
+// ==========================================================
+
+
+// ==========================================================
+// ------------------- About us starts-----------------------
+// ==========================================================
+
+
+
+const API_URL = "http://localhost:5000/api/about";
+
+const loading = document.getElementById("loading");
+const valuesSection = document.getElementById("valuesSection");
+
+// Load existing About Us data
+async function loadAboutData() {
+  loading.style.display = "block";
+  try {
+    const response = await fetch(API_URL);
+    const data = await response.json();
+
+    // Populate About section
+    document.getElementById("aboutTitle").value = data.about.title;
+    document.getElementById("aboutHeading").value = data.about.heading;
+    document.getElementById("aboutDescription").value = data.about.description;
+    document.getElementById("aboutMilestones").value = data.about.milestones.join(", ");
+    document.getElementById("aboutImages").value = data.about.images.join(", ");
+    document.getElementById("aboutBigImage").value = data.about.bigImage;
+
+    // Populate Mission & Vision
+    document.getElementById("missionText").value = data.missionVision.mission;
+    document.getElementById("visionText").value = data.missionVision.vision;
+    document.getElementById("missionImage").value = data.missionVision.images.mission;
+    document.getElementById("visionImage").value = data.missionVision.images.vision;
+
+    // Populate Values
+    valuesSection.innerHTML = "";
+    data.values.forEach((value, index) => addValueField(value, index));
+  } catch (error) {
+    console.error("Error loading About Us data:", error);
+  } finally {
+    loading.style.display = "none";
+  }
+}
+
+// Add a value field
+function addValueField(value = {}, index) {
+  const valueDiv = document.createElement("div");
+  valueDiv.className = "value-group mb-3";
+  valueDiv.innerHTML = `
+    <h4>Value ${index + 1}</h4>
+    <div class="mb-2">
+      <label for="valueTitle${index}" class="form-label">Title</label>
+      <input type="text" class="form-control" id="valueTitle${index}" value="${value.title || ""}" />
+    </div>
+    <div class="mb-2">
+      <label for="valueDescription${index}" class="form-label">Description</label>
+      <textarea class="form-control" id="valueDescription${index}" rows="2">${value.description || ""}</textarea>
+    </div>
+    <div class="mb-2">
+      <label for="valueIcon${index}" class="form-label">Icon URL</label>
+      <input type="text" class="form-control" id="valueIcon${index}" value="${value.icon || ""}" />
+    </div>
+    <button type="button" class="btn btn-danger btn-sm removeValue" onclick="removeValue(this)">Remove</button>
+  `;
+  valuesSection.appendChild(valueDiv);
+}
+
+// Remove a value field
+function removeValue(button) {
+  button.parentElement.remove();
+}
+
+// Add new value field
+document.getElementById("addValue").addEventListener("click", () => {
+  const index = valuesSection.children.length;
+  addValueField({}, index);
+});
+
+// Save About Us data
+document.getElementById("saveAboutUs").addEventListener("click", async () => {
+  loading.style.display = "block";
+
+  const values = Array.from(valuesSection.children).map((div, index) => ({
+    title: div.querySelector(`#valueTitle${index}`).value,
+    description: div.querySelector(`#valueDescription${index}`).value,
+    icon: div.querySelector(`#valueIcon${index}`).value,
+  }));
+
+  const updatedData = {
+    about: {
+      title: document.getElementById("aboutTitle").value,
+      heading: document.getElementById("aboutHeading").value,
+      description: document.getElementById("aboutDescription").value,
+      bigImage: document.getElementById("aboutBigImage").value,
+      milestones: document.getElementById("aboutMilestones").value.split(",").map((m) => m.trim()),
+      images: document.getElementById("aboutImages").value.split(",").map((img) => img.trim()),
+    },
+    missionVision: {
+      mission: document.getElementById("missionText").value,
+      vision: document.getElementById("visionText").value,
+      images: {
+        mission: document.getElementById("missionImage").value,
+        vision: document.getElementById("visionImage").value,
+      },
+    },
+    values,
+  };
+
+  try {
+    const response = await fetch(API_URL, {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(updatedData),
+    });
+    const result = await response.json();
+    alert("About Us data updated successfully!");
+  } catch (error) {
+    console.error("Error saving About Us data:", error);
+  } finally {
+    loading.style.display = "none";
+  }
+});
+
+// ==========================================================
+// ------------------- About us ends ------------------------
+// ==========================================================
+
+
+// ==========================================================
+// ------------------- herosection starts --------------------
+// ==========================================================
+
+// API Base URL
+const apiBaseUrl = "http://localhost:5000/api/herosection";
+
+// Show loading spinner
+function showLoading(show) {
+  const loading = document.getElementById("loading");
+  loading.style.display = show ? "block" : "none";
+}
+
+// Fetch all banners and display them in the table
+async function fetchBanners() {
+  try {
+    showLoading(true);
+    const response = await fetch(apiBaseUrl);
+    const banners = await response.json();
+    const tableBody = document.getElementById("banners-table-body");
+
+    // Clear existing rows
+    tableBody.innerHTML = "";
+
+    banners.forEach((banner) => {
+      const row = `
+        <tr>
+          <td><img src="${banner.image}" alt="${banner.title}" width="100" /></td>
+          <td>${banner.title}</td>
+          <td>${banner.subtitle}</td>
+          <td>
+            <button onclick="editBanner('${banner._id}')" class="btn btn-primary">Edit</button>
+            <button onclick="deleteBanner('${banner._id}')" class="btn btn-danger">Delete</button>
+          </td>
+        </tr>
+      `;
+      tableBody.innerHTML += row;
+    });
+  } catch (error) {
+    console.error("Error fetching banners:", error);
+  } finally {
+    showLoading(false);
+  }
+}
+
+// Add a new banner
+document.getElementById("new-banner-form").addEventListener("submit", async (e) => {
+  e.preventDefault();
+
+  const newBanner = {
+    title: document.getElementById("banner-title").value,
+    subtitle: document.getElementById("banner-subtitle").value,
+    link: document.getElementById("banner-link").value,
+    image: document.getElementById("banner-image").value,
+  };
+
+  try {
+    showLoading(true);
+    const response = await fetch(apiBaseUrl, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(newBanner),
+    });
+
+    if (response.ok) {
+      alert("Banner added successfully!");
+      document.getElementById("new-banner-form").reset();
+      fetchBanners();
+    } else {
+      alert("Failed to add banner.");
+    }
+  } catch (error) {
+    console.error("Error adding banner:", error);
+  } finally {
+    showLoading(false);
+  }
+});
+
+// Delete a banner
+async function deleteBanner(id) {
+  if (!confirm("Are you sure you want to delete this banner?")) return;
+
+  try {
+    showLoading(true);
+    const response = await fetch(`${apiBaseUrl}/${id}`, { method: "DELETE" });
+
+    if (response.ok) {
+      alert("Banner deleted successfully!");
+      fetchBanners();
+    } else {
+      alert("Failed to delete banner.");
+    }
+  } catch (error) {
+    console.error("Error deleting banner:", error);
+  } finally {
+    showLoading(false);
+  }
+}
+
+// Edit a banner (dummy implementation for now)
+function editBanner(id) {
+  alert(`Edit functionality not yet implemented for banner ID: ${id}`);
+  // You can expand this function to open a modal or inline form for editing
+}
+
+// ==========================================================
+// ------------------- Herosection ends----------------------
+// ==========================================================
+
+
+
 document.addEventListener("DOMContentLoaded", () => {
   fetchUsers();
   fetchDestinations();
@@ -1073,4 +1537,7 @@ document.addEventListener("DOMContentLoaded", () => {
   fetchContacts();
   fetchQueries();
   fetchReviews();
+  fetchEnquiries();
+  loadAboutData();
+  fetchBanners();
 });
