@@ -112,10 +112,10 @@
                     <div class="blog-full text-center p-3">
                         <img src="${item.image}" alt="">
                         <div class="blog-content pb-0">
-                            <span class="h-date pink mb-1 font-weight-light d-block">${item.date}</span>
+                            <span class="h-date pink mb-1 font-weight-light d-block"><i class="fa fa-calendar pink pr-1"></i>${item.date}</span>
                             <h3 class="mb-2"><a href="blogs.html?title=${encodeURIComponent(item.title)}" class="">${item.title}</a></h3>
                             <p class="date-cats mb-0 border-t pt-2 pb-2">
-                                <a href="blogs.html?title=${encodeURIComponent(item.title)}" class="mr-2"><i class="fa-solid fa-layer-group"></i> ${item.category}</a> 
+                                <a href="blogs.html?title=${encodeURIComponent(item.title)}" class="mr-2"><i class="fa fa-tag pink pr-1"></i> ${item.category}</a> 
                                 <a href="#" class=""><i class="fa-solid fa-user-tie"></i> ${item.author}</a>
                             </p> 
                             <p class="mb-2 border-t pt-2">${item.description}</p>

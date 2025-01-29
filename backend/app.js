@@ -17,6 +17,7 @@ const footerRoutes = require("./routes/footerRoutes");
 const enquiryFormRoutes = require("./routes/enquiryFormRoutes");
 const aboutRoutes = require("./routes/aboutRoutes");
 const heroSectionRoutes = require("./routes/heroSectionRoutes");
+const homeRoutes = require("./routes/homeRoutes");
 
 const app = express();
 
@@ -51,6 +52,7 @@ app.use("/api/footer", footerRoutes);
 app.use('/api/enquiry', enquiryFormRoutes);
 app.use("/api/about", aboutRoutes);
 app.use("/api/herosection", heroSectionRoutes);
+app.use("/api/home", homeRoutes);
 
 
 // Start the server

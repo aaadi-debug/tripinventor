@@ -1,0 +1,215 @@
+{
+    "faqSection": {
+        "title": "Frequently Asked Questions (FAQs)",
+        "description": "Have questions about your travel plans? Our FAQ section is here to help! From booking processes to destination insights, we’ve got answers to make your journey hassle-free. Explore common queries and find quick solutions to plan your trip with ease. If you need further assistance, feel free to reach out to us!",
+        "faqItems": [
+            {
+                "question": "What is an Accordion?",
+                "answer": "An accordion is a vertically stacked list of items where each item can be expanded to reveal more content."
+            },
+            {
+                "question": "Why use Accordions?",
+                "answer": "Accordions help organize content into collapsible sections, improving user experience and saving screen space."
+            },
+            {
+                "question": "How to Implement?",
+                "answer": "You can implement accordions using HTML, CSS, and JavaScript for toggling the visibility of content."
+            },
+            {
+                "question": "What is an Accordion?",
+                "answer": "An accordion is a vertically stacked list of items where each item can be expanded to reveal more content."
+            },
+            {
+                "question": "Why use Accordions?",
+                "answer": "Accordions help organize content into collapsible sections, improving user experience and saving screen space."
+            },
+            {
+                "question": "How to Implement?",
+                "answer": "You can implement accordions using HTML, CSS, and JavaScript for toggling the visibility of content."
+            }
+        ]
+    },
+    "featuredUs": [
+        {
+            "iconClass": "flaticon-price pink",
+            "title": "Competitivaaae Pricing",
+            "description": "With 500+ suppliers and the purchasing power of 300 million members",
+            "link": "#"
+        },
+        {
+            "iconClass": "flaticon-quality pink",
+            "title": "Award Winaaning Service",
+            "description": "Fabulous Travel worry free knowing that we're here if you need us, 24 hours a day",
+            "link": "#"
+        },
+        {
+            "iconClass": "flaticon-global pink",
+            "title": "Worldwidaae Coverage",
+            "description": "1,200,000 hotels in more than 200 countries and regions & flights to over 5,000 cities.",
+            "link": "#"
+        }
+    ],
+    "aboutUs": {
+        "title": "About TripInventor",
+        "headline": "We're truly dedicated to making your travel experience the best",
+        "description": "Top Tour Operators and Travel Agency. We offer 793 tours and holidays throughout the world. Combined, we have received 1532 customer reviews and an average rating of 5 out of 5 stars. Travel has helped us understand the meaning of life and become better people. Each time we travel, we see the world with new eyes.",
+        "imageList": [
+            "images/destination/destination7.jpg",
+            "images/destination/destination5.jpg",
+            "images/destination/destination6.jpg",
+            "images/destination/destination3.jpg",
+            "images/destination/destination4.jpg"
+        ],
+        "mainImage": "images/about-us/About-Us big image.jpg"
+    },
+    "instagramSection": {
+        "followLink": "#",
+        "images": [
+            "images/insta/ins-3.jpg",
+            "images/insta/ins-4.jpg",
+            "images/insta/ins-5.jpg",
+            "images/insta/ins-1.jpg",
+            "images/insta/ins-7.jpg",
+            "images/insta/ins-8.jpg",
+            "images/insta/ins-2.jpg",
+            "images/insta/ins-6.jpg",
+            "images/insta/ins-9.jpg"
+        ]
+    },
+    "topDestinations": [
+        {
+            "image": "images/home/worldtravel1.jpg",
+            "title": "Wellness Ayurveda and Spa Tours",
+            "rating": 5,
+            "link": "ayurveda-spa-tour-packages-in-india.html"
+        },
+        {
+            "image": "images/home/worldtravel2.jpg",
+            "title": "Beach Tours",
+            "rating": 5,
+            "link": "beach-holidays-tour-packages.html"
+        },
+        {
+            "image": "images/home/worldtravel3.jpg",
+            "title": "Natural Wonders Tours",
+            "rating": 5,
+            "link": "natural-wonders-tour-packages.html"
+        },
+        {
+            "image": "images/home/worldtravel4.jpg",
+            "title": "Kathmandu Tour",
+            "rating": 5,
+            "link": "#"
+        },
+        {
+            "image": "images/home/worldtravel5.jpg",
+            "title": "Cultural and Heritage Tours",
+            "rating": 5,
+            "link": "cultural-heritage-tour-packages.html"
+        },
+        {
+            "image": "images/home/worldtravel6.jpg",
+            "title": "UNESCO Tours",
+            "rating": 5,
+            "link": "unesco-tour-packages.html"
+        }
+    ],
+    "trending": [
+        {
+            "image": "images/home/Thailand.jpg",
+            "country": "Thailand",
+            "title": "Stonehenge, Windsor Castle, and Bath from London",
+            "description": "A wonderful little cottage right on the seashore - perfect for exploring.",
+            "duration": "3 days & 2 nights",
+            "price": "$350.00"
+        },
+        {
+            "image": "images/home/germany.jpg",
+            "country": "Germany",
+            "title": "Here We Bosphorus and Black Sea Cruise from Istanbul",
+            "description": "A wonderful little cottage right on the seashore - perfect for exploring.",
+            "duration": "3 days & 2 nights",
+            "price": "$350.00"
+        },
+        {
+            "image": "images/home/Denmark.jpg",
+            "country": "Denmark",
+            "title": "NYC One World Observatory Skip-the-Line Ticket",
+            "description": "A wonderful little cottage right on the seashore - perfect for exploring.",
+            "duration": "3 days & 2 nights",
+            "price": "$350.00"
+        }
+    ],
+    "mainArticle": {
+        "image": "images/blog/blog1.jpg",
+        "date": "4th Aug 2020",
+        "comments": 3,
+        "tags": [
+            "Tour",
+            "Tourism",
+            "Travel"
+        ],
+        "title": "The real voyage does not consist in seeking new landscapes",
+        "description": "Excited him now natural saw passage offices you minuter. At by asked being court hopes. Farther so friends am to detract. Forbade concern do private be. Offending residence but men engrossed shy. One of the programs is Save Our I have personally in many of the programs mentioned on this site.",
+        "authorImage": "images/reviewer/1.jpg",
+        "authorName": "Aditya Raj Gupta"
+    },
+    "subArticles": [
+        {
+            "image": "images/blog/blog2.jpg",
+            "date": "4th Aug 2020",
+            "comments": 3,
+            "tags": [
+                "Travel"
+            ],
+            "title": "Mountains is always right destination."
+        },
+        {
+            "image": "images/blog/blog3.jpg",
+            "date": "4th Aug 2020",
+            "comments": 3,
+            "tags": [
+                "Tourism"
+            ],
+            "title": "We have not all those who wander are lost."
+        },
+        {
+            "image": "images/blog/blog4.jpg",
+            "date": "4th Aug 2020",
+            "comments": 3,
+            "tags": [
+                "Tour"
+            ],
+            "title": "Here Our's Life is either a daring adventure."
+        },
+        {
+            "image": "images/blog/blog5.jpg",
+            "date": "4th Aug 2020",
+            "comments": 3,
+            "tags": [
+                "Travel"
+            ],
+            "title": "Take only memories, leave only footprints."
+        }
+    ],
+    "testimonials": [
+        {
+            "name": "Elison Marks",
+            "image": "images/testimonial/img1.jpg",
+            "review": "Travel has helped me understand the meaning of life and made me a better person.",
+            "rating": 5
+        },
+        {
+            "name": "Jared Erondu",
+            "image": "images/testimonial/img2.jpg",
+            "review": "Each time I travel, I see the world with new eyes. Amazing experience!",
+            "rating": 4
+        },
+        {
+            "name": "Kelson Kelly",
+            "image": "images/testimonial/img3.jpg",
+            "review": "A journey of a thousand miles begins with a single step. Highly recommended!",
+            "rating": 5
+        }
+    ]
+}
