@@ -1524,6 +1524,395 @@ function editBanner(id) {
 // ==========================================================
 // ------------------- Herosection ends----------------------
 // ==========================================================
+const apiHomeUrl = "http://localhost:5000/api/home";
+
+
+// ==========================================================
+// ------------------- Home starts ----------------------
+// ==========================================================
+
+// ********************** Featured ***********************
+function renderFeaturedUs(featuredUs) {
+  const featuredUsList = document.getElementById("featuredUsList");
+  featuredUsList.innerHTML = featuredUs.map((item, index) => `
+      <div class="featured-item">
+          <div>Feature - ${index + 1}</div>
+          <input type="text" value="${item.title}" id="featured-title-${index}">
+          <input type="text" value="${item.description}" id="featured-description-${index}">
+      </div>
+  `).join("");
+}
+function updateFeaturedUs() {
+  const updatedFeaturedUs = [];
+  document.querySelectorAll(".featured-item").forEach((item, index) => {
+    updatedFeaturedUs.push({
+      title: document.getElementById(`featured-title-${index}`).value,
+      description: document.getElementById(`featured-description-${index}`).value
+    });
+  });
+
+  fetch("http://localhost:5000/api/home/", {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({ featuredUs: updatedFeaturedUs })
+  })
+    .then(response => response.json())
+    .then(data => {
+      alert("Featured section updated successfully!");
+      renderFeaturedUs(data.featuredUs); // Refresh UI
+    })
+    .catch(error => console.error("Error updating data:", error));
+}
+
+// ********************** About ***********************
+// Populate the admin form with fetched data
+function renderAboutUsAdmin(aboutUs) {
+  document.getElementById("aboutUsTitle").value = aboutUs.title;
+  document.getElementById("aboutUsHeadline").value = aboutUs.headline;
+  document.getElementById("aboutUsDescription").value = aboutUs.description;
+  document.getElementById("aboutUsMainImage").value = aboutUs.mainImage;
+  document.getElementById("aboutUsImageList").value = aboutUs.imageList.join(", ");
+}
+// Update API with new data
+function updateAboutUs() {
+  const updatedAboutUs = {
+    title: document.getElementById("aboutUsTitle").value,
+    headline: document.getElementById("aboutUsHeadline").value,
+    description: document.getElementById("aboutUsDescription").value,
+    mainImage: document.getElementById("aboutUsMainImage").value,
+    imageList: document.getElementById("aboutUsImageList").value.split(",").map(img => img.trim()),
+  };
+
+  fetch("http://localhost:5000/api/home/", {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ aboutUs: updatedAboutUs }),
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      alert("About Us section updated successfully!");
+      renderAboutUsAdmin(data.aboutUs); // Refresh UI
+    })
+    .catch((error) => console.error("Error updating About Us:", error));
+}
+
+// ********************** FAQs ***********************
+// Render FAQ data in the admin panel
+function renderFAQAdmin(faqSection) {
+  document.getElementById("faqTitle").value = faqSection.title;
+  document.getElementById("faqDescription").value = faqSection.description;
+
+  const faqList = document.getElementById("faqList");
+  faqList.innerHTML = faqSection.faqItems.map((faq, index) => `
+    <div class="faq-item mt-2">
+      <div><b>FAQ ${index+1}</b></div>
+      <label>Question:</label>
+      <input type="text" value="${faq.question}" id="faq-question-${index}" />
+      <label>Answer:</label>
+      <textarea id="faq-answer-${index}">${faq.answer}</textarea>
+    </div>
+  `).join("");
+}
+// Update FAQ section
+function updateFAQ() {
+  const updatedFAQItems = [];
+  document.querySelectorAll(".faq-item").forEach((item, index) => {
+    updatedFAQItems.push({
+      question: document.getElementById(`faq-question-${index}`).value,
+      answer: document.getElementById(`faq-answer-${index}`).value
+    });
+  });
+
+  const updatedFAQ = {
+    title: document.getElementById("faqTitle").value,
+    description: document.getElementById("faqDescription").value,
+    faqItems: updatedFAQItems
+  };
+
+  fetch("http://localhost:5000/api/home/", {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ faqSection: updatedFAQ }),
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      alert("FAQ section updated successfully!");
+      renderFAQAdmin(data.faqSection);
+    })
+    .catch((error) => console.error("Error updating FAQ data:", error));
+}
+
+// ************ Top & Trending Destinations ****************
+// Render Top Destinations in Admin Panel
+function renderTopDestinationsAdmin(topDestinations) {
+  const container = document.getElementById("topDestinationsList");
+  container.innerHTML = topDestinations.map((dest, index) => `
+    <div class="destination-item mt-3">
+      <div><b>Destination ${index+1}</b></div>
+
+      <label>Title:</label>
+      <input type="text" value="${dest.title}" id="top-title-${index}" />
+      
+      <label>Image URL:</label>
+      <input type="text" value="${dest.image}" id="top-image-${index}" />
+
+      <label>Rating:</label>
+      <input type="number" value="${dest.rating}" id="top-rating-${index}" />
+
+      <label>Link:</label>
+      <input type="text" value="${dest.link}" id="top-link-${index}" />
+    </div>
+  `).join("");
+}
+
+// Render Trending Destinations in Admin Panel
+function renderTrendingDestinationsAdmin(trending) {
+  const container = document.getElementById("trendingDestinationsList");
+  container.innerHTML = trending.map((trend, index) => `
+    <div class="destination-item mt-3">
+      <div><b>Destination ${index+1}</b></div>
+
+      <label>Country:</label>
+      <input type="text" value="${trend.country}" id="trend-country-${index}" />
+
+      <label>Title:</label>
+      <input type="text" value="${trend.title}" id="trend-title-${index}" />
+
+      <label>Image URL:</label>
+      <input type="text" value="${trend.image}" id="trend-image-${index}" />
+
+      <label>Description:</label>
+      <textarea id="trend-description-${index}">${trend.description}</textarea>
+
+      <label>Duration:</label>
+      <input type="text" value="${trend.duration}" id="trend-duration-${index}" />
+
+      <label>Price:</label>
+      <input type="text" value="${trend.price}" id="trend-price-${index}" />
+    </div>
+  `).join("");
+}
+
+// Update Destinations
+function updateDestinations() {
+  const updatedTopDestinations = [];
+  document.querySelectorAll("#topDestinationsList .destination-item").forEach((item, index) => {
+    updatedTopDestinations.push({
+      title: document.getElementById(`top-title-${index}`).value,
+      image: document.getElementById(`top-image-${index}`).value,
+      rating: parseInt(document.getElementById(`top-rating-${index}`).value),
+      link: document.getElementById(`top-link-${index}`).value,
+    });
+  });
+
+  const updatedTrendingDestinations = [];
+  document.querySelectorAll("#trendingDestinationsList .destination-item").forEach((item, index) => {
+    updatedTrendingDestinations.push({
+      country: document.getElementById(`trend-country-${index}`).value,
+      title: document.getElementById(`trend-title-${index}`).value,
+      image: document.getElementById(`trend-image-${index}`).value,
+      description: document.getElementById(`trend-description-${index}`).value,
+      duration: document.getElementById(`trend-duration-${index}`).value,
+      price: document.getElementById(`trend-price-${index}`).value,
+    });
+  });
+
+  fetch("http://localhost:5000/api/home/", {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      topDestinations: updatedTopDestinations,
+      trending: updatedTrendingDestinations,
+    }),
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      alert("Destinations updated successfully!");
+      renderTopDestinationsAdmin(data.topDestinations);
+      renderTrendingDestinationsAdmin(data.trending);
+    })
+    .catch((error) => console.error("Error updating destinations:", error));
+}
+
+
+// ************ Main Articles ****************
+// Render Main Article in Admin Panel
+function renderMainArticleAdmin(mainArticle) {
+  const container = document.getElementById("mainArticleForm");
+  container.innerHTML = `
+    <div class="article-item">
+      <label>Title:</label>
+      <input type="text" value="${mainArticle.title}" id="main-title" />
+
+      <label>Image URL:</label>
+      <input type="text" value="${mainArticle.image}" id="main-image" />
+
+      <label>Date:</label>
+      <input type="text" value="${mainArticle.date}" id="main-date" />
+
+      <label>Tags (comma separated):</label>
+      <input type="text" value="${mainArticle.tags.join(", ")}" id="main-tags" />
+
+      <label>Description:</label>
+      <textarea id="main-description">${mainArticle.description}</textarea>
+
+      <label>Author Name:</label>
+      <input type="text" value="${mainArticle.authorName}" id="main-author-name" />
+
+      <label>Author Image URL:</label>
+      <input type="text" value="${mainArticle.authorImage}" id="main-author-image" />
+    </div>
+  `;
+}
+
+// Render Sub Articles in Admin Panel
+function renderSubArticlesAdmin(subArticles) {
+  const container = document.getElementById("subArticlesList");
+  container.innerHTML = subArticles
+    .map(
+      (article, index) => `
+      <div class="article-item mt-2">
+      <div><b>Article ${index+1}</b></div>
+
+      <label>Title:</label>
+      <input type="text" value="${article.title}" id="sub-title-${index}" />
+
+      <label>Image URL:</label>
+      <input type="text" value="${article.image}" id="sub-image-${index}" />
+
+      <label>Date:</label>
+      <input type="text" value="${article.date}" id="sub-date-${index}" />
+
+      <label>Tags (comma separated):</label>
+      <input type="text" value="${article.tags.join(", ")}" id="sub-tags-${index}" />
+    </div>
+  `
+    )
+    .join("");
+}
+
+// Update Articles
+function updateArticles() {
+  const updatedMainArticle = {
+    title: document.getElementById("main-title").value,
+    image: document.getElementById("main-image").value,
+    date: document.getElementById("main-date").value,
+    tags: document.getElementById("main-tags").value.split(","),
+    description: document.getElementById("main-description").value,
+    authorName: document.getElementById("main-author-name").value,
+    authorImage: document.getElementById("main-author-image").value,
+  };
+
+  const updatedSubArticles = [];
+  document.querySelectorAll("#subArticlesList .article-item").forEach((item, index) => {
+    updatedSubArticles.push({
+      title: document.getElementById(`sub-title-${index}`).value,
+      image: document.getElementById(`sub-image-${index}`).value,
+      date: document.getElementById(`sub-date-${index}`).value,
+      tags: document.getElementById(`sub-tags-${index}`).value.split(","),
+    });
+  });
+
+  fetch("http://localhost:5000/api/home/", {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      mainArticle: updatedMainArticle,
+      subArticles: updatedSubArticles,
+    }),
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      alert("Articles updated successfully!");
+      renderMainArticleAdmin(data.mainArticle);
+      renderSubArticlesAdmin(data.subArticles);
+    })
+    .catch((error) => console.error("Error updating articles:", error));
+}
+
+// ************ Testimonials ****************
+// Render Testimonials in Admin Panel
+function renderTestimonialsAdmin(testimonials) {
+  const container = document.getElementById("testimonialsList");
+  container.innerHTML = testimonials
+    .map(
+      (testimonial, index) => `
+    <div class="testimonial-item mt-2">
+      <div><b>Testimonial ${index+1}</b></div>
+      <label>Name:</label>
+      <input type="text" value="${testimonial.name}" id="test-name-${index}" />
+
+      <label>Image URL:</label>
+      <input type="text" value="${testimonial.image}" id="test-image-${index}" />
+
+      <label>Review:</label>
+      <textarea id="test-review-${index}">${testimonial.review}</textarea>
+
+      <label>Rating (1-5):</label>
+      <input type="number" value="${testimonial.rating}" min="1" max="5" id="test-rating-${index}" />
+    </div>
+  `
+    )
+    .join("");
+}
+
+// Update Testimonials
+function updateTestimonials() {
+  const updatedTestimonials = [];
+  document.querySelectorAll("#testimonialsList .testimonial-item").forEach((item, index) => {
+    updatedTestimonials.push({
+      name: document.getElementById(`test-name-${index}`).value,
+      image: document.getElementById(`test-image-${index}`).value,
+      review: document.getElementById(`test-review-${index}`).value,
+      rating: parseInt(document.getElementById(`test-rating-${index}`).value),
+    });
+  });
+
+  fetch("http://localhost:5000/api/home/", {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ testimonials: updatedTestimonials }),
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      alert("Testimonials updated successfully!");
+      renderTestimonialsAdmin(data.testimonials);
+    })
+    .catch((error) => console.error("Error updating testimonials:", error));
+}
+
+
+document.addEventListener("DOMContentLoaded", () => {
+  fetch("http://localhost:5000/api/home/")
+    .then(response => response.json())
+    .then(data => {
+      renderFeaturedUs(data.featuredUs);
+      renderAboutUsAdmin(data.aboutUs);
+      renderFAQAdmin(data.faqSection);
+      renderTopDestinationsAdmin(data.topDestinations);
+      renderTrendingDestinationsAdmin(data.trending);
+      renderMainArticleAdmin(data.mainArticle);
+      renderSubArticlesAdmin(data.subArticles);
+      renderTestimonialsAdmin(data.testimonials);
+    })
+    .catch(error => console.error("Error loading data:", error));
+});
+
+// ==========================================================
+// ------------------- Home ends ----------------------
+// ==========================================================
 
 
 
@@ -1541,3 +1930,13 @@ document.addEventListener("DOMContentLoaded", () => {
   loadAboutData();
   fetchBanners();
 });
+
+// document.addEventListener("DOMContentLoaded", () => {
+//   fetch("http://localhost:5000/api/home/")
+//       .then(response => response.json())
+//       .then(data => {
+//           // renderFAQSection(data.faqSection);
+//           renderFeaturedUs(data.featuredUs);
+//       })
+//       .catch(error => console.error("Error loading data:", error));
+// });

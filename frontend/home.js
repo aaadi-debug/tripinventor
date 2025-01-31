@@ -29,6 +29,10 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 });
+
+// ===============================================
+// ========= Featured section ====================
+// ===============================================
 document.addEventListener("DOMContentLoaded", () => {
   // Fetch data from JSON file
   fetch("http://localhost:5000/api/home/")
@@ -47,7 +51,6 @@ document.addEventListener("DOMContentLoaded", () => {
       console.error("Error loading Featured Us data:", error)
     );
 });
-
 // Render Featured Us Section
 function renderFeaturedUs(featuredUsItems) {
   const featuredUsContainer =
@@ -73,6 +76,10 @@ function renderFeaturedUs(featuredUsItems) {
 
   featuredUsContainer.innerHTML = featuredUsHtml;
 }
+
+// ===============================================
+// ========= FAQ section ====================
+// ===============================================
 document.addEventListener("DOMContentLoaded", () => {
   // Fetch FAQ data from JSON file
   fetch("http://localhost:5000/api/home/")
@@ -88,7 +95,6 @@ document.addEventListener("DOMContentLoaded", () => {
     })
     .catch((error) => console.error("Error loading FAQ data:", error));
 });
-
 // Render FAQ Section
 function renderFAQSection(faqSection) {
   const faqContainer = document.getElementById("faqSection");
@@ -105,7 +111,6 @@ function renderFAQSection(faqSection) {
 
   faqContainer.innerHTML = faqHtml;
 }
-
 // Render Accordion Columns
 function renderAccordionColumns(faqItems) {
   const halfLength = Math.ceil(faqItems.length / 2);
@@ -140,7 +145,6 @@ function renderAccordionColumns(faqItems) {
     )
     .join("");
 }
-
 // Initialize Accordion
 function initializeAccordion() {
   const accordionHeaders = document.querySelectorAll(".accordion-header");
@@ -181,6 +185,11 @@ function initializeAccordion() {
     });
   });
 }
+
+
+// ===============================================
+// ========= About-Us section ====================
+// ===============================================
 document.addEventListener("DOMContentLoaded", () => {
   // Fetch data from JSON file
   fetch("http://localhost:5000/api/home/")
@@ -199,7 +208,6 @@ document.addEventListener("DOMContentLoaded", () => {
       console.error("Error loading About Us data:", error)
     );
 });
-
 // Render About Us Section
 function renderAboutUs(aboutUs) {
   const aboutUsContainer = document.getElementById("aboutUsSection");
@@ -228,6 +236,10 @@ function renderAboutUs(aboutUs) {
 
   aboutUsContainer.innerHTML = aboutUsHtml;
 }
+
+// ===============================================
+// ========= Instagram section ====================
+// ===============================================
 document.addEventListener("DOMContentLoaded", () => {
   // Fetch data from JSON file
   fetch("http://localhost:5000/api/home/")
@@ -246,7 +258,6 @@ document.addEventListener("DOMContentLoaded", () => {
       console.error("Error loading Instagram data:", error)
     );
 });
-
 // Render Instagram Section
 function renderInstagramSection(instagramSection) {
   const followLink = document.getElementById("followLink");
@@ -271,6 +282,8 @@ function renderInstagramSection(instagramSection) {
   // Inject the images into the gallery container
   galleryContainer.innerHTML = imagesHtml;
 }
+
+
 fetch("http://localhost:5000/api/home/")
   .then((response) => response.json())
   .then((data) => {

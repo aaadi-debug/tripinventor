@@ -732,41 +732,144 @@
         <button id="saveAboutUs" class="btn btn-primary">Save Changes</button>
       </div>
 
-      <div id="tab13" class="tab-panel">
+      <div id="tab13" class="tab-panel pb-5">
         <h2>Manage Home Page</h2>
         <div id="loading" style="display: none">Loading...</div>
-        
-        <!-- Add New Banner Form -->
-        <div id="add-banner-form">
-          <h3>Add New Banner</h3>
-          <form id="new-banner-form">
-            <input type="text" id="banner-title" placeholder="Title" required />
-            <input type="text" id="banner-subtitle" placeholder="Subtitle" required />
-            <input type="text" id="banner-link" placeholder="Link (e.g., /destination.html)" required />
-            <input type="text" id="banner-image" placeholder="Image URL" required />
-            <button type="submit" class="btn btn-primary">Add Banner</button>
-          </form>
+
+        <h4>Section 1 - Banners</h4>
+        <div class="homeSection">
+          <!-- Add New Banner Form -->
+          <div id="add-banner-form">
+            <h3>Add New Banner</h3>
+            <form id="new-banner-form">
+              <input type="text" id="banner-title" placeholder="Title" required />
+              <input type="text" id="banner-subtitle" placeholder="Subtitle" required />
+              <input type="text" id="banner-link" placeholder="Link (e.g., /destination.html)" required />
+              <input type="text" id="banner-image" placeholder="Image URL" required />
+              <button type="submit" class="btn btn-primary">Add Banner</button>
+            </form>
+          </div>
+
+          <!-- Existing Banners List -->
+          <div id="banners-list" class="mt-3">
+            <h3>Existing Banners</h3>
+            <table class="table table-striped table-bordered">
+              <thead>
+                <tr>
+                  <th>Image</th>
+                  <th>Title</th>
+                  <th>Subtitle</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody id="banners-table-body">
+                <!-- Banners will be dynamically added here -->
+              </tbody>
+            </table>
+          </div>
         </div>
-        
-        <!-- Existing Banners List -->
-        <div id="banners-list">
-          <h3>Existing Banners</h3>
-          <table>
-            <thead>
-              <tr>
-                <th>Image</th>
-                <th>Title</th>
-                <th>Subtitle</th>
-                <th>Actions</th>
-              </tr>
-            </thead>
-            <tbody id="banners-table-body">
-              <!-- Banners will be dynamically added here -->
-            </tbody>
-          </table>
+
+        <!-- Featured section -->
+        <h4 class="mt-5">Section 2 - Featured</h4>
+        <div class="homeSection">
+          <section id="featuredUsSection">
+            <h3>Manage Featured Section</h3>
+            <div id="featuredUsList"></div>
+            <button onclick="updateFeaturedUs()" class="btn btn-primary">Update</button>
+          </section>
+        </div>
+
+        <!-- About  section -->
+        <h4 class="mt-5">Section 3 - About </h4>
+        <div class="homeSection">
+          <section id="aboutUsSectionAdmin">
+            <h3>Manage About Us Section</h3>
+            <label>Title:</label>
+            <input type="text" id="aboutUsTitle" />
+
+            <label>Headline:</label>
+            <input type="text" id="aboutUsHeadline" />
+
+            <label>Description:</label>
+            <textarea id="aboutUsDescription"></textarea>
+
+            <label>Main Image URL:</label>
+            <input type="text" id="aboutUsMainImage" />
+
+            <label>Image List (comma-separated URLs):</label>
+            <input type="text" id="aboutUsImageList" />
+
+            <button onclick="updateAboutUs()" class="btn btn-primary">Update</button>
+          </section>
+        </div>
+
+        <!-- Top Destinations Section -->
+        <h4 class="mt-5">Section 4 - Top Destinations</h4>
+        <div class="homeSection">
+          <section id="topDestinationsAdmin">
+            <h3>Manage Top Destinations</h3>
+            <div id="topDestinationsList"></div>
+          </section>
+        </div>
+
+        <!-- Trending Destinations Section -->
+        <h4 class="mt-5">Section 5 - Trending Destinations</h4>
+        <div class="homeSection">
+          <section id="trendingDestinationsAdmin">
+            <h3>Manage Trending Destinations</h3>
+            <div id="trendingDestinationsList"></div>
+          </section>
+        </div>
+
+        <button onclick="updateDestinations()" class="btn btn-primary mt-2">Update Destinations</button>
+
+
+        <!-- Main Article Section -->
+        <h4 class="mt-5">Section 6 - Articles</h4>
+        <div class="homeSection">
+          <section id="mainArticleAdmin">
+            <h3>Manage Main Article</h3>
+            <div id="mainArticleForm"></div>
+          </section>
+
+          <!-- Sub Articles Section -->
+          <section id="subArticlesAdmin">
+            <h3>Manage Sub Articles</h3>
+            <div id="subArticlesList"></div>
+          </section>
+
+          <button onclick="updateArticles()" class="btn btn-primary">Update Articles</button>
+        </div>
+
+        <!-- Testimonials Section -->
+        <h4 class="mt-5">Section 7 - Testimonials</h4>
+        <div class="homeSection">
+          <section id="testimonialsAdmin">
+            <h3>Manage Testimonials</h3>
+            <div id="testimonialsList"></div>
+          </section>
+          <button onclick="updateArticles()" class="btn btn-primary">Update Testimonials</button>
+        </div>
+
+        <!-- FAQ section -->
+        <h4 class="mt-5">Section 8 - FAQs</h4>
+        <div class="homeSection">
+          <section id="faqSectionAdmin">
+            <h3>Manage FAQ Section</h3>
+
+            <label>Title:</label>
+            <input type="text" id="faqTitle" />
+
+            <label>Description:</label>
+            <textarea id="faqDescription"></textarea>
+
+            <div id="faqList"></div>
+
+            <button onclick="updateFAQ()" class="btn btn-primary">Update</button>
+          </section>
         </div>
       </div>
-      
+
     </div>
   </div>
   <script>

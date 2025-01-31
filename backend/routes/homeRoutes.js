@@ -17,7 +17,7 @@ router.get("/", async (req, res) => {
 router.put("/", async (req, res) => {
     try {
         const updatedData = await Home.findOneAndUpdate({}, req.body, { new: true, upsert: true });
-        res.json(updatedData);
+        res.json(updatedData);  
     } catch (err) {
         res.status(500).json({ error: err.message });
     }

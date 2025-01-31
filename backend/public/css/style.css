@@ -1019,3 +1019,17 @@ transform: translateX(0);
   /* border: 1px solid red; */
   overflow-x: auto !important;
 }
+
+.homeSection {
+  background-color: #ededed;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.homeSection table {
+  background-color: white;
+  border-radius: 10px;
+}
+.homeSection table thead tr th {
+  padding: 20px 10px;
+}
