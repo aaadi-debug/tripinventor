@@ -220,6 +220,7 @@ a {
   color: #3f3f3f;
   transition: all ease-in-out 0.5s;
   cursor: pointer;
+  text-decoration: none;
 }
 
 a:hover,
@@ -285,6 +286,14 @@ img {
 
 .pink {
   color: var(--new-secondary) !important;
+}
+
+.tickGreen {
+  color: #29be8e;
+}
+
+.crossRed {
+  color: #ff1a1a;
 }
 
 .grey {
@@ -666,6 +675,16 @@ blockquote {
   text-overflow: ellipsis;
 }
 
+.desti_card_desc_one {
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+
+
 blockquote :after {
   content: "";
   position: absolute;
@@ -816,6 +835,7 @@ table thead tr th {
 
 #searchResults .searchCard .searchCardImg {
   width: 100%;
+  /* height: 270px; */
   /* border: 1px solid red; */
 }
 
@@ -1196,9 +1216,9 @@ iframe {
 }
 
 .search-bar .form-control {
-  border-radius: 40px;
+  border-radius: 15px;
   /* Fully round border */
-  padding: 2px 19px;
+  padding: 0px 19px;
   /* Add padding for better appearance */
   border: 1px solid var(--new-secondary);
 }
@@ -1516,13 +1536,172 @@ input#submit:hover {
 .alert .alert-success p {
   color: #fff;
 }
+/* ========================================= */
+/*         all destination      */
+/* ======================================== */
+
+.travel-card {
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease-in-out;
+}
+.travel-card:hover {
+  transform: translateY(-5px);
+}
+.travel-card img {
+  width: 100%;
+  height: 280px;
+  /* border: 2px solid red; */
+  object-fit: cover;
+}
+.dots-carousel {
+  position: absolute;
+  bottom: 5px;
+  left: 50%;
+  /* text-align: center; */
+  transform: translateX(0%);
+}
+.card-body {
+  background: #fff;
+  padding: 15px;
+  text-align: left;
+}
+.price {
+  font-size: 25px;
+  font-weight: 500;
+  color: #000000;
+}
+.days-nights {
+  font-size: 16px;
+  color: #555;
+}
+.card-title {
+  font-size: 25px;
+  font-weight: 600;
+}
+.travel-card i {
+  color: #ff7e00;
+  font-size: 20px;
+}
+.btn-tel:hover {
+  background-color: #ff7e00;
+}
+.btn-tel:hover i {
+  color: #fff;
+}
+.btn-detail {
+  background-color: #ff7e00;
+  color: #fff;
+  border-radius: 6px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.btn-detail:hover{
+  color: #fff;
+}
+.ribbon-destination {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  /* background: #c83340; */
+  background-color: #ff7e00;
+  color: white;
+  /* font-weight: bold; */
+  padding: 6px 12px;
+  font-size: 14px;
+  border-radius: 5px;
+  z-index: 3;
+  /* box-shadow: 0 2px 5px rgba(36, 36, 36, 0.2); */
+  /* transform: rotate(-20deg); */
+}
+
+.card-text {
+  color: #555;
+}
+.loadmore {
+  background-color: #ff8000da;
+  color: #fff;
+  padding: 8px 19px;
+  border-radius: 3px;
+  /* display: flex;
+  justify-content: space-between;
+  align-items: center; */
+}
+/* Container Styling */
+.filter-sort-search {
+  background: #f8f9fa;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+/* Sort Dropdown */
+.filter-sort {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.filter-sort label {
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 0;
+}
+.filter-sort select {
+  width: 180px;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/* Search Bar */
+.search-bar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.search-bar label {
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 0;
+}
+.search-bar input {
+  width: 250px;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  outline: none;
+}
+
+/* Responsive Styling */
+@media (max-width: 768px) {
+  .filter-sort-search {
+    flex-direction: column;
+    gap: 15px;
+  }
+  .filter-sort,
+  .search-bar {
+    width: 100%;
+    justify-content: center;
+  }
+  .search-bar input,
+  .filter-sort select {
+    width: 100%;
+  }
+}
 
 /* ========================================= */
 /*          Ribbon CSS        */
 /* ======================================== */
 .ribbon {
-  width: 150px;
-  height: 150px;
+  width: 130px;
+  height: 130px;
   overflow: hidden;
   position: absolute;
   z-index: 2;
@@ -1541,7 +1720,7 @@ input#submit:hover {
   position: absolute;
   display: block;
   width: 225px;
-  padding: 10px 0;
+  padding: 8px 0;
   background-color: var(--new-secondary);
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
   color: #fff;
@@ -1556,8 +1735,8 @@ input#submit:hover {
 }
 
 .ribbon-top-left {
-  top: -10px;
-  left: -10px;
+  top: 0px;
+  left: 0px;
 }
 
 .ribbon-top-left:before,
@@ -1652,12 +1831,13 @@ input#submit:hover {
 
 /* Rotate Icon */
 .accordion-header i {
-  font-size: 14px;
+  font-size: 10px;
   transition: transform 0.3s ease;
 }
 
 /* Accordion Content */
 .accordion-content {
+  border: 2px  solid red;
   padding: 15px;
   background: #fff;
   display: none;
@@ -2578,7 +2758,7 @@ input#submit:hover {
 
 .navbar_below_wrapper {
   /* border: 1px solid red; */
-  background-color: rgba(255, 255, 255, 0.151);
+  /* background-color: rgba(255, 255, 255, 0.151); */
   box-shadow: 0 0 15px #cccccc37;
 
   position: relative;
@@ -2595,7 +2775,8 @@ input#submit:hover {
   gap: 50px;
   justify-content: center;
   align-items: center;
-  padding: 16px 2px;
+  padding: 17px;
+  /* background-color: #fff; */
 }
 
 .navbar_below_wrapper ul li {
@@ -2652,6 +2833,7 @@ input#submit:hover {
   /* border: 1px solid red; */
   margin-bottom: 0;
   text-transform: uppercase;
+  font-size: 18px;
 }
 
 .navbar_below_wrapper .navbar_below_wrapperLi_submenu_wrapper div ol li {
@@ -4255,15 +4437,29 @@ span.location-box {
 
 .sidebar-contact {
   padding: 40px 20px;
+  border: 2px solid #eeecec;
+  border-radius: 5px;
+
 }
 
 .sidebar-contact i {
   font-size: 32px;
   margin-bottom: 20px;
 }
-
+.sidebar-contact h3{
+  font-size: 30px;
+  font-weight: 400;
+  text-transform: uppercase;
+}
+.sidebar-contact a{
+  font-size: 20px;
+}
+.sidebar-contact a:hover{
+ font-weight: 600;
+ color: black;
+}
 .desc-box {
-  background: #fbfbfb;
+  /* background: #fbfbfb; */
   padding: 10px 20px;
   border: 1px solid #f1f1f1;
 }

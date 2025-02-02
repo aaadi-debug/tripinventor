@@ -1,158 +1,192 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="zxx">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>TripInventor - Single Destinations</title>
     <!-- Favicon -->
-    <link rel="shortcut icon" type="image/x-icon" href="images/favicon.ico">
+    <link rel="shortcut icon" type="image/x-icon" href="images/favicon.ico" />
     <!-- Bootstrap core CSS -->
-    <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css" />
     <!--Custom CSS-->
-    <link href="css/style.css" rel="stylesheet" type="text/css">
+    <link href="css/style.css" rel="stylesheet" type="text/css" />
     <!--Plugin CSS-->
-    <link href="css/plugin.css" rel="stylesheet" type="text/css">
+    <link href="css/plugin.css" rel="stylesheet" type="text/css" />
     <!--Flaticons CSS-->
-    <link href="fonts/flaticon.css" rel="stylesheet" type="text/css">
+    <link href="fonts/flaticon.css" rel="stylesheet" type="text/css" />
     <!--Font Awesome-->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css"
+    />
 
-    <link rel="stylesheet" href="fonts/line-icons.css" type="text/css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
-        integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="fonts/line-icons.css" type="text/css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+      integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
 
     <style>
-        .accordion-wrapper {
-            /* border: 1px solid red; */
-            /* max-width: 600px; */
-            margin: 0 auto;
-            margin-bottom: 50px;
-        }
+      .accordion-wrapper {
+        /* border: 1px solid red; */
+        /* max-width: 600px; */
+        margin: 0 auto;
+        margin-bottom: 50px;
+      }
 
-        .accordion-outer {
-            margin-bottom: 10px;
-            position: relative;
-            /* Ensure the layout doesn’t shift unexpectedly */
-        }
+      .accordion-outer {
+        margin-bottom: 10px;
+        position: relative;
+        /* Ensure the layout doesn’t shift unexpectedly */
+      }
 
-        .accordion-heading {
-            font-weight: 700;
-            font-size: 15px;
-            background: #1e5069;
-            padding: 0.5rem;
-            color: #fff;
-            padding: 14px 20px;
-            cursor: pointer;
-            /* Makes it clear that this element is interactive */
-        }
+      .accordion-heading {
+        font-weight: 700;
+        font-size: 15px;
+        /* background: #1e5069; */
+        padding: 0.5rem;
+        color: rgb(46, 45, 45);
+        border: 1px solid rgb(216, 216, 216);
+        border-radius: 3px;
+        padding: 14px 20px;
+        cursor: pointer;
+        /* Makes it clear that this element is interactive */
+      }
 
-        .accordion-contentt {
-            border: 1px solid #1e5069;
-            display: grid;
-            grid-template-rows: 0fr;
-            transition: grid-template-rows 0.8s ease;
-            overflow: hidden;
-            /* Ensures content doesn't spill out */
-        }
+      .accordion-contentt {
+        /* border: 1px solid #1e5069; */
+        border: 1px solid rgb(216, 216, 216);
+        border-radius: 0 20px 0 20px;
+        display: grid;
+        grid-template-rows: 0fr;
+        transition: grid-template-rows 0.8s ease;
+        overflow: hidden;
+        /* Ensures content doesn't spill out */
+      }
 
-        .accordion-inner {
-            overflow: hidden;
-        }
+      .accordion-inner {
+        overflow: hidden;
+      }
 
-        /* .accordion-heading:hover+.accordion-content {
+      /* .accordion-heading:hover+.accordion-content {
             grid-template-rows: 1fr;
         } */
 
+      .accordion-inner__inner {
+        background: #fff;
+        color: #000;
+        padding: 1rem;
+      }
 
-        .accordion-inner__inner {
-            background: #fff;
-            color: #000;
-            padding: 1rem;
-        }
+      .accordion-inner__inner p {
+        font-size: 15px;
+        color: #6c6c74;
+      }
 
-        .accordion-inner__inner p {
-            font-size: 15px;
-            color: #6c6c74;
-        }
+      .accordion-outer:hover .accordion-contentt {
+        grid-template-rows: 1fr;
+      }
 
-        .accordion-outer:hover .accordion-contentt {
-            grid-template-rows: 1fr;
-        }
+      /* ------------------- carousel -------------------- */
+      .carousel-container {
+        overflow: hidden;
+        position: relative;
+        background: #fff;
+        margin-bottom: 30px;
+      }
 
-        /* ------------------- carousel -------------------- */
-        .carousel-container {
-            overflow: hidden;
-            position: relative;
-            background: #fff;
-            margin-bottom: 30px;
-        }
+      .carousel-slide {
+        display: flex;
+        transition: transform 0.5s ease-in-out;
+      }
 
-        .carousel-slide {
-            display: flex;
-            transition: transform 0.5s ease-in-out;
-        }
+      .carousel-slide img {
+        width: 100%;
+        height: 400px;
+        flex-shrink: 0;
+      }
 
-        .carousel-slide img {
-            width: 100%;
-            height: 400px;
-            flex-shrink: 0;
-        }
+      .carousel-controls {
+        padding: 0 20px;
+        position: absolute;
+        top: 50%;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        transform: translateY(-50%);
+      }
 
-        .carousel-controls {
-            padding: 0 20px;
-            position: absolute;
-            top: 50%;
-            width: 100%;
-            display: flex;
-            justify-content: space-between;
-            transform: translateY(-50%);
-        }
+      .carousel-controls button {
+        background-color: #ff9d3c;
+        outline: none;
+        color: #fff;
+        border: none;
+        padding: 5px 10px;
+        cursor: pointer;
+        transition: 0.5s all;
+      }
 
-        .carousel-controls button {
-            background-color: #ff9d3c;
-            outline: none;
-            color: #fff;
-            border: none;
-            padding: 5px 10px;
-            cursor: pointer;
-            transition: 0.5s all;
-        }
+      .carousel-controls button:hover {
+        background-color: #ff7e00;
+      }
 
-        .carousel-controls button:hover {
-            background-color: #ff7e00;
-        }
+      .carousel-indicators {
+        display: flex;
+        justify-content: center;
+        margin-top: 10px;
+        opacity: 0;
+      }
 
-        .carousel-indicators {
-            display: flex;
-            justify-content: center;
-            margin-top: 10px;
-            opacity: 0;
-        }
+      .carousel-indicators div {
+        width: 10px;
+        height: 10px;
+        margin: 0 5px;
+        background-color: #ccc;
+        border-radius: 50%;
+        cursor: pointer;
+      }
 
-        .carousel-indicators div {
-            width: 10px;
-            height: 10px;
-            margin: 0 5px;
-            background-color: #ccc;
-            border-radius: 50%;
-            cursor: pointer;
-        }
-
-        .carousel-indicators .active {
-            background-color: #000;
-        }
+      .carousel-indicators .active {
+        background-color: #000;
+      }
+      .sidebar-contact i,
+      .rating-main i {
+        color: #ff7e00;
+        font-size: 20px;
+      }
+      .enquire-btn {
+        background-color: #ff8000da;
+        color: #fff;
+        padding: 8px 19px;
+        border-radius: 7px;
+        font-size: 20px;
+        width: 100%;
+        /* display: flex;
+        justify-content: space-between;
+        align-items: center; */
+      }
+      .day {
+        color: #fff;
+        background-color: #ff7e00;
+        padding: 5px 15px;
+        border-radius: 30px;
+        font-size: 15px;
+      }
     </style>
-</head>
+  </head>
 
-<body>
-
+  <body>
     <!-- Preloader -->
     <div id="preloader">
-        <div id="status"></div>
+      <div id="status"></div>
     </div>
     <!-- Preloader Ends -->
 
@@ -161,311 +195,300 @@
     <!-- header ends -->
 
     <!-- BreadCrumb Starts -->
-    <section class="breadcrumb-main pb-0" style="background-image: url(images/bg/bg8.jpg);">
-        <div class="breadcrumb-outer pt-10">
-            <div class="container">
-                <div class="breadcrumb-content d-md-flex align-items-center pt-10">
-                    <h2 class="mb-0 singleDPageTitle">Single One</h2>
-                    <nav aria-label="breadcrumb">
-                        <ul class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="#">Home</a></li>
-                            <li class="breadcrumb-item active singleDPageTitle" aria-current="page singleDPageTitle">
-                                Destination Single One</li>
-                        </ul>
-                    </nav>
-                </div>
-            </div>
+    <section
+      class="breadcrumb-main pb-0"
+      style="background-image: url(images/bg/bg8.jpg)"
+    >
+      <div class="breadcrumb-outer pt-10">
+        <div class="container">
+          <div class="breadcrumb-content d-md-flex align-items-center pt-10">
+            <h2 class="mb-0 singleDPageTitle">Single One</h2>
+            <nav aria-label="breadcrumb">
+              <ul class="breadcrumb">
+                <li class="breadcrumb-item"><a href="#">Home</a></li>
+                <li
+                  class="breadcrumb-item active singleDPageTitle"
+                  aria-current="page singleDPageTitle"
+                >
+                  Destination Single One
+                </li>
+              </ul>
+            </nav>
+          </div>
         </div>
-        <div class="dot-overlay"></div>
+      </div>
+      <div class="dot-overlay"></div>
     </section>
     <!-- BreadCrumb Ends -->
 
-
     <!-- blog starts -->
     <section class="blog trending destination-b">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-8 col-xs-12">
-                    <div class="single-content" id="desination-content-dynamic">
-                        <div class="single-full-title border-b mb-2 pb-2">
-                            <!-- <div class="single-title">
-                                <h3 class="mb-1">Adriatic Adventure–Zagreb to Athens</h3>
-                                <div class="rating-main d-sm-flex align-items-center">
-                                    <p class="mb-0 mr-2"><i class="flaticon-location-pin"></i> Greater London, United
-                                        Kingdom</p>
-                                    <div class="rating mr-2">
-                                        <span class="fa fa-star checked"></span>
-                                        <span class="fa fa-star checked"></span>
-                                        <span class="fa fa-star checked"></span>
-                                        <span class="fa fa-star checked"></span>
-                                        <span class="fa fa-star checked"></span>
-                                    </div>
-                                    <span>(1,186 Reviews)</span>
-                                </div>
-                            </div> -->
-                        </div>
-                        <div class="description-images mb-4">
-                            <div class="thumbnail-images">
-                                <!-- <div class="slider-store">
-                                    <div>
-                                        <img src="images/slider/1.jpg" alt="1">
-                                    </div>
-                                    <div>
-                                        <img src="images/slider/2.jpg" alt="1">
-                                    </div>
-                                    <div>
-                                        <img src="images/slider/3.jpg" alt="1">
-                                    </div>
-                                    <div>
-                                        <img src="images/slider/7.jpg" alt="1">
-                                    </div>
-                                    <div>
-                                        <img src="images/slider/8.jpg" alt="1">
-                                    </div>
-                                    <div>
-                                        <img src="images/slider/2.jpg" alt="1">
-                                    </div>
-                                </div>
-                                <div class="slider-thumbs">
-                                    <div>
-                                        <img src="images/slider/1.jpg" alt="1">
-                                    </div>
-                                    <div>
-                                        <img src="images/slider/2.jpg" alt="1">
-                                    </div>
-                                    <div>
-                                        <img src="images/slider/3.jpg" alt="1">
-                                    </div>
-                                    <div>
-                                        <img src="images/slider/7.jpg" alt="1">
-                                    </div>
-                                    <div>
-                                        <img src="images/slider/8.jpg" alt="1">
-                                    </div>
-                                    <div>
-                                        <img src="images/slider/2.jpg" alt="1">
-                                    </div>
-                                </div> -->
-                            </div>
-                        </div>
-
-
-
-
-
-                    </div>
-
-
-                    <div class="d-none">
-                        <div class="review-summary">
-                            <h4>Average Rating: <span id="averageRating">0</span></h4>
-                            <div id="averageRatingStars" class="rating">
-                                <!-- Stars will be dynamically added here -->
-                            </div>
-                            <p><span id="totalReviews">(0 Reviews)</span></p>
-                        </div>
-                    </div>
-
-                    <div class="single-comments single-box mb-4">
-                        <h5 class="border-b pb-2 mb-2">Showing 0 verified comments</h5>
-                        <div class="accrodion-grp faq-accrodion mb-4" data-grp-name="faq-accrodion">
-                            <!-- Reviews will be dynamically inserted here -->
-                        </div>
-                    </div>
-
-                    <!-- Write a Review Section -->
-                    <div class="single-add-review">
-                        <h4>Write a Review</h4>
-                        <form id="reviewForm">
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <input type="text" id="reviewerName" placeholder="Name" required>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <input type="number" id="reviewRating" placeholder="Rating (1-5)" min="1"
-                                            max="5" required>
-                                    </div>
-                                </div>
-                                <div class="col-md-12">
-                                    <div class="form-group">
-                                        <textarea id="reviewContent" placeholder="Comment" required></textarea>
-                                    </div>
-                                </div>
-
-                                <div class="col-md-6">
-                                    <div class="form-btn">
-                                        <button type="submit" class="nir-btn">Submit Review</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-
-                <div class="col-md-4 col-xs-12">
-                    <div class="sidebar-sticky bookingForm">
-                        <div class="list-sidebar">
-                            <div class="sidebar-item">
-                                <form class="form-content">
-                                    <h4 class="title white text-center">MAKE A BOOKING</h4>
-                                    <div class="row">
-                                        <div class="col-lg-12">
-                                            <div class="form-group">
-                                                <label class="white">Your destination is:</label>
-                                                <h2 class="destinationInputTitle white"></h2>
-                                                <input type="hidden" id="destinationHiddenInput"
-                                                    name="destinationTitle">
-                                            </div>
-                                        </div>
-
-                                        <div class="col-lg-12">
-                                            <div class="form-group">
-                                                <label class="white">Name</label>
-                                                <div class="input-box">
-                                                    <i class="fa-regular fa-user"></i>
-                                                    <input type="text" placeholder="Your Name">
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="col-lg-12">
-                                            <div class="form-group">
-                                                <label class="white">Email</label>
-                                                <div class="input-box">
-                                                    <i class="fa-regular fa-envelope"></i>
-                                                    <input type="email" placeholder="Your Email">
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="col-lg-12">
-                                            <div class="form-group">
-                                                <label class="white">Phone</label>
-                                                <div class="input-box">
-                                                    <i class="fa-solid fa-phone"></i>
-                                                    <input type="text" placeholder="Your Phone">
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="col-lg-12">
-                                            <div class="form-group">
-                                                <label class="white">Choose Date</label>
-                                                <div class="input-box">
-                                                    <i class="fa-regular fa-calendar"></i>
-                                                    <input type="date" placeholder="Your Phone">
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="col-lg-12">
-                                            <div class="form-group">
-                                                <label class="white">No. Of People</label>
-                                                <div class="input-box">
-                                                    <i class="fa-solid fa-user-group"></i>
-                                                    <select class="niceSelect">
-                                                        <option value="1">1</option>
-                                                        <option value="2">2</option>
-                                                        <option value="3">3</option>
-                                                        <option value="4">4</option>
-                                                        <option value="5">5</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="col-lg-12">
-                                            <div class="form-group mb-0">
-                                                <button class="nir-btn w-100">Instant Book</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
-                            <div class="sidebar-item">
-                                <div class="sidebar-contact text-center bg-navy">
-                                    <i class=" fa fa-phone-alt white"></i>
-                                    <h3 class="white"><span>Book</span> by phone</h3>
-                                    <a href="tel:+919718171912" class="phone white">+91 9718171912</a>
-                                    <small class="white d-block mt-2">Monday to Friday 9.00am - 7.30pm</small>
-                                </div>
-                            </div>
-                            <div class="sidebar-item">
-                                <h4 class="m-0 text-center">Explore More</h4>
-                                <div class="my-4">
-                                    <div class="trend-item">
-                                        <div class="trend-image">
-                                            <img src="images/trending/trending1.jpg" alt="image">
-                                            <div class="trend-tags">
-                                                <a href="#"><i class="flaticon-like"></i></a>
-                                            </div>
-                                        </div>
-                                        <div class="trend-content-main">
-                                            <div class="trend-content">
-                                                <h6 class="font-weight-normal"><i class="fa fa-map-marker-alt"></i>
-                                                    Thailand</h6>
-                                                <h4><a href="#">Stonehenge, Windsor Castle, and Bath from
-                                                        London</a>
-                                                </h4>
-                                                <div class="rating-main d-flex align-items-center">
-                                                    <div class="rating">
-                                                        <span class="fa fa-star checked"></span>
-                                                        <span class="fa fa-star checked"></span>
-                                                        <span class="fa fa-star checked"></span>
-                                                        <span class="fa fa-star checked"></span>
-                                                        <span class="fa fa-star checked"></span>
-                                                    </div>
-                                                    <span class="ml-2">38 Reviews</span>
-                                                </div>
-                                            </div>
-                                            <div class="trend-last-main">
-                                                <p class="mb-0 trend-para">A wonderful little cottage right on
-                                                    the
-                                                    seashore -
-                                                    perfect for exploring.</p>
-                                                <div
-                                                    class="trend-last d-flex align-items-center justify-content-between">
-                                                    <p class="mb-0 white"><i class="fa fa-clock-o"
-                                                            aria-hidden="true"></i> 3 days &
-                                                        2 night</p>
-                                                    <div class="trend-price">
-                                                        <p class="price white mb-0">From <span>$350.00</span>
-                                                        </p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-8 col-xs-12">
+            <div class="single-content" id="desination-content-dynamic">
+              <div class="single-full-title border-b mb-2 pb-2"></div>
+              <div class="description-images mb-4">
+                <div class="thumbnail-images"></div>
+              </div>
             </div>
+
+            <div class="d-none">
+              <div class="review-summary">
+                <h4>Average Rating: <span id="averageRating">0</span></h4>
+                <div id="averageRatingStars" class="rating">
+                  <!-- Stars will be dynamically added here -->
+                </div>
+                <p><span id="totalReviews">(0 Reviews)</span></p>
+              </div>
+            </div>
+
+            <div class="single-comments single-box mb-4">
+              <h5 class="border-b pb-2 mb-2">Showing 0 verified comments</h5>
+              <div
+                class="accrodion-grp faq-accrodion mb-4"
+                data-grp-name="faq-accrodion"
+              >
+                <!-- Reviews will be dynamically inserted here -->
+              </div>
+            </div>
+
+            <!-- Write a Review Section -->
+            <div class="single-add-review">
+              <h4>Write a Review</h4>
+              <form id="reviewForm">
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <input
+                        type="text"
+                        id="reviewerName"
+                        placeholder="Name"
+                        required
+                      />
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <input
+                        type="number"
+                        id="reviewRating"
+                        placeholder="Rating (1-5)"
+                        min="1"
+                        max="5"
+                        required
+                      />
+                    </div>
+                  </div>
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <textarea
+                        id="reviewContent"
+                        placeholder="Comment"
+                        required
+                      ></textarea>
+                    </div>
+                  </div>
+
+                  <div class="col-md-6">
+                    <div class="form-btn">
+                      <button type="submit" class="nir-btn">
+                        Submit Review
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+
+          <div class="sidebar col-md-4 col-xs-12">
+            <div class="border p-4">
+              <div class="d-flex justify-content-lg-between align-items-center">
+                <h3 class="mt-2 " id="price" ></h3>
+                <!-- <p class="text-secondary fw-light">Per Adult</p> -->
+              </div>
+              <button  id="enquire-btn" class="enquire-btn mt-2">Enquire Now</button>
+            </div>
+            <div class="sidebar-sticky bookingForm">
+              <div class="list-sidebar">
+                <div class="sidebar-item">
+                  <form class="form-content">
+                    <h4 class="title white text-center">MAKE A BOOKING</h4>
+                    <div class="row">
+                      <div class="col-lg-12">
+                        <div class="form-group">
+                          <label class="white">Your destination is:</label>
+                          <h2 class="destinationInputTitle white"></h2>
+                          <input
+                            type="hidden"
+                            id="destinationHiddenInput"
+                            name="destinationTitle"
+                          />
+                        </div>
+                      </div>
+
+                      <div class="col-lg-12">
+                        <div class="form-group">
+                          <label class="white">Name</label>
+                          <div class="input-box">
+                            <i class="fa-regular fa-user"></i>
+                            <input type="text" placeholder="Your Name" />
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="col-lg-12">
+                        <div class="form-group">
+                          <label class="white">Email</label>
+                          <div class="input-box">
+                            <i class="fa-regular fa-envelope"></i>
+                            <input type="email" placeholder="Your Email" />
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="col-lg-12">
+                        <div class="form-group">
+                          <label class="fs-1 white">Phone</label>
+                          <div class="input-box">
+                            <i class="fa-solid fa-phone"></i>
+                            <input type="text" placeholder="Your Phone" />
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="col-lg-12">
+                        <div class="form-group">
+                          <label class="white">Choose Date</label>
+                          <div class="input-box">
+                            <i class="fa-regular fa-calendar"></i>
+                            <input type="date" placeholder="Your Phone" />
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="col-lg-12">
+                        <div class="form-group">
+                          <label class="white">No. Of People</label>
+                          <div class="input-box">
+                            <i class="fa-solid fa-user-group"></i>
+                            <select class="niceSelect">
+                              <option value="1">1</option>
+                              <option value="2">2</option>
+                              <option value="3">3</option>
+                              <option value="4">4</option>
+                              <option value="5">5</option>
+                            </select>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="col-lg-12">
+                        <div class="form-group mb-0">
+                          <button class="nir-btn w-100">Instant Book</button>
+                        </div>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+
+                <!-- <div class="sidebar-item">
+                  <h4 class="m-0 text-center">Explore More</h4>
+                  <div class="my-4">
+                    <div class="trend-item">
+                      <div class="trend-image">
+                        <img src="images/trending/trending1.jpg" alt="image" />
+                        <div class="trend-tags">
+                          <a href="#"><i class="flaticon-like"></i></a>
+                        </div>
+                      </div>
+                      <div class="trend-content-main">
+                        <div class="trend-content">
+                          <h6 class="font-weight-normal">
+                            <i class="fa fa-map-marker-alt"></i> Thailand
+                          </h6>
+                          <h4>
+                            <a href="#"
+                              >Stonehenge, Windsor Castle, and Bath from
+                              London</a
+                            >
+                          </h4>
+                          <div class="rating-main d-flex align-items-center">
+                            <div class="rating">
+                              <span class="fa fa-star checked"></span>
+                              <span class="fa fa-star checked"></span>
+                              <span class="fa fa-star checked"></span>
+                              <span class="fa fa-star checked"></span>
+                              <span class="fa fa-star checked"></span>
+                            </div>
+                            <span class="ml-2">38 Reviews</span>
+                          </div>
+                        </div>
+                        <div class="trend-last-main">
+                          <p class="mb-0 trend-para">
+                            A wonderful little cottage right on the seashore -
+                            perfect for exploring.
+                          </p>
+                          <div
+                            class="trend-last d-flex align-items-center justify-content-between"
+                          >
+                            <p class="mb-0 white">
+                              <i class="fa fa-clock-o" aria-hidden="true"></i> 3
+                              days & 2 night
+                            </p>
+                            <div class="trend-price">
+                              <p class="price white mb-0">
+                                From <span>$350.00</span>
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div> -->
+              </div>
+            </div>
+
+            <div class="sidebar-contact text-center">
+              <i class="fa fa-phone-alt"></i>
+              <h3><span>Book</span> by phone</h3>
+              <a href="tel:+919718171912">+91 9718171912</a>
+              <p class="d-block mt-2 text-secondary">
+                Monday to Friday 9.00am - 7.30pm
+              </p>
+            </div>
+            <div class="w-100 border sidebar-related">
+              
+                <div class="section-title   mb-5 pb-2  mx-auto">
+                  <h2 class="mt-4 fs-1 text-center">Related <span>Tour Packages</span></h2>
+                </div>
+                <div class="trend-box border ">
+                  <div class="row team-slider w-100 p-0 m-0" id="related-packages-container-sidebar"></div>
+                </div>
+          
+          </div>
         </div>
-
-
-
-
+      </div>
     </section>
     <!-- blog Ends -->
 
     <!-- Trending Starts -->
     <section class="trending destination bg-grey pb-6">
-        <div class="container">
-            <div class="section-title text-center mb-5 pb-2 w-50 mx-auto">
-                <h2 class="m-0">Related <span>Tour Packages</span></h2>
-                <p class="mb-0">Travel has helped us to understand the meaning of life and it has helped us become
-                    better people. Each time we travel, we see the world with new eyes.</p>
-            </div>
-            <div class="trend-box">
-                <div class="row team-slider" id="related-packages-container">
-                </div>
-            </div>
+      <div class="container">
+        <div class="section-title text-center mb-5 pb-2 w-50 mx-auto">
+          <h2 class="m-0">Related <span>Tour Packages</span></h2>
+          <p class="mb-0">
+            Travel has helped us to understand the meaning of life and it has
+            helped us become better people. Each time we travel, we see the
+            world with new eyes.
+          </p>
         </div>
+        <div class="trend-box">
+          <div class="row team-slider" id="related-packages-container"></div>
+        </div>
+      </div>
     </section>
     <!-- Trending Ends -->
 
@@ -475,92 +498,90 @@
 
     <!-- Back to top start -->
     <div id="back-to-top">
-        <a href="#"></a>
+      <a href="#"></a>
     </div>
     <!-- Back to top ends -->
 
     <script>
-        // Function to load HTML content with AJAX
-        function loadContent(url, elementId) {
-            fetch(url)
-                .then(response => response.text())
-                .then(data => {
-                    document.getElementById(elementId).innerHTML = data;
-                })
-                .catch(error => console.error('Error loading content:', error));
-        }
+      // Function to load HTML content with AJAX
+      function loadContent(url, elementId) {
+        fetch(url)
+          .then((response) => response.text())
+          .then((data) => {
+            document.getElementById(elementId).innerHTML = data;
+          })
+          .catch((error) => console.error("Error loading content:", error));
+      }
 
-        // Load the header and footer using AJAX
-        loadContent("header.html", "header");
-        // loadContent("footer.html", "footer");
+      // Load the header and footer using AJAX
+      loadContent("header.html", "header");
+      // loadContent("footer.html", "footer");
     </script>
-
 
     <!-- <script src="./search.js"></script> -->
 
     <script>
-        // Function to load HTML content with AJAX
-        function loadContent(url, elementId) {
-            fetch(url)
-                .then((response) => response.text())
-                .then((data) => {
-                    document.getElementById(elementId).innerHTML = data;
-                })
-                .catch((error) => console.error("Error loading content:", error));
+      // Function to load HTML content with AJAX
+      function loadContent(url, elementId) {
+        fetch(url)
+          .then((response) => response.text())
+          .then((data) => {
+            document.getElementById(elementId).innerHTML = data;
+          })
+          .catch((error) => console.error("Error loading content:", error));
+      }
+
+      // Load the header and footer using AJAX
+      loadContent("header.html", "header");
+
+      // Function to load HTML content with AJAX
+      function loadContent(url, elementId, callback) {
+        fetch(url)
+          .then((response) => response.text())
+          .then((data) => {
+            document.getElementById(elementId).innerHTML = data;
+            if (callback) callback(); // Trigger the callback after loading
+          })
+          .catch((error) => console.error("Error loading content:", error));
+      }
+
+      // Reinitialize bubble animation logic
+      function initializeBubbleAnimation() {
+        const footer = document.querySelector(".bubbles");
+
+        function createBubble() {
+          const bubble = document.createElement("div");
+          bubble.classList.add("individual-bubble");
+
+          // Randomize size
+          const size = Math.random() * 10 + 5; // Bubble size between 10px and 50px
+          bubble.style.width = `${size}px`;
+          bubble.style.height = `${size}px`;
+
+          // Randomize horizontal position
+          bubble.style.left = `${Math.random() * 100}%`;
+
+          // Randomize animation duration
+          bubble.style.animationDuration = `${Math.random() * 5 + 5}s`; // Between 5s and 10s
+
+          // Randomize animation delay
+          bubble.style.animationDelay = `${Math.random()}s`;
+
+          footer.appendChild(bubble);
+
+          // Remove bubble after animation ends
+          bubble.addEventListener("animationend", () => {
+            bubble.remove();
+          });
         }
 
-        // Load the header and footer using AJAX
-        loadContent("header.html", "header");
+        // Create bubbles at intervals
+        setInterval(createBubble, 900); // Add a new bubble every 300ms
+      }
 
-        // Function to load HTML content with AJAX
-        function loadContent(url, elementId, callback) {
-            fetch(url)
-                .then((response) => response.text())
-                .then((data) => {
-                    document.getElementById(elementId).innerHTML = data;
-                    if (callback) callback(); // Trigger the callback after loading
-                })
-                .catch((error) => console.error("Error loading content:", error));
-        }
-
-        // Reinitialize bubble animation logic
-        function initializeBubbleAnimation() {
-            const footer = document.querySelector(".bubbles");
-
-            function createBubble() {
-                const bubble = document.createElement("div");
-                bubble.classList.add("individual-bubble");
-
-                // Randomize size
-                const size = Math.random() * 10 + 5; // Bubble size between 10px and 50px
-                bubble.style.width = `${size}px`;
-                bubble.style.height = `${size}px`;
-
-                // Randomize horizontal position
-                bubble.style.left = `${Math.random() * 100}%`;
-
-                // Randomize animation duration
-                bubble.style.animationDuration = `${Math.random() * 5 + 5}s`; // Between 5s and 10s
-
-                // Randomize animation delay
-                bubble.style.animationDelay = `${Math.random()}s`;
-
-                footer.appendChild(bubble);
-
-                // Remove bubble after animation ends
-                bubble.addEventListener("animationend", () => {
-                    bubble.remove();
-                });
-            }
-
-            // Create bubbles at intervals
-            setInterval(createBubble, 900); // Add a new bubble every 300ms
-        }
-
-        // Load the footer and initialize animation
-        loadContent("footer.html", "footer", initializeBubbleAnimation);
+      // Load the footer and initialize animation
+      loadContent("footer.html", "footer", initializeBubbleAnimation);
     </script>
-
 
     <script src="./desti.js"></script>
     <script src="./review.js"></script>
@@ -581,6 +602,5 @@
     <script src="js/custom-nav.js"></script>
     <script src="js/custom-date.js"></script>
     <script src="js/custom-accordian.js"></script>
-</body>
-
+  </body>
 </html>

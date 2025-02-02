@@ -57,7 +57,7 @@ document.addEventListener("DOMContentLoaded", () => {
                                   destinationData.title || "N/A"
                                 }</h3>
                                 <div class="rating-main d-sm-flex align-items-center">
-                                    <p class="mb-0 mr-2"><i class="flaticon-location-pin"></i>${
+                                    <p class="mb-0 mr-2"><i class="fa-solid fa-location-dot mr-3 "></i>${
                                       destinationData.location || "N/A"
                                     }</p>
                                     <div class="review-summary mr-2">
@@ -110,14 +110,11 @@ document.addEventListener("DOMContentLoaded", () => {
                                 <tbody>
                                     <tr>
                                         <td><i class="fa fa-clock-o pink mr-1" aria-hidden="true"></i> Duration: ${
-                                          destinationData?.duration ||
-                                          "N/A"
+                                          destinationData?.duration || "N/A"
                                         }</td>
                                         
                                         <td><i class="fa fa-file-alt pink mr-1" aria-hidden="true"></i> Langauge -
-                                            ${
-                                              destinationData?.languages
-                                            }</td>
+                                            ${destinationData?.languages}</td>
                                     </tr>
                                     <tr>
                                         <td><i class="fa fa-map-signs pink mr-1" aria-hidden="true"></i> Pickup Location :
@@ -141,36 +138,6 @@ document.addEventListener("DOMContentLoaded", () => {
                             }</p>
                           </div>
 
-                          <div class="description mb-2">
-                            <div class="row">
-                                <div class="col-lg-6 col-md-6 mb-2 pr-2">
-                                    <div class="desc-box">
-                                        <h5 class="mb-1">Inclusions</h5>
-                                        <ul>
-                                            ${destinationData?.additionalInfo?.includes
-                                              .map(
-                                                (item) =>
-                                                  `<li><i class="fa fa-check pink mr-1"></i> ${item}</li>`
-                                              )
-                                              .join("")}
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6 col-md-6 mb-2 pl-2">
-                                    <div class="desc-box">
-                                        <h5 class="mb-1">Exclusions</h5>
-                                        <ul>
-                                            ${destinationData?.additionalInfo?.excludes
-                                              .map(
-                                                (item) =>
-                                                  `<li><i class="fa fa-close pink mr-1"></i> ${item}</li>`
-                                              )
-                                              .join("")}
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                          </div>
                           
 
                                   <div class="accordion-wrapper">
@@ -179,7 +146,7 @@ document.addEventListener("DOMContentLoaded", () => {
                                         (item, index) => `
                                             <div class="accordion-outer">
                                                 <div class="accordion-heading">
-                                                    <span>${
+                                                    <span class="day">${
                                                       item.day
                                                     }</span> - ${item.title}
                                                 </div>
@@ -197,6 +164,41 @@ document.addEventListener("DOMContentLoaded", () => {
                                       )
                                       .join("")}
                                   </div>
+
+                                  <img src="./images/trip-end.png" alt="End of Trip Image" class="mb-5" />
+
+                                  <div class="description mb-2">
+                                  <h3 class="border-bottom pb-2">What’s inside the package?</h3>
+                            <div class="row mt-4">
+                                <div class="col-lg-6 col-md-6 mb-2 pr-2">
+                                    <div class="desc-box">
+                                        <h5 class="mb-1">Inclusions</h5>
+                                        <ul>
+                                            ${destinationData?.additionalInfo?.includes
+                                              .map(
+                                                (item) =>
+                                                  `<li><i class="fa fa-check tickGreen mr-1"></i> ${item}</li>`
+                                              )
+                                              .join("")}
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-6 mb-2 pl-2">
+                                    <div class="desc-box">
+                                        <h5 class="mb-1">Exclusions</h5>
+                                        <ul>
+                                            ${destinationData?.additionalInfo?.excludes
+                                              .map(
+                                                (item) =>
+                                                  `<li><i class="fa fa-close crossRed mr-1"></i> ${item}</li>`
+                                              )
+                                              .join("")}
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                          </div>
+                          
                           
       `;
 
@@ -252,6 +254,8 @@ document.addEventListener("DOMContentLoaded", () => {
         } else {
           destinationContainer.innerHTML = "<p> Destionation not found.</p>";
         }
+           document.getElementById("price").textContent = ` ${destinationData.price}`;
+           
       })
       .catch((error) => {
         console.error("Error loading blog:", error);
@@ -263,7 +267,9 @@ document.addEventListener("DOMContentLoaded", () => {
       "<p>No destination title specified in URL.</p>";
   }
 });
-
+document.getElementById("enquire-btn").addEventListener("click", function () {
+    window.location.href = "./enquire-us.html"; // Change URL as needed
+});
 document
   .querySelector(".bookingForm form")
   .addEventListener("submit", async (event) => {

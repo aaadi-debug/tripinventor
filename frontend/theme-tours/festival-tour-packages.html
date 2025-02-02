@@ -295,12 +295,12 @@
     <section>
         <div class="container">
             <div class="row">
-                <div class="col-lg-8 col-xs-12 mb-4">
+                <div class=" mb-4">
                     <div class="theme-tours-container container">
                         <div class="row" id="theme-tours-packages-container"></div>
                     </div>
                 </div>
-                <div class="col-lg-4 col-xs-12 mb-4">
+                <!-- <div class="col-lg-4 col-xs-12 mb-4">
                     <section class="call-to-action" style="background-image: url(images/bg/bg4.jpg)">
                         <div class="container">
                             <div class="section-title section-title-w text-center mx-auto mb-5 pb-2">
@@ -364,7 +364,7 @@
                         </div>
                         <div class="dot-overlay"></div>
                     </section>
-                </div>
+                </div> -->
             </div>
         </div>
     </section>
@@ -389,47 +389,53 @@
                     return response.json();
                 })
                 .then((destinations) => {
-                    if (destinations.length > 0) {
-                        themeToursPackagesContainer.innerHTML = destinations
-                            .map(
-                                (item) =>
-                                    `<div class="blog-full d-flex justify-content-around mb-4">
-                    <div class="row w-100">
-                        ${item.discount
-                                        ? `
-                          <div class="ribbon ribbon-top-left">
+    if (destinations.length > 0) {
+        themeToursPackagesContainer.innerHTML = destinations
+            .map((item, index) => { // Add index to create unique IDs
+                const carouselId = `carousel-${index}`; // Define carouselId
+                return `
+                <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
+                    ${item.discount ? `
+                        <div class="ribbon-destination">
                             <span>${item.discount}% OFF</span>
-                          </div>`
-                                        : ""
-                                    }
-                        <div class="col-lg-5 col-md-4 col-xs-12 blog-height">
-                            <div class="blog-image">
-                                <a href="../destinations.html?title=${encodeURIComponent(
-                                        item.title
-                                    )}" style="background-image: url(${item.images[0]
-                                    });">
-                                </a>
-                            </div> 
+                        </div>` : ""}
+                    <div class="card travel-card">
+                        <div id="${carouselId}" class="carousel slide" data-bs-ride="carousel">
+                            <div class="carousel-inner">
+                                ${item.images.map((img, i) => `
+                                    <div class="carousel-item ${i === 0 ? "active" : ""}">
+                                        <img src="${img}" class="d-block w-100" alt="Destination">
+                                    </div>
+                                `).join("")}
+                            </div>
+                            <div class="carousel-indicators dots-carousel">
+                                ${item.images.map((_, i) => `
+                                    <button type="button" data-bs-target="#${carouselId}" 
+                                        data-bs-slide-to="${i}" class="${i === 0 ? "active" : ""}"></button>
+                                `).join("")}
+                            </div>
                         </div>
-                        <div class="col-lg-7 col-md-8 col-xs-12">
-                            <div class="blog-content p-0">
-                                <h4 class="mb-1"><a href="../destinations.html?title=${encodeURIComponent(
-                                        item.title
-                                    )}">${item.title}</a></h4>
-                               
-                                <p class="mb-2 pink"> <i class="fa fa-map-marker mr-1"></i> ${item.location
-                                    }.</p>
-                                <p class="mb-2 border-t pt-2 desti_card_desc">${item.descriptions[0]
-                                    }</p> 
-                                <div class="deal-price">
-                                    <p class="price mb-0">From <span>₹ ${item.price}/- </span> (${item.duration})</p>
-                                </div>
+                        <div class="card-body">
+                            <p class="days-nights">${item.duration || "N/A"}</p>
+                            <h5 class="card-title desti_card_desc_one">
+                                <a href="../destinations.html?title=${encodeURIComponent(item.title)}">${item.title}</a>
+                            </h5>
+                            <span><i class="fa-solid fa-location-dot mr-3"></i> ${item.location || "Unknown"}</span>
+                            <p class="price mt-2 desti_card_desc_one">₹ ${item.price || "N/A"}</p>
+                            <p class="card-text desti_card_descw">${item.descriptions?.[0] || "No Description Available."}</p>
+                            <div class="d-flex justify-content-between">
+                                <a href="tel:+919718171912" class="btn btn-tel mr-3">
+                                    <i class="fa-solid fa-phone"></i>
+                                </a>
+                                <a href="../destinations.html?title=${encodeURIComponent(item.title)}" class="btn-detail w-100">
+                                    View Details
+                                </a>
                             </div>
                         </div>
                     </div>
-                </div>`
-                            )
-                            .join("");
+                </div>
+                `;
+            }).join("");
                     } else {
                         // No destinations found
                         themeToursPackagesContainer.innerHTML =
