@@ -100,7 +100,7 @@ function renderFAQSection(faqSection) {
   const faqContainer = document.getElementById("faqSection");
 
   const faqHtml = `
-    <div class="section-title text-center mb-5 pb-2 w-50 mx-auto">
+    <div class="section-title text-center mb-5 pb-2 mx-auto">
       <h2 class="m-0"><span>${faqSection.title}</span></h2>
       <p class="mb-0">${faqSection.description}</p>
     </div>

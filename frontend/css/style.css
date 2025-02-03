@@ -336,6 +336,10 @@ img {
   border: none !important;
 }
 
+#subsMessage {
+  color: white;
+}
+
 .border-b {
   border-bottom: 1px dashed #f1f1f1 !important;
 }
@@ -1837,7 +1841,7 @@ input#submit:hover {
 
 /* Accordion Content */
 .accordion-content {
-  border: 2px  solid red;
+  /* border: 2px  solid red; */
   padding: 15px;
   background: #fff;
   display: none;
@@ -2761,13 +2765,14 @@ input#submit:hover {
   /* background-color: rgba(255, 255, 255, 0.151); */
   box-shadow: 0 0 15px #cccccc37;
 
-  position: relative;
+  background-color: white !important;
+  border-bottom: 1px solid #aaa;
+  position: relative; 
 }
 
 .navbar_below_wrapper.scrolled {
-  background-color: white !important;
+  /* background-color: white !important; */
   /* Background when scrolled */
-  border-bottom: 1px solid #aaa;
 }
 
 .navbar_below_wrapper ul {
@@ -2786,7 +2791,7 @@ input#submit:hover {
 .navbar_below_wrapper ul li a {
   /* font-size: 18px; */
   text-transform: uppercase;
-  color: white
+  color: black;
 }
 
 .navbar_below_wrapper .navbar_below_wrapperLi {
@@ -3033,7 +3038,9 @@ input#submit:hover {
 }
 
 .navPhoneView .accordion-content {
-  max-height: auto !important;
+  max-height: 0;
+  overflow: hidden;
+  /* max-height: auto !important; */
   /* overflow: hidden; */
   /* background: #555; */
   color: #333;
@@ -3064,9 +3071,11 @@ input#submit:hover {
 }
 
 .navPhoneView .accordion-content.open {
-  max-height: 100px;
+  max-height: auto;
   /* padding: 10px 15px; */
 }
+
+
 
 
 /* ========================================= */
@@ -8119,6 +8128,7 @@ footer.footer1 .footer-copyright .social-links ul li a:hover {
 
 footer.footermain {
   background: url(../images/bg3.jpg);
+  background-size: cover;
   width: 100%;
   background-color: #162241;
   overflow: hidden;
@@ -9713,7 +9723,7 @@ ul.sidebar-tags li a:hover {
 }
 
 .enquiry-form .submitBTN {
-  background-color: var(--new-primary);
+  background-color: var(--new-orange-light);
   border-radius: 0;
   transition: 0.5s all;
 }

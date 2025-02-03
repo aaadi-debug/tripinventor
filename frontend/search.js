@@ -4,15 +4,15 @@ document.addEventListener("DOMContentLoaded", () => {
   const overlay = document.getElementById("overlay");
   const searchTitle = document.getElementById("searchTitle");
   const searchResults = document.getElementById("searchResults");
-
+ 
   // Backend URL
   const BACKEND_URL =
     window.location.hostname === "127.0.0.1"
       ? "http://localhost:5000"
       : "https://api.tripinventor.in";
-
+ 
   let allData = []; // Store all data for filtering
-
+ 
   // Show the search panel and overlay
   searchTrigger.addEventListener("click", () => {
     searchPanel.style.display = "block";
@@ -20,14 +20,14 @@ document.addEventListener("DOMContentLoaded", () => {
     document.body.style.overflow = "hidden";
     if (allData.length === 0) fetchAllDestinations(); // Fetch data only if not already loaded
   });
-
+ 
   // Hide the search panel and overlay when clicking outside
   overlay.addEventListener("click", () => {
     searchPanel.style.display = "none";
     overlay.style.display = "none";
     document.body.style.overflow = "auto";
   });
-
+ 
   // Fetch all destinations once
   const fetchAllDestinations = async () => {
     try {
@@ -40,7 +40,7 @@ document.addEventListener("DOMContentLoaded", () => {
       searchResults.innerHTML = "<p>Failed to load data. Please try again later.</p>";
     }
   };
-
+ 
   // Render cards based on data
   const renderCards = (data) => {
     searchResults.innerHTML = ""; // Clear previous results
@@ -58,7 +58,7 @@ document.addEventListener("DOMContentLoaded", () => {
             }
             <div class="searchCardImg">
               <a href="destinations.html?title=${encodeURIComponent(item.title)}">
-                <img src=${item.images[0]} alt="Searc-card-imag" />
+                <img src=${item.images[0]} "alt="Search-card-imag" />
               </a>
             </div>
             <div class="searchCardBody mt-2">
@@ -66,12 +66,12 @@ document.addEventListener("DOMContentLoaded", () => {
                 <h4 class="mb-1">
                   <a href="destinations.html?title=${encodeURIComponent(item.title)}">${item.title}</a>
                 </h4>
-                <p class="mb-2 pink">
-                  <i class="fa fa-map-marker mr-1"></i> ${item.location}.
+                <p class="mb-2 ">
+                  <i class="fa-solid fa-location-dot mr-3 pink"></i> ${item.location}  <span class="ml-3 fw-bold">(${item.duration})</span>
                 </p>
                 <p class="mb-2 border-t pt-2 desti_card_desc">${item.descriptions[0] || "No description available."}</p>
                 <div class="deal-price">
-                  <p class="price mb-0">From <span>₹ ${item.price}</span>/- (${item.duration})</p>
+                  <p class="price mb-0">₹ ${item.price}</p>
                 </div>
               </div>
             </div>
@@ -79,7 +79,7 @@ document.addEventListener("DOMContentLoaded", () => {
       searchResults.insertAdjacentHTML("beforeend", card);
     });
   };
-
+ 
   // Filter and render results dynamically
   searchTitle.addEventListener("input", () => {
     const query = searchTitle.value.trim().toLowerCase();
@@ -89,3 +89,4 @@ document.addEventListener("DOMContentLoaded", () => {
     renderCards(filteredData);
   });
 });
+ 
