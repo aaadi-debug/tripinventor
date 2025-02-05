@@ -69,7 +69,7 @@ document.addEventListener("DOMContentLoaded", () => {
                                             <h6 class="font-weight-normal"><i class="fa fa-map-marker-alt"></i> ${
                                               pkg.location || "Unknown"
                                             }</h6>
-                                            <h4><a href="tour-details.html?title=${encodeURIComponent(
+                                            <h4><a href="../destinations.html?title=${encodeURIComponent(
                                               pkg.title
                                             )}">${pkg.title}</a></h4>
                                         </div>
@@ -114,7 +114,7 @@ document.addEventListener("DOMContentLoaded", () => {
                               <h6 class="font-weight-normal"><i class="fa fa-map-marker-alt"></i> ${
                                 pkg.location || "Unknown"
                               }</h6>
-                              <h4><a href="tour-details.html?title=${encodeURIComponent(
+                              <h4><a href="../destinations.html?title=${encodeURIComponent(
                                 pkg.title
                               )}">${pkg.title}</a></h4>
                           </div>

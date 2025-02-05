@@ -337,7 +337,7 @@ img {
 }
 
 #subsMessage {
-  color: white;
+  color: white !important;
 }
 
 .border-b {
@@ -7899,7 +7899,7 @@ table.shop_table.rt-checkout-review-order-table tr:nth-child(even) {
 /* ======================================== */
 footer {
   width: 100%;
-  background-color: #162241;
+  /* background-color: var(--new-secondary); */
   overflow: hidden;
   position: relative;
   background-size: cover;
@@ -7908,7 +7908,7 @@ footer {
 }
 
 footer .overlay {
-  opacity: 0.8;
+  opacity: 0.5;
 }
 
 footer a,
@@ -8150,7 +8150,7 @@ footer.footermain {
   background: url(../images/bg3.jpg);
   background-size: cover;
   width: 100%;
-  background-color: #162241;
+  /* background-color: #162241; */
   overflow: hidden;
   position: relative;
 }

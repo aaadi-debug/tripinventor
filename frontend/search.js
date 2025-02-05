@@ -4,6 +4,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const overlay = document.getElementById("overlay");
   const searchTitle = document.getElementById("searchTitle");
   const searchResults = document.getElementById("searchResults");
+  const preloader = document.getElementById("searchPreloader");  // Preloader element
+
  
   // Backend URL
   const BACKEND_URL =
@@ -30,6 +32,9 @@ document.addEventListener("DOMContentLoaded", () => {
  
   // Fetch all destinations once
   const fetchAllDestinations = async () => {
+    // Show preloader
+    preloader.style.display = "block";  // Show the preloader
+
     try {
       const response = await fetch(`${BACKEND_URL}/api/destinations`);
       if (!response.ok) throw new Error(`HTTP error! Status: ${response.status}`);
@@ -38,6 +43,9 @@ document.addEventListener("DOMContentLoaded", () => {
     } catch (error) {
       console.error("Error fetching data:", error);
       searchResults.innerHTML = "<p>Failed to load data. Please try again later.</p>";
+    } finally {
+      // Hide preloader after rendering
+      preloader.style.display = "none";  // Hide the preloader
     }
   };
  
@@ -50,21 +58,21 @@ document.addEventListener("DOMContentLoaded", () => {
     }
     data.forEach((item) => {
       const card = `
-        <div class="searchCard">
+        <a href="destinations.html?title=${encodeURIComponent(item.title)}" class="searchCard">
             ${
               item.discount
                 ? `<div class="ribbon ribbon-top-left"><span>${item.discount}% OFF</span></div>`
                 : ""
             }
             <div class="searchCardImg">
-              <a href="destinations.html?title=${encodeURIComponent(item.title)}">
+              <div>
                 <img src=${item.images[0]} "alt="Search-card-imag" />
-              </a>
+              </div>
             </div>
             <div class="searchCardBody mt-2">
               <div class="blog-content p-0">
                 <h4 class="mb-1">
-                  <a href="destinations.html?title=${encodeURIComponent(item.title)}">${item.title}</a>
+                  <div>${item.title}</div>
                 </h4>
                 <p class="mb-2 ">
                   <i class="fa-solid fa-location-dot mr-3 pink"></i> ${item.location}  <span class="ml-3 fw-bold">(${item.duration})</span>
@@ -75,7 +83,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 </div>
               </div>
             </div>
-        </div>`;
+        </a>`;
       searchResults.insertAdjacentHTML("beforeend", card);
     });
   };

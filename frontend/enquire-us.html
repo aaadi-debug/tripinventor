@@ -62,27 +62,37 @@
         </p>
       </div>
       <form id="enquiryForm">
-        <div class="form-group">
+        <div class="row">
+          <div class="col-lg-6 col-md-6 col-sm-12">
+            <label for="destinationType">Destination Type</label>
+            <select id="destinationType">
+              <option value="">Select Type</option>
+              <option value="domestic">Domestic</option>
+              <option value="international">International</option>
+            </select>
+          </div>
+
+          <div class="col-lg-6 col-md-6 col-sm-12">
+            <label for="destinations">Destinations</label>
+            <select id="destinations" disabled>
+              <option value="">Select a destination</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group mt-3">
           <div class="row">
-            <div class="col-lg-6 col-md-6 col-sm-12">
-              <label for="destinations">Destinations</label>
-              <select id="destinations">
-                <option value="">Select a destination</option>
-                <option value="Paris">Paris</option>
-                <option value="New York">New York</option>
-                <option value="Tokyo">Tokyo</option>
-                <option value="Sydney">Sydney</option>
-                <option value="Dubai">Dubai</option>
-              </select>
-            </div>
-            <div class="col-lg-6 col-md-6 col-sm-12">
+
+            <div class="col-12">
               <label>Your selected destinations will appear here:</label>
               <div id="destinationList" class="destination-list">
                 <p id="noDestinations">-- No destinations added --</p>
               </div>
+
+              <!-- Hidden input to store selected destinations before form submission -->
+              <input type="hidden" name="selectedDestinations" id="selectedDestinations">
             </div>
           </div>
-
         </div>
 
         <div class="row">
@@ -123,7 +133,7 @@
           <div class="col-lg-6 col-md-6 col-sm-12">
             <div class="form-group">
               <label for="childAge">Child Age</label>
-              <input type="number" id="childAge" min="0" max="18" placeholder="Enter child age">
+              <input type="number" id="childAge" min="0" max="10" placeholder="Enter child age">
             </div>
           </div>
           <div class="col-lg-6 col-md-6 col-sm-12">
@@ -184,7 +194,7 @@
           </div>
         </div>
 
-        
+
 
         <button type="submit" class="submitBTN">Submit</button>
       </form>
