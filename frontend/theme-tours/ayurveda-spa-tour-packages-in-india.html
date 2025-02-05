@@ -67,7 +67,7 @@
           <li>
             <i class="fa-solid fa-clipboard-question"></i>
             <a href="../enquire-us.html" id="login-link">Enquire Now</a>
-        </li>
+          </li>
         </ul>
       </div>
     </div>
@@ -586,7 +586,7 @@
     </a>
   </div>
 
-  <section class="breadcrumb-main pb-0" style="background-image: url(../images/bg/bg8.jpg)">
+  <section class="breadcrumb-main pb-0" style="background-image: url(../images/br1.jpg); background-position: bottom;">
     <div class="breadcrumb-outer pt-10">
       <div class="container">
         <div class="breadcrumb-content d-md-flex align-items-center pt-10">
@@ -607,79 +607,19 @@
     </div>
     <div class="dot-overlay"></div>
   </section>
+
   <section>
     <div class="container">
       <div class="row">
-        <div class="mb-4">
-          <div class="theme-tours-container container">
-            <div class="row" id="theme-tours-packages-container"></div>
+        <div class="theme-tours-container container">
+          <div class="row" id="theme-tours-packages-container">
+            <!-- Dynamic cards will be inserted here -->
           </div>
         </div>
-        <!-- <div class="col-lg-4 col-xs-12 mb-4">
-                    <section class="call-to-action" style="background-image: url(images/bg/bg4.jpg)">
-                        <div class="container">
-                            <div class="section-title section-title-w text-center mx-auto mb-5 pb-2">
-                                <h2 class="mb-2 white">
-                                    Do You Have Any <span>Questions?</span>
-                                </h2>
-                            </div>
-                            <div class="reservation-main mx-auto px-2">
-                                <form id="anyQuestionFOrm">
-                                    <div class="row">
-                                        <div class="col-12">
-                                            <div class="form-group">
-                                                <label class="white" for="fullNameG">Full Name</label>
-                                                <input type="text" id="fullNameG" placeholder="Name" />
-                                            </div>
-                                        </div>
-                                        <div class="col-12">
-                                            <div class="form-group">
-                                                <label class="white" for="phoneG">Phone No.</label>
-                                                <input type="text" id="phoneG" placeholder="Phone" />
-                                            </div>
-                                        </div>
-                                        <div class="col-12">
-                                            <div class="form-group">
-                                                <label class="white" for="data-rang0">Check In</label>
-                                                <div class="input-box">
-                                                    <input id="date-range0" type="text" placeholder="yyyy-mm-dd" />
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-12">
-                                            <div class="form-group">
-                                                <label class="white">Guests</label>
-                                                <div class="input-box">
-                                                    <select class="niceSelect" id="guestsSelect">
-                                                        <option value="1">01</option>
-                                                        <option value="2">02</option>
-                                                        <option value="3">03</option>
-                                                        <option value="4">04</option>
-                                                        <option value="5">05</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-12">
-                                            <div class="form-group">
-                                                <label class="white" for="message">Message</label>
-                                                <textarea name="message" id="messageGuest"
-                                                    placeholder="Enter a message"></textarea>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="comment-btn text-center">
-                                        <button type="submit" class="nir-btn" id="submit">
-                                            Send Message
-                                        </button>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                        <div class="dot-overlay"></div>
-                    </section>
-                </div> -->
+        <div id="preloaderCircle"
+          style="display: flex; justify-content: center; align-items: center; width: 100%; background: #fff; z-index: 9999; margin-bottom: 50px;">
+          <div class="spinner"></div>
+        </div>
       </div>
     </div>
   </section>
@@ -690,10 +630,16 @@
         "theme-tours-packages-container"
       );
 
+      const preloader = document.getElementById("preloaderCircle"); // Preloader element
+
+
       const BACKEND_URL =
         window.location.hostname === "127.0.0.1"
           ? "http://localhost:5000"
           : "https://api.tripinventor.in";
+
+      // Show preloader while fetching data
+      preloader.style.display = "flex";
 
       // Fetch all destinations
       fetch(`${BACKEND_URL}/api/destinations?wellnessSpa=yes`)
@@ -709,7 +655,7 @@
               .map((item, index) => { // Add index to create unique IDs
                 const carouselId = `carousel-${index}`; // Define carouselId
                 return `
-                      <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
+                      <div class="col-lg-3 col-md-6 col-sm-12 mb-4">
                           ${item.discount ? `
                               <div class="ribbon-destination">
                                   <span>${item.discount}% OFF</span>
@@ -732,12 +678,12 @@
                               </div>
                               <div class="card-body">
                                   <p class="days-nights">${item.duration || "N/A"}</p>
-                                  <h5 class="card-title desti_card_desc_one">
+                                  <h5 class="card-title desti_card_desc_two">
                                       <a href="../destinations.html?title=${encodeURIComponent(item.title)}">${item.title}</a>
                                   </h5>
-                                  <span><i class="fa-solid fa-location-dot mr-3"></i> ${item.location || "Unknown"}</span>
-                                  <p class="price mt-2 desti_card_desc_one">₹ ${item.price || "N/A"}</p>
-                                  <p class="card-text desti_card_desc">${item.descriptions?.[0] || "No Description Available."}</p>
+                                  <span class="cardLocation"><i class="fa-solid fa-location-dot mr-2"></i> ${item.location || "Unknown"
+                  }</span>
+                            <p class="price mt-2 desti_card_desc_one">INR ${item.price || "N/A"}</p>
                                   <div class="d-flex justify-content-between">
                                       <a href="tel:+919718171912" class="btn btn-tel mr-3">
                                           <i class="fa-solid fa-phone"></i>
@@ -758,6 +704,8 @@
             themeToursPackagesContainer.innerHTML =
               "<p>No wellness ayurveda and spa tour destinations available at the moment.</p>";
           }
+          // Hide preloader after rendering the data
+          preloader.style.display = "none";
         })
         .catch((error) => {
           console.error("Error fetching wellness ayurveda and spa tour destinations:", error);

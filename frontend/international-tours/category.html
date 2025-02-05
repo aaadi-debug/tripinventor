@@ -477,7 +477,8 @@
         </a>
     </div>
 
-    <section class="breadcrumb-main pb-0" style="background-image: url(../images/bg/bg8.jpg)">
+    <section class="breadcrumb-main pb-0"
+        style="background-image: url(../images/br1.jpg); background-position: bottom;">
         <div class="breadcrumb-outer pt-10">
             <div class="container">
                 <div class="breadcrumb-content d-md-flex align-items-center pt-10">
@@ -498,22 +499,20 @@
         </div>
         <div class="dot-overlay"></div>
     </section>
-    <section>
-        <div class="container">
-            <div class="row">
-                <div class="w-100">
-                    <div class="theme-tours-container container">
-                        <div class="row" id="theme-tours-packages-container"></div>
-                    </div>
-                    <div id="preloaderCircle"
-                        style="display: flex; justify-content: center; align-items: center; width: 100%; background: #fff; z-index: 9999; margin-bottom: 50px;">
-                        <div class="spinner"></div>
-                    </div>
-                </div>
-
+    
+    <div class="container mt-5">
+        <div class="row">
+            <div class="theme-tours-container container">
+                <div class="row" id="theme-tours-packages-container"></div>
+                <!-- Dynamic cards will be inserted here -->
             </div>
         </div>
-    </section>
+    </div>
+    <div id="preloaderCircle"
+        style="display: flex; justify-content: center; align-items: center; width: 100%; background: #fff; z-index: 9999; margin-bottom: 50px;">
+        <div class="spinner"></div>
+    </div>
+
 
     <script>
         window.addEventListener("scroll", function () {
@@ -572,7 +571,7 @@
                             .map((item, index) => { // Add index to create unique IDs
                                 const carouselId = `carousel-${index}`; // Define carouselId
                                 return `
-                <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
+                <div class="col-lg-3 col-md-6 col-sm-12 mb-4">
                     ${item.discount ? `
                         <div class="ribbon-destination">
                             <span>${item.discount}% OFF</span>
@@ -598,9 +597,9 @@
                             <h5 class="card-title desti_card_desc_one">
                                 <a href="../destinations.html?title=${encodeURIComponent(item.title)}">${item.title}</a>
                             </h5>
-                            <span><i class="fa-solid fa-location-dot mr-3"></i> ${item.location || "Unknown"}</span>
-                            <p class="price mt-2 desti_card_desc_one">₹ ${item.price || "N/A"}</p>
-                            <p class="card-text desti_card_desc">${item.descriptions?.[0] || "No Description Available."}</p>
+                            <span class="cardLocation"><i class="fa-solid fa-location-dot mr-2"></i> ${item.location || "Unknown"
+                                    }</span>
+                             <p class="price mt-2 desti_card_desc_one">INR ${item.price || "N/A"}</p>
                             <div class="d-flex justify-content-between">
                                 <a href="tel:+919718171912" class="btn btn-tel mr-3">
                                     <i class="fa-solid fa-phone"></i>

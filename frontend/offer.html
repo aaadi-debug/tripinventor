@@ -32,7 +32,7 @@
 
 <body>
   <div id="header"></div>
-  <section class="breadcrumb-main pb-0" style="background-image: url(images/bg/bg8.jpg)">
+  <section class="breadcrumb-main pb-0" style="background-image: url(images/br1.jpg); background-position: bottom;">
     <div class="breadcrumb-outer pt-10">
       <div class="container">
         <div class="breadcrumb-content d-md-flex align-items-center pt-10">
@@ -50,9 +50,10 @@
     </div>
     <div class="dot-overlay"></div>
   </section>
-  <div id="preloaderCircle" style="display: none">
-    <p>Loading...</p>
-  </div>
+  <div id="preloaderCircle"
+  style="margin-top: 30px; display: flex; justify-content: center; align-items: center; width: 100%; background: #fff; z-index: 9999; margin-bottom: 50px;">
+  <div class="spinner"></div>
+</div>
   <div class="d-flex justify-content-center mt-6">
     <div id="discounted-packages-container" class="row col-lg-11">
       <!-- Cards will be inserted here -->
@@ -148,7 +149,7 @@
         const carouselId = `carousel-${index}`;
 
         return `
-      <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
+      <div class="col-lg-3 col-md-6 col-sm-12 mb-4">
         ${item.discount
             ? `<div class="ribbon-destination">
                 <span>${item.discount}% OFF</span>
@@ -181,16 +182,15 @@
           </div>
           <div class="card-body">
             <p class="days-nights">${item.duration || "N/A"}</p>
-            <h5 class="card-title desti_card_desc_one">
+            <h5 class="card-title desti_card_desc_two">
               <a href="destinations.html?title=${encodeURIComponent(
               item.title
             )}">${item.title}</a>
             </h5>
-            <span><i class="fa-solid fa-location-dot mr-3"></i> ${item.location || "Unknown"
-          }</span>
-            <p class="price mt-2 desti_card_desc_one">₹ ${item.price || "N/A"}</p>
-            <p class="card-text desti_card_desc">${item.descriptions?.[0] || "No Description Available."
-          }</p>
+            <span class="cardLocation"><i class="fa-solid fa-location-dot mr-2"></i> ${item.location || "Unknown"}</span>
+            
+            <p class="price mt-2 desti_card_desc_one">INR ${item.price || "N/A"}</p>
+          </p>
             <div class="d-flex justify-content-between">
               <a href="tel:+919718171912" class="btn btn-tel mr-3">
                 <i class="fa-solid fa-phone"></i>
